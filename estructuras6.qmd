@@ -1,0 +1,83 @@
+---
+title: "Estructuras de datos en R"
+editor: source
+---
+
+## Diapositivas
+
+::: {.embed}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRhgqTRPhqIinA-G8LdZje4RSl3jpL9xDoQYjfFYD3kNyeCuIHAlb_gjyRUs6gZoQ/pubembed?start=true&loop=true&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+::::
+
+
+## Actividad
+
+1. Crear tu primer vector
+
+Crea un vector llamado `casos_dengue` con los siguientes valores, que representan el número de casos por semana:
+
+
+15, 22, 18, 35, 20
+
+2. Accede a los elementos del vector construido previamente
+
+- Muestra el tercer valor del vector casos_dengue.
+
+- Suma los dos primeros elementos
+
+3. **Aplicar funciones básicas**: Utiliza funciones matemáticas para calcular:
+
+- La media (`mean`) de los casos de dengue 
+
+- El total de casos de dengue (`sum`)
+
+- El valor máximo (max) y mínimo (`min`)
+
+4. **Crear un Data Frame**: crea los siguientes vectores y usa los vectores anteriores para construir un data frame llamado datos:
+
+edad = 25, 34, 54, 65
+sexo = F, M, F, M
+
+5. **Explorar el data frame**:
+- Muestra el data frame completo.
+
+- Accede a la columna edad.
+
+- Obtén la edad de la segunda persona.
+
+6. Se registraron los siguientes casos de influenza en cinco semanas consecutivas:
+
+```{r}
+casos_influenza <- c(12, 18, 24, 22, 15)
+```
+
+- Calcula el total de casos.
+
+- ¿Cuál fue el promedio semanal?
+
+- ¿Hubo alguna semana con más de 20 casos? Usa un operador lógico.
+
+7. Calcula:
+
+- El valor máximo y mínimo.
+
+- La diferencia entre el valor máximo y el mínimo (rango).
+
+- La desviación estándar de los casos.
+
+8. Imagina que quieres calcular la tasa de incidencia por cada 10.000 habitantes. Los casos y poblaciones son:
+
+```{r}
+casos <- c(56, 23, 87)
+poblacion <- c(25000, 15000, 40000)
+```
+
+- Calcula la tasa por 10.000 habitantes para cada zona.
+
+- ¿Alguna zona superó los 30 casos por 10.000?
+
+9. Discute con tus compañeros:
+
+¿Qué tipo de análisis podrías automatizar en vigilancia con estas herramientas?
+
+¿Qué funciones usarías para revisar la consistencia de los datos antes de analizarlos?

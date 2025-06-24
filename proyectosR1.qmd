@@ -1,0 +1,25 @@
+---
+title: "Proyectos en R"
+editor: source
+---
+
+## Diapositivas
+
+::: {.embed}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vR4VrvThFB3rlFM2b4wTh-pkEtVb53uQqT_d_bzz5scZ3nGM_MgIYdZONvzsEwSUg/pubembed?start=true&loop=true&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+::::
+
+
+## Actividad
+
+1. Crear un proyecto en R en su computador local para usarlos durante todo este curso
+
+2. Crear al interior de este proyecto los siguientes carpetas:
+
+- Codigo
+- datos_brutos
+- datos_limpios
+- graficos
+- reportes
+
+3. Crea **otro** proyecto, para tu trabajo final de este curso, con las carpetas que creas debe iniciar dicho trabajo final

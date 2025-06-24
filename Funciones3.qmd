@@ -1,0 +1,23 @@
+---
+title: "Funciones"
+editor: source
+---
+
+## Diapositivas
+
+::: {.embed}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTh9fz2KeumTqUkvz5MpAYb1yz0y_BfV6e7_qfq96DCYXiVmAEARNgymqk39GuEnA/pubembed?start=true&loop=true&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+::::
+
+
+## Actividad
+
+Exploremos en R las siguientes funciones de R base:
+
+`date()`
+
+`seq()`
+
+`rep()`
+
+`sum()`

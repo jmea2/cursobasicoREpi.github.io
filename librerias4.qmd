@@ -1,0 +1,22 @@
+---
+title: "Librerias en R"
+editor: source
+---
+
+## Diapositivas
+
+::: {.embed}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRqO0DW4NK6i8dggrTDTZUJ46AAK88SzsMRnC0uzLfNj7Z8IW6OivvxZTxrhbHmew/pubembed?start=true&loop=true&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+::::
+
+
+## Actividad
+
+1. visita la siguiente web de la libreria `rio`, e identifica en su documentacion para que es util. [Documentación `rio`](https://gesistsa.github.io/rio/articles/rio.html).
+
+2. visita la siguiente web de la libreria `pacman`, e identifica en su documentacion para que es util. [Documentación `pacman`](https://trinker.github.io/pacman/vignettes/Introduction_to_pacman.html).
+
+3. instale las siguientes librerias en su R software, algunos de ellos seran usados en las proximas clases. (recuerda que debes usar la función `install.packages()`):
+
+- `rio`
+- `pacman`

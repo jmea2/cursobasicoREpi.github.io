@@ -1,0 +1,69 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!exercises/exercises.Rmd"
+    - "!slides/[0-9]*.qmd"
+    
+website:
+  page-navigation: true
+  title: "Iniciando R en la Epidemiología de Campo"
+  description: "Pagina del Curso de R para epidemiologos de Campo"
+  site-url: "https://jmea2.github.io"
+  favicon: "images/imagen-cursoR.png"
+  
+  #repo-url: https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed
+  #repo-actions: [edit, issue]
+
+  open-graph: true
+  twitter-card:
+    creator: "@bioestadisticaRda"
+    image: "/images/imagen-cursoR.png"
+
+  page-footer:
+    left: "Esta pagina es hecha con [Quarto](https://quarto.org/)."
+    right: "&copy; Copyright 2025, Jorge Mario Estrada"
+    background: "#708090"
+
+  sidebar:
+    background: "#708090"
+    logo: "images/imagen-cursoR.png"
+    pinned: true
+    align: center
+    #tools:
+      # - icon: github
+      #   href: https://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed
+      #   text: GitHub
+    style: docked
+    contents:
+     - href: index.qmd
+       text: Inicio
+     #- href: material.qmd
+     - href: proyectosR1.qmd
+       text: Proyectos en R
+     - href: Script2.qmd
+       text: Script
+     - href: Funciones3.qmd
+       text: Funciones
+     - href: librerias4.qmd
+       text: Librerias
+     - href: operadores5.qmd
+       text: Operadores
+     - href: estructuras6.qmd
+       text: Estructuras de datos
+     - href: importando7.qmd
+       text: Importación de datos a R
+     - href: license.qmd
+
+format:
+  html:
+    theme: [journal, theme.scss]
+    toc: true
+    code-copy: true
+    code-overflow: scroll
+    mainfont: "Atkinson Hyperlegible"
+    highlight-style: a11y
+
+editor: source
+

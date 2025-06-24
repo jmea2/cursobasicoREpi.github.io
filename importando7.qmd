@@ -1,0 +1,33 @@
+---
+title: "Importación de datos a R"
+editor: source
+---
+
+## Diapositivas
+
+::: {.embed}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQaXOFpY3EPMQA1xFKp-UZIdZU7g4877iZBl4n_Za-CLs0_aM7Od_NGlJeDfXUFNA/pubembed?start=true&loop=true&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+::::
+
+
+## Actividad
+
+1. Ya tienes instalado el paquete `rio` !, ahora actívalo para iniciar la importación de datos.
+
+2. Descarga los siguientes archivos y depositalos en la carpeta **datos_brutos** del proyecto en el que estamos trabajando.
+
+:::{.callout-note}
+### 🧾 Datos
+
+👉 [Descargar dengue15_19.xlsx](dengue15_19.xlsx)
+
+👉 [Descargar dengue20_23.csv](dengue20_23.csv)
+
+👉 [Descargar malaria_conteos.rds](malaria_datos_conteo.rds)
+:::
+
+3. Importa a R los tres archivos descargados.
+
+4. Crea un nuevo proyecto para el trabajo final de este curso, acorde a lo visto en estos 2 días, deposita allí las bases de datos necesarias, revisa que tenga la estructura mínima para que R las importe de manera correcta e importalas a R.
+
+

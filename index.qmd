@@ -1,0 +1,92 @@
+---
+title: "Iniciando R en la Epidemiología de Campo"
+subtitle: "Institución Nacional Salud - FETP"
+editor: source
+---
+
+<!-- https://github.com/rstudio-conf-2022/teach-ds -->
+
+------------------------------------------------------------------------
+
+🗓 Virtual Junio 26, 27  2025 \| 4:00pm - 7:00pm 
+
+🏨 Presencial Julio 2, 3, 4 2025  \| 8:00am - 5:00pm 
+
+💥 **Por inscripción previa Oficina de FETP**
+
+------------------------------------------------------------------------
+
+# Overview
+
+La formación especializada en el lenguaje de programación R aporta
+habilidades para iniciar en la denominada ciencia de datos con
+aplicación directa a la práctica profesional. Además es una herramienta
+gratuita de código abierto en continua innovación/actualización por
+parte de la comunidad científica. La versatilidad de R para procesar
+datos y obtener resultados en diversas campos del análisis de datos lo
+hace un software de elección en diversas áreas de conocimiento como
+medicina y ciencias de la salud, financiera, investigación científica,
+epidemiología, ciencias sociales, economía entre muchas otras, en las
+que es necesario la implementación de potentes analíticas como
+modelamiento matemático y estadístico, análisis geoespaciales, machine
+learning, inteligencia artificial y visualización de datos, con la gran
+ventaja de nunca perder la transparencia y reproducibilidad del
+resultado.
+
+En la actividades dentro de la epidemiología de campo, todo el flujo de
+trabajo necesario para el análisis de datos debe integrar desde la toma,
+el procesamiento, la depuración y organización de los datos pasando por
+la producción de diversos resultados hasta el reporte final, lo que hace
+necesario tener algunas habilidades que permitan que dicho flujo de
+trabajo sea optimo y facilite al tiempo el uso de herramientas
+avanzadas.
+
+Es claro que la implementación de estos flujos de trabajos en fases
+analíticas como la descriptiva permite al epidemiólogo trascender luego
+en analíticas avanzadas, ademas de permitirle el acceso a métodos que
+contribuyan a enfocar su quehacer en resultados óptimos y con el mayor
+uso de las analíticas que hoy por hoy permiten una epidemiología con
+mayor utilidad y practica.
+
+Dado lo anterior han surgido diversas iniciativas en el mundo que
+pretenden la implementación de R-Software sea la plataforma sobre la que
+el epidemiólogo de campo adquiera competencias de manera tal que se eleve la
+capacidad del mismo desde el nivel básico de su formación que le permita
+acceder no solo a distintas analíticas sino a establecer un flujo de
+trabajo necesario dentro de la respuesta a emergencias en salud publica.
+
+## Objetivos de Aprendizaje
+
+-   Crear su propio proyecto R que le permita establecer un flujo de
+    trabajo en el análisis de datos.
+
+-   Aplicar diversas herramientas del software R en cada paso del flujo
+    de trabajo de un proyecto con R.
+
+## Es este curso para mi?
+
+Si su respuesta a cualquiera de la siguientes es "Si", luego este es el lugar correcto para inicial a desarrollar habilidades .
+
+-   Requiere procesar datos descriptivos en el ambito de la vigilancia en salud pública y epidemiología de campo , que incluyen el procesamiento de datos, tablas resumen, estadisticos resumen, visualización de datos ?
+
+-   Requiere un flujo de trabajo con datos, repetitivo (diario, semanal, mensual)?
+
+-   Esta cansado de solicitar licencias de software estadístico a su institución que permitan potenciar sus análisis de datos epidemiologico?
+
+- Hasta el momento continua usando hojas de calculo como único medio para el análisis de datos limitando su capacidad de implementar analíticas distintas en su trabajo?
+
+Este curso esta diseñado para quienes no tienen ninguna experiencia con R-Software y RStudio pero si tienen contacto con datos epidemiologicos y altas necesidades en su implementación dentro su flujo trabajo diario.
+
+## Previo
+
+Para este curso debe tener un computador portatil personal o institucional pero que permita la instalación de software libre sin restricción o necesidades de claves de administrador.
+
+# Instructor principal
+
+![](images/yo2.jpeg){style="float:right;padding: 0 0 0 10px;" fig-alt="Headshot of Daniel D. Sjoberg" width="200"}
+
+[**Jorge Mario Estrada A.**](https://jmea2.github.io) es Lic. Matemáticas y Epidemiologo de Campo,  con Maestria en Epidemiología, Maestria en Estadistica Aplicada y con defensa programada (08-Sept-2025) de su tesis doctoral en Estadística Matemática y Aplicada en la Universidad de Granada, España. Sus intereses en investigación incluyen, Implementación de métodos estadísticos para Epidemiología e investigación clinica, Epidemiologia de enfermedades infecciosas, Ciencia de datos aplicada a Salud Pública, Métodos de estimacion para prevalencias bajas de enfermedades/infecciones.
+
+Apasionado por el Ciclomontañismo 🚵 (modalidad de Marathon) y tratando de incursionar en el ciclismo Gravel (Bikepacking, Carreras Gravel larga distancia).
+
+Casado con Alejandra (Enfermera), y padre de Mateo (12 años de edad) y abuelo perruno de Luna 🐶 (Pastor Ganadero Australiano).

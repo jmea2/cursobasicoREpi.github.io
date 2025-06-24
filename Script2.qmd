@@ -1,0 +1,26 @@
+---
+title: "Script en R"
+editor: source
+---
+
+## Diapositivas
+
+::: {.embed}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTdNX2tym-jTy0qnf6tg6TDBAUSXkaLCYwFA22tg7TLkmtmw_JoyhAN09FTVPSAMg/pubembed?start=true&loop=true&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+::::
+
+
+## Actividad
+
+Crear su primer archivo Script que contenga las primera lineas de codigo de este curso.
+
+1. Crea el archivo **Script**, nombralo como desees y guardalo en la carpeta que denominaste en tu proyecto como **codigo**.
+
+2. Créarlo con los siguientes comentarios:
+
+```{r, eval=FALSE}
+# Curso R en Epidemiologia de Campo
+# Nombre:
+# Fecha:
+```
+

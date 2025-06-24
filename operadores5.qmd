@@ -1,0 +1,40 @@
+---
+title: "Operadores Matematicos"
+editor: source
+---
+
+## Diapositivas
+
+::: {.embed}
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRPJwGnMdLJOzfF2SUqOLbaMeHKYNFVfBwyZ1lttCamMV6G1IAXwj3hT4t506uo7Q/pubembed?start=true&loop=true&delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+::::
+
+
+## Actividad
+
+1. Calculando tasas
+
+Supón que en un municipio hubo 325 casos de dengue en un año, con una población de 78.420 habitantes.
+
+a. Calcula la **tasa de incidencia por 100.000 habitantes**.
+
+b. Calcula el **número esperado de casos** si la tasa fuera de 0.006 casos/habitante.
+
+2. Comparaciones
+Dado que se espera que la tasa de incidencia de dengue esté por debajo de 450 casos por 100.000 habitantes. Verifica si la tasa actual excede este umbral.
+
+3. Evalúa las siguientes expresiones en R y responde si son verdaderas o falsas.
+
+```{r, eval=FALSE}
+45 > 50
+70 == 70
+18 != 20
+```
+
+4. Un laboratorio informa que una muestra de agua tiene 3.2 mg/L de cloro. El límite permitido es 2.5 mg/L. Usa una expresión lógica para determinar si la muestra excede el límite.
+
+5. En un centro de salud se atendieron los siguientes números de pacientes por día: 20, 24, 22.
+
+a. ¿Calcule el el promedio?
+
+b. ¿Cuál es el total?
