@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -71,8 +105,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Importación de datos a R – Iniciando R en la Epidemiología de Campo">
+<meta property="og:description" content="Pagina del Curso de R para epidemiologos de Campo">
 <meta property="og:site_name" content="Iniciando R en la Epidemiología de Campo">
 <meta name="twitter:title" content="Importación de datos a R – Iniciando R en la Epidemiología de Campo">
+<meta name="twitter:description" content="Pagina del Curso de R para epidemiologos de Campo">
 <meta name="twitter:image" content="https://jmea2.github.io/images/imagen-cursoR.png">
 <meta name="twitter:creator" content="@bioestadisticaRda">
 <meta name="twitter:image-height" content="1024">
@@ -179,7 +215,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#diapositivas" id="toc-diapositivas" class="nav-link active" data-scroll-target="#diapositivas">Diapositivas</a></li>
-  <li><a href="#actividad" id="toc-actividad" class="nav-link" data-scroll-target="#actividad">Actividad</a></li>
+  <li><a href="#actividad-1" id="toc-actividad-1" class="nav-link" data-scroll-target="#actividad-1">Actividad 1</a></li>
+  <li><a href="#actividad-2" id="toc-actividad-2" class="nav-link" data-scroll-target="#actividad-2">Actividad 2</a></li>
   </ul>
 </nav>
     </div>
@@ -208,12 +245,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="diapositivas" class="level2">
 <h2 class="anchored" data-anchor-id="diapositivas">Diapositivas</h2>
 <div class="embed">
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQaXOFpY3EPMQA1xFKp-UZIdZU7g4877iZBl4n_Za-CLs0_aM7Od_NGlJeDfXUFNA/pubembed?start=true&amp;loop=true&amp;delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT6BQu5Yi55t3b-8RKSpAWlvvrZuOG8MrtyAdaoP6R1I3jVa8Ad-Rd9qWojxlmtCw/pubembed?start=true&amp;loop=true&amp;delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
 </iframe>
 </div>
 </section>
-<section id="actividad" class="level2">
-<h2 class="anchored" data-anchor-id="actividad">Actividad</h2>
+<section id="actividad-1" class="level2">
+<h2 class="anchored" data-anchor-id="actividad-1">Actividad 1</h2>
 <ol type="1">
 <li><p>Ya tienes instalado el paquete <code>rio</code> !, ahora actívalo para iniciar la importación de datos.</p></li>
 <li><p>Descarga los siguientes archivos y depositalos en la carpeta <strong>datos_brutos</strong> del proyecto en el que estamos trabajando.</p></li>
@@ -237,6 +274,30 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Importa a R los tres archivos descargados.</p></li>
 <li><p>Crea un nuevo proyecto para el trabajo final de este curso, acorde a lo visto en estos 2 días, deposita allí las bases de datos necesarias, revisa que tenga la estructura mínima para que R las importe de manera correcta e importalas a R.</p></li>
 </ol>
+</section>
+<section id="actividad-2" class="level2">
+<h2 class="anchored" data-anchor-id="actividad-2">Actividad 2</h2>
+<p>De la base de datos de <code>dengue15_19</code> cargada obtenga los datos para el siguiente reporte:</p>
+<ul>
+<li>Nombre de variables que contiene</li>
+<li>Numero de filas y columnas</li>
+<li>Cree un objeto usando las funciones expuestas, y que contenga el numero total de casos</li>
+<li>Que tipo de variable es SEMANA y EDAD</li>
+<li>Que tipo de variable es FEC_NOT</li>
+<li>Imprime en consola del caso 50 al 100 según el orden como esta en el data frame</li>
+<li>Crea un nuevo data frame y asignalo a un nuevo objeto (nombralo como quieras) que solo contenga la variables EDAD, SEMANA, SEXO.</li>
+<li>Cuales valores únicos tiene SEMANA, SEXO, Municipio de ocurrencia</li>
+<li>Cree un objeto que contenga: Cuantos municipios únicos han notificado</li>
+<li>Cuantos de cada tipo de ajuste hay. Cree un objeto con cada total de casos por tipo de ajuste.</li>
+<li>Con código, cuente cuantos casos son de mujeres y cuantos de hombre, y guarde cada uno como un objeto.</li>
+<li>copie el siguiente codigo en un script y completelo con su codigo de acuerdo a lo pedido previamente (en los espacio <code># aca su codigo</code>, no quite ninguna coma):</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"Se reportaron para esta semana un total de"</span>, <span class="fu">nrow</span>(d), <span class="st">"casos"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">"en"</span>, <span class="co"># aca su codigo , </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">"municipios, segun la distribucion por sexo"</span>, <span class="st">" "</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># aca su codigo , "mujeres y ", # aca su codigo, "hombres")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>

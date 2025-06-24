@@ -486,23 +486,53 @@
     ]
   },
   {
-    "objectID": "Script2.html#actividad",
-    "href": "Script2.html#actividad",
-    "title": "Script en R",
-    "section": "Actividad",
-    "text": "Actividad\nCrear su primer archivo Script que contenga las primera lineas de codigo de este curso.\n\nCrea el archivo Script, nombralo como desees y guardalo en la carpeta que denominaste en tu proyecto como codigo.\nCréarlo con los siguientes comentarios:\n\n\n# Curso R en Epidemiologia de Campo\n# Nombre:\n# Fecha:",
+    "objectID": "importando7.html#actividad-1",
+    "href": "importando7.html#actividad-1",
+    "title": "Importación de datos a R",
+    "section": "Actividad 1",
+    "text": "Actividad 1\n\nYa tienes instalado el paquete rio !, ahora actívalo para iniciar la importación de datos.\nDescarga los siguientes archivos y depositalos en la carpeta datos_brutos del proyecto en el que estamos trabajando.\n\n\n\n\n\n\n\n🧾 Datos\n\n\n\n👉 Descargar dengue15_19.xlsx\n👉 Descargar dengue20_23.csv\n👉 Descargar malaria_conteos.rds\n\n\n\nImporta a R los tres archivos descargados.\nCrea un nuevo proyecto para el trabajo final de este curso, acorde a lo visto en estos 2 días, deposita allí las bases de datos necesarias, revisa que tenga la estructura mínima para que R las importe de manera correcta e importalas a R.",
     "crumbs": [
-      "Script"
+      "Importación de datos a R"
     ]
   },
   {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "License",
-    "section": "",
-    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License.",
+    "objectID": "importando7.html#actividad-2",
+    "href": "importando7.html#actividad-2",
+    "title": "Importación de datos a R",
+    "section": "Actividad 2",
+    "text": "Actividad 2\nDe la base de datos de dengue15_19 cargada obtenga los datos para el siguiente reporte:\n\nNombre de variables que contiene\nNumero de filas y columnas\nCree un objeto usando las funciones expuestas, y que contenga el numero total de casos\nQue tipo de variable es SEMANA y EDAD\nQue tipo de variable es FEC_NOT\nImprime en consola del caso 50 al 100 según el orden como esta en el data frame\nCrea un nuevo data frame y asignalo a un nuevo objeto (nombralo como quieras) que solo contenga la variables EDAD, SEMANA, SEXO.\nCuales valores únicos tiene SEMANA, SEXO, Municipio de ocurrencia\nCree un objeto que contenga: Cuantos municipios únicos han notificado\nCuantos de cada tipo de ajuste hay. Cree un objeto con cada total de casos por tipo de ajuste.\nCon código, cuente cuantos casos son de mujeres y cuantos de hombre, y guarde cada uno como un objeto.\ncopie el siguiente codigo en un script y completelo con su codigo de acuerdo a lo pedido previamente (en los espacio # aca su codigo, no quite ninguna coma):\n\n\npaste(\"Se reportaron para esta semana un total de\", nrow(d), \"casos\", \n\"en\", # aca su codigo , \n\"municipios, segun la distribucion por sexo\", \" \",\n# aca su codigo , \"mujeres y \", # aca su codigo, \"hombres\")",
     "crumbs": [
-      "License"
+      "Importación de datos a R"
+    ]
+  },
+  {
+    "objectID": "proyectosR1.html#actividad",
+    "href": "proyectosR1.html#actividad",
+    "title": "Proyectos en R",
+    "section": "Actividad",
+    "text": "Actividad\n\nCrear un proyecto en R en su computador local para usarlos durante todo este curso\nCrear al interior de este proyecto los siguientes carpetas:\n\n\nCodigo\ndatos_brutos\ndatos_limpios\ngraficos\nreportes\n\n\nCrea otro proyecto, para tu trabajo final de este curso, con las carpetas que creas debe iniciar dicho trabajo final",
+    "crumbs": [
+      "Proyectos en R"
+    ]
+  },
+  {
+    "objectID": "librerias4.html#actividad",
+    "href": "librerias4.html#actividad",
+    "title": "Librerias en R",
+    "section": "Actividad",
+    "text": "Actividad\n\nvisita la siguiente web de la libreria rio, e identifica en su documentacion para que es util. Documentación rio.\nvisita la siguiente web de la libreria pacman, e identifica en su documentacion para que es util. Documentación pacman.\ninstale las siguientes librerias en su R software, algunos de ellos seran usados en las proximas clases. (recuerda que debes usar la función install.packages()):\n\n\nrio\npacman",
+    "crumbs": [
+      "Librerias"
+    ]
+  },
+  {
+    "objectID": "Funciones3.html#actividad",
+    "href": "Funciones3.html#actividad",
+    "title": "Funciones",
+    "section": "Actividad",
+    "text": "Actividad\nExploremos en R las siguientes funciones de R base:\ndate()\nseq()\nrep()\nsum()",
+    "crumbs": [
+      "Funciones"
     ]
   },
   {
@@ -546,43 +576,23 @@
     ]
   },
   {
-    "objectID": "Funciones3.html#actividad",
-    "href": "Funciones3.html#actividad",
-    "title": "Funciones",
-    "section": "Actividad",
-    "text": "Actividad\nExploremos en R las siguientes funciones de R base:\ndate()\nseq()\nrep()\nsum()",
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License.",
     "crumbs": [
-      "Funciones"
+      "License"
     ]
   },
   {
-    "objectID": "importando7.html#actividad",
-    "href": "importando7.html#actividad",
-    "title": "Importación de datos a R",
+    "objectID": "Script2.html#actividad",
+    "href": "Script2.html#actividad",
+    "title": "Script en R",
     "section": "Actividad",
-    "text": "Actividad\n\nYa tienes instalado el paquete rio !, ahora actívalo para iniciar la importación de datos.\nDescarga los siguientes archivos y depositalos en la carpeta datos_brutos del proyecto en el que estamos trabajando.\n\n\n\n\n\n\n\n🧾 Datos\n\n\n\n👉 Descargar dengue15_19.xlsx\n👉 Descargar dengue20_23.csv\n👉 Descargar malaria_conteos.rds\n\n\n\nImporta a R los tres archivos descargados.\nCrea un nuevo proyecto para el trabajo final de este curso, acorde a lo visto en estos 2 días, deposita allí las bases de datos necesarias, revisa que tenga la estructura mínima para que R las importe de manera correcta e importalas a R.",
+    "text": "Actividad\nCrear su primer archivo Script que contenga las primera lineas de codigo de este curso.\n\nCrea el archivo Script, nombralo como desees y guardalo en la carpeta que denominaste en tu proyecto como codigo.\nCréarlo con los siguientes comentarios:\n\n\n# Curso R en Epidemiologia de Campo\n# Nombre:\n# Fecha:",
     "crumbs": [
-      "Importación de datos a R"
-    ]
-  },
-  {
-    "objectID": "librerias4.html#actividad",
-    "href": "librerias4.html#actividad",
-    "title": "Librerias en R",
-    "section": "Actividad",
-    "text": "Actividad\n\nvisita la siguiente web de la libreria rio, e identifica en su documentacion para que es util. Documentación rio.\nvisita la siguiente web de la libreria pacman, e identifica en su documentacion para que es util. Documentación pacman.\ninstale las siguientes librerias en su R software, algunos de ellos seran usados en las proximas clases. (recuerda que debes usar la función install.packages()):\n\n\nrio\npacman",
-    "crumbs": [
-      "Librerias"
-    ]
-  },
-  {
-    "objectID": "proyectosR1.html#actividad",
-    "href": "proyectosR1.html#actividad",
-    "title": "Proyectos en R",
-    "section": "Actividad",
-    "text": "Actividad\n\nCrear un proyecto en R en su computador local para usarlos durante todo este curso\nCrear al interior de este proyecto los siguientes carpetas:\n\n\nCodigo\ndatos_brutos\ndatos_limpios\ngraficos\nreportes\n\n\nCrea otro proyecto, para tu trabajo final de este curso, con las carpetas que creas debe iniciar dicho trabajo final",
-    "crumbs": [
-      "Proyectos en R"
+      "Script"
     ]
   },
   {
