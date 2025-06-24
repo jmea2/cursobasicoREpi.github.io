@@ -1,6 +1,4 @@
-# Clinical Reporting with {gtsummary}
-
-### Curso R para Epidemiologos de Campo
+# Curso R para Epidemiologos de Campo
 
 Por Jorge Mario Estrada alvarez
 
