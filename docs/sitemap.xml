@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jmea2.github.io/slides/index.html</loc>
+    <loc>https://jmea2.github.io/q-and-a.html</loc>
     <lastmod>2023-02-08T16:03:19.000Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/exercises/solutions.html</loc>
-    <lastmod>2025-05-20T22:40:39.235Z</lastmod>
+    <loc>https://jmea2.github.io/slides/index.html</loc>
+    <lastmod>2025-06-25T17:34:48.202Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/operadores5.html</loc>
-    <lastmod>2025-06-22T19:57:32.776Z</lastmod>
+    <loc>https://jmea2.github.io/slides/if_else.html</loc>
+    <lastmod>2025-06-25T17:35:43.084Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jmea2.github.io/material.html</loc>
+    <lastmod>2025-05-21T01:09:33.995Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/importando7.html</loc>
     <lastmod>2025-06-24T22:37:50.076Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jmea2.github.io/Motivacion.html</loc>
+    <lastmod>2025-06-26T01:15:34.269Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/proyectosR1.html</loc>
@@ -25,31 +33,43 @@
     <lastmod>2025-06-22T20:15:46.097Z</lastmod>
   </url>
   <url>
+    <loc>https://jmea2.github.io/index.html</loc>
+    <lastmod>2025-06-25T17:29:59.734Z</lastmod>
+  </url>
+  <url>
     <loc>https://jmea2.github.io/Funciones3.html</loc>
     <lastmod>2025-06-22T20:01:20.159Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/index.html</loc>
-    <lastmod>2025-06-19T17:54:32.869Z</lastmod>
+    <loc>https://jmea2.github.io/iniciando_tidy8.html</loc>
+    <lastmod>2025-06-25T02:13:10.203Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/license.html</loc>
     <lastmod>2023-02-08T16:03:19.000Z</lastmod>
   </url>
   <url>
+    <loc>https://jmea2.github.io/tablas_agrup9.html</loc>
+    <lastmod>2025-06-25T16:19:49.301Z</lastmod>
+  </url>
+  <url>
     <loc>https://jmea2.github.io/Script2.html</loc>
     <lastmod>2025-06-22T19:12:50.452Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/material.html</loc>
-    <lastmod>2025-05-21T01:09:33.995Z</lastmod>
+    <loc>https://jmea2.github.io/manejo_datos10.html</loc>
+    <lastmod>2025-06-25T16:41:44.669Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jmea2.github.io/operadores5.html</loc>
+    <lastmod>2025-06-22T19:57:32.776Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/estructuras6.html</loc>
     <lastmod>2025-06-22T23:07:08.516Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/q-and-a.html</loc>
-    <lastmod>2023-02-08T16:03:19.000Z</lastmod>
+    <loc>https://jmea2.github.io/exercises/solutions.html</loc>
+    <lastmod>2025-05-20T22:40:39.235Z</lastmod>
   </url>
 </urlset>
