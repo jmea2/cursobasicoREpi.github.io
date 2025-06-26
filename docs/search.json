@@ -146,6 +146,46 @@
     ]
   },
   {
+    "objectID": "Motivacion.html#sofware-libre-desde-lo-basico-a-avanzados-metodos-epidemiologicos",
+    "href": "Motivacion.html#sofware-libre-desde-lo-basico-a-avanzados-metodos-epidemiologicos",
+    "title": "Del Brote a la Base de Datos: Lo que R puede hacer por un Epidemiólogo de Campo",
+    "section": "Sofware Libre desde lo basico a avanzados metodos epidemiologicos",
+    "text": "Sofware Libre desde lo basico a avanzados metodos epidemiologicos\n\n\n\n\n\n\n\n\n\nR consortium Epidemics\n\n\n\n\n\n\n\nEpiverse",
+    "crumbs": [
+      "Motivación"
+    ]
+  },
+  {
+    "objectID": "Motivacion.html#aspectos-academicos-y-pedagogicos-del-curso",
+    "href": "Motivacion.html#aspectos-academicos-y-pedagogicos-del-curso",
+    "title": "Del Brote a la Base de Datos: Lo que R puede hacer por un Epidemiólogo de Campo",
+    "section": "Aspectos academicos y pedagogicos del Curso",
+    "text": "Aspectos academicos y pedagogicos del Curso\n\nAl ser un lenguaje de programación la construcción de codigo requiere de atención 100%.\nDurante algunos dias tendremos apoyo de instructores asistentes que apoyaran ante dificultades (paciencia el que requiera apoyo).\nCada presentacion tendra un ejemplo de codificación en vivo no intenten hacerlo al tiempo, (primero observe, comprenda la logica del codigo, luego ejecute por si solo).",
+    "crumbs": [
+      "Motivación"
+    ]
+  },
+  {
+    "objectID": "Motivacion.html#aspectos-academicos-y-pedagogicos-del-curso-1",
+    "href": "Motivacion.html#aspectos-academicos-y-pedagogicos-del-curso-1",
+    "title": "Del Brote a la Base de Datos: Lo que R puede hacer por un Epidemiólogo de Campo",
+    "section": "Aspectos academicos y pedagogicos del Curso",
+    "text": "Aspectos academicos y pedagogicos del Curso\n\nTodo el curso esta anclado a la siguiente pagina web https://jmea2.github.io/cursobasicoREpi.github.io/.\nCada tema tiene una actividad para realizar de manera independiente\nDurante momentos de la clase habran quiz interactivos y anonimos. Para acceder a ellos debe ingresar al siguiente enlace: https://www.menti.com/, ingrese el codigo entregado por el docente cuando se le indique.",
+    "crumbs": [
+      "Motivación"
+    ]
+  },
+  {
+    "objectID": "Motivacion.html#trabajo-final-para-certificación",
+    "href": "Motivacion.html#trabajo-final-para-certificación",
+    "title": "Del Brote a la Base de Datos: Lo que R puede hacer por un Epidemiólogo de Campo",
+    "section": "Trabajo final para certificación",
+    "text": "Trabajo final para certificación\nCada estudiante desde los datos que maneja rutinariamente debera montar un codigo basico que le permita obtener un resultado sencillo pero requerido repetitivamente, puede ser una tabla o un grafico.\nCriterios\n\nUsar todo el flujo de trabajo desde creación proyecto, importacion de datos, organización del mismo (limpieza o depuracion basica), produccion de resultado final, exportación a algun formato fuera de R.",
+    "crumbs": [
+      "Motivación"
+    ]
+  },
+  {
     "objectID": "proyectosR1.html#actividad",
     "href": "proyectosR1.html#actividad",
     "title": "Proyectos en R",
