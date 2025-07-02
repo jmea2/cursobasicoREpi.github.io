@@ -234,9 +234,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#creando-categorías-if_else" id="toc-creando-categorías-if_else" class="nav-link active" data-scroll-target="#creando-categorías-if_else">Creando categorías: <code>if_else()</code></a>
+  <li><a href="#funciones-ayuda-para-data-frame" id="toc-funciones-ayuda-para-data-frame" class="nav-link active" data-scroll-target="#funciones-ayuda-para-data-frame">Funciones ayuda para data frame</a>
+  <ul class="collapse">
+  <li><a href="#glimpse" id="toc-glimpse" class="nav-link" data-scroll-target="#glimpse"><code>glimpse</code></a></li>
+  <li><a href="#relocate" id="toc-relocate" class="nav-link" data-scroll-target="#relocate"><code>relocate</code></a></li>
+  <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename"><code>rename</code></a></li>
+  </ul></li>
+  <li><a href="#creando-categorías-if_else" id="toc-creando-categorías-if_else" class="nav-link" data-scroll-target="#creando-categorías-if_else">Creando categorías: <code>if_else()</code></a>
   <ul class="collapse">
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  </ul></li>
+  <li><a href="#manejo-de-fechas-con-lubridate" id="toc-manejo-de-fechas-con-lubridate" class="nav-link" data-scroll-target="#manejo-de-fechas-con-lubridate">Manejo de fechas con <code>lubridate</code></a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  </ul></li>
+  <li><a href="#factores-con-forcats" id="toc-factores-con-forcats" class="nav-link" data-scroll-target="#factores-con-forcats">Factores con <code>forcats</code></a>
+  <ul class="collapse">
+  <li><a href="#qué-son-factores-en-r" id="toc-qué-son-factores-en-r" class="nav-link" data-scroll-target="#qué-son-factores-en-r">Qué son factores en <strong>R</strong></a></li>
+  <li><a href="#creando-factores-desde-vectores-caracter" id="toc-creando-factores-desde-vectores-caracter" class="nav-link" data-scroll-target="#creando-factores-desde-vectores-caracter">Creando factores desde vectores caracter</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -247,26 +262,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<section id="funciones-ayuda-para-data-frame" class="level1">
+<h1>Funciones ayuda para data frame</h1>
+<section id="glimpse" class="level2">
+<h2 class="anchored" data-anchor-id="glimpse"><code>glimpse</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(<span class="at">x =</span> data_frame)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="relocate" class="level2">
+<h2 class="anchored" data-anchor-id="relocate"><code>relocate</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">relocate</span>(<span class="at">.data =</span> data_frame,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">.before =</span> ,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">.after =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="rename" class="level2">
+<h2 class="anchored" data-anchor-id="rename"><code>rename</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rename</span>(<span class="at">.data =</span> ,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       new_name ,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>       old_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
 <section id="creando-categorías-if_else" class="level1">
 <h1>Creando categorías: <code>if_else()</code></h1>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section"></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(<span class="at">condition =</span> ,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">true =</span> ,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">false =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">if_else</span>(<span class="at">condition =</span> ,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">true =</span> ,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">false =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En el argumento <code>condition =</code> pueden utilizarse operadores matemáticos lógicos y booleanos.</p>
 <p>Ejemplo de uso: Siempre se debe usar con la función <code>mutate()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dengue <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gr_edad =</span> <span class="fu">if_else</span>(EDAD <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">"0-4"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">14</span>,<span class="st">"5-14"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">39</span>,<span class="st">"15-39"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">40</span>,<span class="st">"40+"</span>,<span class="cn">NA</span>)))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dengue <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gr_edad =</span> <span class="fu">if_else</span>(EDAD <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">"0-4"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">14</span>,<span class="st">"5-14"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">39</span>,<span class="st">"15-39"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">40</span>,<span class="st">"40+"</span>,<span class="cn">NA</span>)))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+</section>
+<section id="manejo-de-fechas-con-lubridate" class="level1">
+<h1>Manejo de fechas con <code>lubridate</code></h1>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"lubridate"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><a href="https://lubridate.tidyverse.org/index.html">Lubridate</a></p>
+<p><code>ymd() ydm() mdy() myd() dmy() dym() yq() ym() my()</code></p>
+</section>
+</section>
+<section id="factores-con-forcats" class="level1">
+<h1>Factores con <code>forcats</code></h1>
+<section id="qué-son-factores-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="qué-son-factores-en-r">Qué son factores en <strong>R</strong></h2>
+<ul>
+<li>Representan datos categóricos.</li>
+<li>Son vectores de enteros con niveles asociados.</li>
+<li>Los niveles vinculan números con etiquetas de categorías.</li>
+<li>Al verlos, se muestran las etiquetas, no los enteros.</li>
+</ul>
+</section>
+<section id="creando-factores-desde-vectores-caracter" class="level2">
+<h2 class="anchored" data-anchor-id="creando-factores-desde-vectores-caracter">Creando factores desde vectores caracter</h2>
+<p>Siempre se usa al interior de <code>mutate()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factor</span>(vector, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">levels =</span> vector_con niveles,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">labels =</span> vector_etiquetas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Reorganizar los niveles del factor:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_relevel</span>(vector_columna, <span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Revisa: <code>levels()</code> y <code>unclass()</code></li>
+</ul>
 
 
 </section>

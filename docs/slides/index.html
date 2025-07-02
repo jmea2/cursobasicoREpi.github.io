@@ -414,24 +414,85 @@ Jorge Mario Estrada Alvarez MSc. PhD.
 
 </section>
 <section>
+<section id="funciones-ayuda-para-data-frame" class="title-slide slide level1 center">
+<h1>Funciones ayuda para data frame</h1>
+
+</section>
+<section id="glimpse" class="slide level2">
+<h2><code>glimpse</code></h2>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">glimpse</span>(<span class="at">x =</span> data_frame)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="relocate" class="slide level2">
+<h2><code>relocate</code></h2>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">relocate</span>(<span class="at">.data =</span> data_frame,</span>
+<span id="cb2-2"><a></a>         <span class="at">.before =</span> ,</span>
+<span id="cb2-3"><a></a>         <span class="at">.after =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="rename" class="slide level2">
+<h2><code>rename</code></h2>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">rename</span>(<span class="at">.data =</span> ,</span>
+<span id="cb3-2"><a></a>       new_name ,</span>
+<span id="cb3-3"><a></a>       old_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
 <section id="creando-categorías-if_else" class="title-slide slide level1 center">
 <h1>Creando categorías: <code>if_else()</code></h1>
 
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">if_else</span>(<span class="at">condition =</span> ,</span>
-<span id="cb1-2"><a></a>        </span>
-<span id="cb1-3"><a></a>        <span class="at">true =</span> ,</span>
-<span id="cb1-4"><a></a>        </span>
-<span id="cb1-5"><a></a>        <span class="at">false =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">if_else</span>(<span class="at">condition =</span> ,</span>
+<span id="cb4-2"><a></a>        </span>
+<span id="cb4-3"><a></a>        <span class="at">true =</span> ,</span>
+<span id="cb4-4"><a></a>        </span>
+<span id="cb4-5"><a></a>        <span class="at">false =</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>En el argumento <code>condition =</code> pueden utilizarse operadores matemáticos lógicos y booleanos.</p>
 <p>Ejemplo de uso: Siempre se debe usar con la función <code>mutate()</code>:</p>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>dengue <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a></a>  <span class="fu">mutate</span>(<span class="at">gr_edad =</span> <span class="fu">if_else</span>(EDAD <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">"0-4"</span>,</span>
-<span id="cb2-3"><a></a>                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">14</span>,<span class="st">"5-14"</span>,</span>
-<span id="cb2-4"><a></a>                                   <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">39</span>,<span class="st">"15-39"</span>,</span>
-<span id="cb2-5"><a></a>                                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">40</span>,<span class="st">"40+"</span>,<span class="cn">NA</span>)))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>dengue <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a></a>  <span class="fu">mutate</span>(<span class="at">gr_edad =</span> <span class="fu">if_else</span>(EDAD <span class="sc">&lt;</span> <span class="dv">5</span>, <span class="st">"0-4"</span>,</span>
+<span id="cb5-3"><a></a>                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">5</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">14</span>,<span class="st">"5-14"</span>,</span>
+<span id="cb5-4"><a></a>                                   <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> EDAD <span class="sc">&lt;</span> <span class="dv">39</span>,<span class="st">"15-39"</span>,</span>
+<span id="cb5-5"><a></a>                                           <span class="fu">if_else</span>(EDAD <span class="sc">&gt;=</span> <span class="dv">40</span>,<span class="st">"40+"</span>,<span class="cn">NA</span>)))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="manejo-de-fechas-con-lubridate" class="title-slide slide level1 center">
+<h1>Manejo de fechas con <code>lubridate</code></h1>
+
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">install.packages</span>(<span class="st">"lubridate"</span>)</span>
+<span id="cb6-2"><a></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="https://lubridate.tidyverse.org/index.html">Lubridate</a></p>
+<p><code>ymd() ydm() mdy() myd() dmy() dym() yq() ym() my()</code></p>
+</section></section>
+<section>
+<section id="factores-con-forcats" class="title-slide slide level1 center">
+<h1>Factores con <code>forcats</code></h1>
+
+</section>
+<section id="qué-son-factores-en-r" class="slide level2">
+<h2>Qué son factores en <strong>R</strong></h2>
+<ul>
+<li>Representan datos categóricos.</li>
+<li>Son vectores de enteros con niveles asociados.</li>
+<li>Los niveles vinculan números con etiquetas de categorías.</li>
+<li>Al verlos, se muestran las etiquetas, no los enteros.</li>
+</ul>
+</section>
+<section id="creando-factores-desde-vectores-caracter" class="slide level2">
+<h2>Creando factores desde vectores caracter</h2>
+<p>Siempre se usa al interior de <code>mutate()</code>:</p>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">factor</span>(vector, </span>
+<span id="cb7-2"><a></a>       <span class="at">levels =</span> vector_con niveles,</span>
+<span id="cb7-3"><a></a>       <span class="at">labels =</span> vector_etiquetas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Reorganizar los niveles del factor:</li>
+</ul>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">fct_relevel</span>(vector_columna, <span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Revisa: <code>levels()</code> y <code>unclass()</code></li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/imagen-cursoR.png" class="slide-logo"></p>
