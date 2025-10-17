@@ -29,9 +29,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tablas_agrup9.html" rel="next">
+<link href="./tidy_plus8.html" rel="next">
 <link href="./importando7.html" rel="prev">
-<link href="./images/imagen-cursoR.png" rel="icon" type="image/png">
+<link href="./images/jornadas_bogota.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -71,14 +71,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Tidyverse: Seleccionar, Filtrar, Organizar – Iniciando R en la Epidemiología de Campo">
-<meta property="og:description" content="Pagina del Curso de R para epidemiologos de Campo">
+<meta property="og:description" content="Pagina del Taller: De Excel a R">
 <meta property="og:site_name" content="Iniciando R en la Epidemiología de Campo">
 <meta name="twitter:title" content="Tidyverse: Seleccionar, Filtrar, Organizar – Iniciando R en la Epidemiología de Campo">
-<meta name="twitter:description" content="Pagina del Curso de R para epidemiologos de Campo">
-<meta name="twitter:image" content="https://jmea2.github.io/images/imagen-cursoR.png">
+<meta name="twitter:description" content="Pagina del Taller: De Excel a R">
+<meta name="twitter:image" content="https://jmea2.github.io/images/jornadas_bogota.png">
 <meta name="twitter:creator" content="@bioestadisticaRda">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1536">
+<meta name="twitter:image-height" content="286">
+<meta name="twitter:image-width" content="734">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iniciando_tidy8.html">Tidyverse en Epi</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./iniciando_tidy8.html">Tidyverse</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -106,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/imagen-cursoR.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/jornadas_bogota.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -173,7 +173,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iniciando_tidy8.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Tidyverse en Epi</span></a>
+ <span class="menu-text">Tidyverse</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidy_plus8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mas de Tidyverse</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#diapositivas" id="toc-diapositivas" class="nav-link active" data-scroll-target="#diapositivas">Diapositivas</a></li>
   <li><a href="#actividad" id="toc-actividad" class="nav-link" data-scroll-target="#actividad">Actividad</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="iniciando_tidy8.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -233,19 +239,16 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="diapositivas" class="level2">
 <h2 class="anchored" data-anchor-id="diapositivas">Diapositivas</h2>
-<div class="embed">
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTYBpaPyWgVzyeZFB_xwKkeS_gY7h-B5FqR_gVFKlGYDwkfWB-CrS1N0Gv9CuiMIw/pubembed?start=true&amp;loop=true&amp;delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-</iframe>
-</div>
+<iframe class="slide-deck" src="./diapositivas/tidydata_r.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 </section>
 <section id="actividad" class="level2">
 <h2 class="anchored" data-anchor-id="actividad">Actividad</h2>
-<p>Con uso de la base de datos <code>dengue15_19</code> realiza las siguientes:</p>
+<p>Con uso de la base de datos <code>dengue</code> realiza las siguientes:</p>
 <ol type="1">
 <li><p>Crea un nuevo data frame donde solo esten las siguientes columnas: <code>FEC_NOT, SEMANA, EDAD, UNI_MED, SEXO, AREA, TIP_SS, PER_ETN, FEC_CON, INI_SIN, PAC_HOS, COD_DPTO_O, COD_MUN_O, Departamento_ocurrencia, Municipio_ocurrencia.</code></p></li>
-<li><p>De la anterior base con seleccion de variables, realice un filtro donde solo quede el departamento de Valle del Cauca y asignala a un nuevo objeto.</p></li>
+<li><p>De la anterior base con selección de variables, realice un filtro donde se eliminen registros sin datos en la variable barrio y asignala a un nuevo objeto.</p></li>
 <li><p>Organiza la base del punto <strong>1</strong> por semana epidemiologica de menor a mayor.</p></li>
-<li><p>Tome de su proyecto, cargue la base de trabajo y seleccione las variable y filtros necesarios para una analisis rutinario que realice (construir una tabla o un grafico)</p></li>
+<li><p>Reordene la variable <code>FEC_NOT</code> que quede de primera en la base.</p></li>
 </ol>
 
 
@@ -679,8 +682,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tablas_agrup9.html" class="pagination-link" aria-label="Tablas agrupadas">
-        <span class="nav-page-text">Tablas agrupadas</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tidy_plus8.html" class="pagination-link" aria-label="Mas de Tidyverse">
+        <span class="nav-page-text">Mas de Tidyverse</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

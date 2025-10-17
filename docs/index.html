@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Iniciando R en la Epidemiología de Campo</title>
+<title>XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal – Iniciando R en la Epidemiología de Campo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Motivacion.html" rel="next">
-<link href="./images/imagen-cursoR.png" rel="icon" type="image/png">
+<link href="./images/jornadas_bogota.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,15 +69,15 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Iniciando R en la Epidemiología de Campo">
-<meta property="og:description" content="Instituto Nacional de Salud - FETP">
+<meta property="og:title" content="XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal – Iniciando R en la Epidemiología de Campo">
+<meta property="og:description" content="Taller: De Excel a R">
 <meta property="og:site_name" content="Iniciando R en la Epidemiología de Campo">
-<meta name="twitter:title" content="Iniciando R en la Epidemiología de Campo">
-<meta name="twitter:description" content="Instituto Nacional de Salud - FETP">
-<meta name="twitter:image" content="https://jmea2.github.io/images/imagen-cursoR.png">
+<meta name="twitter:title" content="XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal – Iniciando R en la Epidemiología de Campo">
+<meta name="twitter:description" content="Taller: De Excel a R">
+<meta name="twitter:image" content="https://jmea2.github.io/images/jornadas_bogota.png">
 <meta name="twitter:creator" content="@bioestadisticaRda">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1536">
+<meta name="twitter:image-height" content="286">
+<meta name="twitter:image-width" content="734">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/imagen-cursoR.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/jornadas_bogota.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -172,19 +172,25 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iniciando_tidy8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tidyverse en Epi</span></a>
+ <span class="menu-text">Tidyverse</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidy_plus8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mas de Tidyverse</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./tablas_agrup9.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tablas agrupadas</span></a>
+ <span class="menu-text">Tablas dinamicas con R</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./manejo_datos10.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Manejo de datos</span></a>
+ <span class="menu-text">Uniones de datos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,23 +209,34 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#agenda-del-taller" id="toc-agenda-del-taller" class="nav-link" data-scroll-target="#agenda-del-taller">Agenda del taller</a>
   <ul class="collapse">
-  <li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link" data-scroll-target="#objetivos-de-aprendizaje">Objetivos de Aprendizaje</a></li>
+  <li><a href="#día-1-fundamentos-y-primeras-transformaciones" id="toc-día-1-fundamentos-y-primeras-transformaciones" class="nav-link" data-scroll-target="#día-1-fundamentos-y-primeras-transformaciones">Día 1 — Fundamentos y primeras transformaciones</a>
+  <ul class="collapse">
+  <li><a href="#cronograma" id="toc-cronograma" class="nav-link" data-scroll-target="#cronograma">Cronograma</a></li>
+  <li><a href="#resultados-de-aprendizaje-del-día-1" id="toc-resultados-de-aprendizaje-del-día-1" class="nav-link" data-scroll-target="#resultados-de-aprendizaje-del-día-1">Resultados de aprendizaje del Día 1</a></li>
+  </ul></li>
+  <li><a href="#día-2-transformación-limpieza-y-análisis-práctico" id="toc-día-2-transformación-limpieza-y-análisis-práctico" class="nav-link" data-scroll-target="#día-2-transformación-limpieza-y-análisis-práctico">Día 2 — Transformación, limpieza y análisis práctico</a>
+  <ul class="collapse">
+  <li><a href="#cronograma-1" id="toc-cronograma-1" class="nav-link" data-scroll-target="#cronograma-1">Cronograma</a></li>
+  <li><a href="#resultados-de-aprendizaje-del-día-2" id="toc-resultados-de-aprendizaje-del-día-2" class="nav-link" data-scroll-target="#resultados-de-aprendizaje-del-día-2">Resultados de aprendizaje del Día 2</a></li>
+  </ul></li>
+  <li><a href="#evaluaciones-y-dinámica" id="toc-evaluaciones-y-dinámica" class="nav-link" data-scroll-target="#evaluaciones-y-dinámica">Evaluaciones y dinámica</a></li>
   <li><a href="#es-este-curso-para-mi" id="toc-es-este-curso-para-mi" class="nav-link" data-scroll-target="#es-este-curso-para-mi">Es este curso para mi?</a></li>
   <li><a href="#previo" id="toc-previo" class="nav-link" data-scroll-target="#previo">Previo</a></li>
   </ul></li>
   <li><a href="#instructor-principal" id="toc-instructor-principal" class="nav-link" data-scroll-target="#instructor-principal">Instructor principal</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Iniciando R en la Epidemiología de Campo</h1>
-<p class="subtitle lead">Instituto Nacional de Salud - FETP</p>
+<h1 class="title">XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal</h1>
+<p class="subtitle lead">Taller: De Excel a R</p>
 </div>
 
 
@@ -237,31 +254,204 @@ ul.task-list li input[type="checkbox"] {
 
 
 <hr>
-<p>🗓 Virtual Junio 26, 27 2025 | 4:00pm - 7:00pm</p>
-<p>🏨 Presencial Julio 2, 3, 4 2025 | 8:00am - 5:00pm</p>
-<p>💥 <strong>Por inscripción previa Oficina de FETP</strong></p>
+<p>🏨 Presencial Octubre 20 y 21 2025 | 8:00am - 5:00pm</p>
+<p>💥 <strong>Por inscripción previa</strong></p>
 <hr>
 <section id="overview" class="level1">
 <h1>Overview</h1>
 <p>La formación especializada en el lenguaje de programación R aporta habilidades para iniciar en la denominada ciencia de datos con aplicación directa a la práctica profesional. Además es una herramienta gratuita de código abierto en continua innovación/actualización por parte de la comunidad científica. La versatilidad de R para procesar datos y obtener resultados en diversas campos del análisis de datos lo hace un software de elección en diversas áreas de conocimiento como medicina y ciencias de la salud, financiera, investigación científica, epidemiología, ciencias sociales, economía entre muchas otras, en las que es necesario la implementación de potentes analíticas como modelamiento matemático y estadístico, análisis geoespaciales, machine learning, inteligencia artificial y visualización de datos, con la gran ventaja de nunca perder la transparencia y reproducibilidad del resultado.</p>
-<p>En la actividades dentro de la epidemiología de campo, todo el flujo de trabajo necesario para el análisis de datos debe integrar desde la toma, el procesamiento, la depuración y organización de los datos pasando por la producción de diversos resultados hasta el reporte final, lo que hace necesario tener algunas habilidades que permitan que dicho flujo de trabajo sea optimo y facilite al tiempo el uso de herramientas avanzadas.</p>
-<p>Es claro que la implementación de estos flujos de trabajos en fases analíticas como la descriptiva permite al epidemiólogo trascender luego en analíticas avanzadas, ademas de permitirle el acceso a métodos que contribuyan a enfocar su quehacer en resultados óptimos y con el mayor uso de las analíticas que hoy por hoy permiten una epidemiología con mayor utilidad y practica.</p>
-<p>Dado lo anterior han surgido diversas iniciativas en el mundo que pretenden la implementación de R-Software sea la plataforma sobre la que el epidemiólogo de campo adquiera competencias de manera tal que se eleve la capacidad del mismo desde el nivel básico de su formación que le permita acceder no solo a distintas analíticas sino a establecer un flujo de trabajo necesario dentro de la respuesta a emergencias en salud publica.</p>
-<section id="objetivos-de-aprendizaje" class="level2">
-<h2 class="anchored" data-anchor-id="objetivos-de-aprendizaje">Objetivos de Aprendizaje</h2>
+<p>Cada vez es más evidente la necesidad de que los profesionales adopten lenguajes de programación para sus procesos de análisis de datos, aprovechando las ventajas que ofrecen en términos de reproducibilidad, transparencia y eficiencia. En este contexto, las hojas de cálculo, como las de Microsoft Excel, han ocupado un lugar central por su disponibilidad y facilidad de uso, convirtiéndose en una herramienta clave para el tratamiento de datos entre epidemiólogos, salubristas y otros profesionales dedicados a la vigilancia en salud pública. Este avance ha sido significativo para el manejo de información.</p>
+<p>Sin embargo, el uso de hojas de cálculo comienza a mostrar limitaciones importantes: las tareas repetitivas de depuración y análisis consumen gran cantidad de tiempo, y la falta de integración con nuevas herramientas dificulta la reproducibilidad y sostenibilidad en el tiempo. Ante este panorama, surgen alternativas como R, que ofrece notables ventajas al profesional gracias a su naturaleza de software libre, programable y altamente reproducible. Si bien exige un aprendizaje inicial más riguroso, los beneficios que aporta superan con creces estas barreras.</p>
+<p>Por ello, en distintas partes del mundo han surgido iniciativas para promover a R como la plataforma de referencia, de modo que epidemiólogos y profesionales de la salud puedan integrarlo en sus rutinas de trabajo y avanzar hacia un lenguaje común de análisis en salud pública.</p>
+</section>
+<section id="agenda-del-taller" class="level1">
+<h1>Agenda del taller</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Modalidad</strong>: Taller teórico–práctico<br>
+<strong>Duración</strong>: 2 días (8 h/día)<br>
+<strong>Cupo</strong>: 30 participantes</p>
+</div>
+</div>
+<section id="día-1-fundamentos-y-primeras-transformaciones" class="level2">
+<h2 class="anchored" data-anchor-id="día-1-fundamentos-y-primeras-transformaciones">Día 1 — Fundamentos y primeras transformaciones</h2>
+<p><strong>Objetivo:</strong> Crear confianza en R, comprender la lógica de proyectos, scripts y estructuras de datos, y realizar primeras operaciones comparando con Excel.</p>
+<section id="cronograma" class="level3">
+<h3 class="anchored" data-anchor-id="cronograma">Cronograma</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Hora</th>
+<th style="text-align: left;">Sesión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">08:00 – 08:30</td>
+<td style="text-align: left;"><strong>Apertura</strong>: presentación del curso, objetivos, agenda; expectativas.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">08:30 – 09:30</td>
+<td style="text-align: left;"><strong>Organización de un proyecto en R</strong>: RStudio, carpetas, buenas prácticas. <em>Mini-evaluación</em>: crear proyecto y script.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">09:30 – 11:00</td>
+<td style="text-align: left;"><strong>El script para reproducibilidad</strong>: crear, guardar, comentar, ordenar. <em>Ejercicio</em>: script con apartados básicos.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11:00 – 11:15</td>
+<td style="text-align: left;"><strong>Pausa café</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11:15 – 12:30</td>
+<td style="text-align: left;"><strong>Estructuras básicas</strong>: vectores, data frames, listas; paralelos con Excel. <em>Evaluación</em>: crear vector y data frame “tipo hoja de cálculo”.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12:30 – 13:30</td>
+<td style="text-align: left;"><strong>Almuerzo</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">13:30 – 15:00</td>
+<td style="text-align: left;"><strong>Importar y exportar datos</strong>: Excel/CSV/TXT; <em>práctica</em>: importar varios datasets.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15:00 – 16:30</td>
+<td style="text-align: left;"><strong>Introducción al tidyverse</strong>: filosofía, operador <code>%&gt;%</code>, primeras verbos <code>dplyr</code>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">16:30 – 16:45</td>
+<td style="text-align: left;"><strong>Pausa</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16:45 – 18:00</td>
+<td style="text-align: left;"><strong>Seleccionar, filtrar y ordenar (básico)</strong>: <code>select</code>, <code>filter</code>, <code>arrange</code>; operadores lógicos/booleanos;</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resultados-de-aprendizaje-del-día-1" class="level3">
+<h3 class="anchored" data-anchor-id="resultados-de-aprendizaje-del-día-1">Resultados de aprendizaje del Día 1</h3>
 <ul>
-<li><p>Crear su propio proyecto R que le permita establecer un flujo de trabajo en el análisis de datos.</p></li>
-<li><p>Aplicar diversas herramientas del software R en cada paso del flujo de trabajo de un proyecto con R.</p></li>
+<li>Estructurar un proyecto en RStudio.<br>
+</li>
+<li>Escribir scripts reproducibles y ordenados.<br>
+</li>
+<li>Importar/exportar datos tabulares.<br>
+</li>
+<li>Aplicar verbos básicos de <code>dplyr</code>.</li>
 </ul>
+<hr>
+</section>
+</section>
+<section id="día-2-transformación-limpieza-y-análisis-práctico" class="level2">
+<h2 class="anchored" data-anchor-id="día-2-transformación-limpieza-y-análisis-práctico">Día 2 — Transformación, limpieza y análisis práctico</h2>
+<p><strong>Objetivo:</strong> Aplicar transformaciones intermedias, depurar datos, unir tablas y generar salidas resumidas útiles para vigilancia en salud.<br>
+<strong>Inicio:</strong> <em>Evaluación corta de arranque</em> (abrir R, proyecto y script del día 1).</p>
+<section id="cronograma-1" class="level3">
+<h3 class="anchored" data-anchor-id="cronograma-1">Cronograma</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Hora</th>
+<th style="text-align: left;">Sesión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">08:00 – 09:30</td>
+<td style="text-align: left;"><strong>Crear y transformar (básico–intermedio)</strong>: <code>mutate</code>, <code>case_when</code>; <em>evaluación</em>: variable categórica y conversión texto↔︎numérico.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">09:30 – 10:30</td>
+<td style="text-align: left;"><strong>De-duplicación y texto</strong>: <code>distinct</code>; limpieza con <code>stringr</code> (<code>str_to_lower</code>); depurar nombres de municipios/instituciones.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10:30 – 10:45</td>
+<td style="text-align: left;"><strong>Pausa</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10:45 – 12:15</td>
+<td style="text-align: left;"><strong>Columnas</strong>: <code>separate</code>, <code>unite</code>; <em>evaluación</em>: normalización de variable.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">12:15 – 13:15</td>
+<td style="text-align: left;"><strong>Almuerzo</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">13:15 – 15:45</td>
+<td style="text-align: left;"><strong>Uniones</strong>: <code>bind_rows</code>, <code>bind_cols</code>, <code>left_join</code>, <code>inner_join</code>; <em>evaluación</em>: unir dos tablas y verificar consistencia.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15:45 – 16:00</td>
+<td style="text-align: left;"><strong>Pausa</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">16:00 – 17:15</td>
+<td style="text-align: left;"><strong>Tablas dinamicas con tidy</strong>: <code>group_by</code>, <code>summarise</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">17:15 – 18:00</td>
+<td style="text-align: left;"><strong>Cierre</strong>: retroalimentación grupal.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resultados-de-aprendizaje-del-día-2" class="level3">
+<h3 class="anchored" data-anchor-id="resultados-de-aprendizaje-del-día-2">Resultados de aprendizaje del Día 2</h3>
+<ul>
+<li>Diseñar pipelines de limpieza y transformación.<br>
+</li>
+<li>Unir y reestructurar datasets.<br>
+</li>
+<li>Generar tablas resumen para decisiones rápidas.</li>
+</ul>
+</section>
+</section>
+<section id="evaluaciones-y-dinámica" class="level2">
+<h2 class="anchored" data-anchor-id="evaluaciones-y-dinámica">Evaluaciones y dinámica</h2>
+<ul>
+<li><strong>Prácticas guiadas</strong> con datos tipo vigilancia en salud.<br>
+</li>
+<li><strong>Producto final</strong>: script reproducible con todo el flujo trabajado.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Sugerencia de pre-requisitos</strong><br>
+Instalar R y RStudio, y tener permisos para leer/escribir en la carpeta de trabajo.</p>
+</div>
+</div>
 </section>
 <section id="es-este-curso-para-mi" class="level2">
 <h2 class="anchored" data-anchor-id="es-este-curso-para-mi">Es este curso para mi?</h2>
-<p>Si su respuesta a cualquiera de la siguientes es “Si”, luego este es el lugar correcto para inicial a desarrollar habilidades .</p>
+<p>Si su respuesta a cualquiera de la siguientes es “Si”, luego este es el lugar correcto para iniciar a desarrollar habilidades .</p>
 <ul>
-<li><p>Requiere procesar datos descriptivos en el ambito de la vigilancia en salud pública y epidemiología de campo , que incluyen el procesamiento de datos, tablas resumen, estadisticos resumen, visualización de datos ?</p></li>
+<li><p>Requiere procesar datos descriptivos en el ambito de la vigilancia en salud pública que incluyen tareas de depuracion o pre-procesamiento?</p></li>
 <li><p>Requiere un flujo de trabajo con datos, repetitivo (diario, semanal, mensual)?</p></li>
-<li><p>Esta cansado de solicitar licencias de software estadístico a su institución que permitan potenciar sus análisis de datos epidemiologico?</p></li>
-<li><p>Hasta el momento continua usando hojas de calculo como único medio para el análisis de datos limitando su capacidad de implementar analíticas distintas en su trabajo?</p></li>
+<li><p>Hasta el momento continua usando hojas de calculo como único medio para el procesamiento de datos limitando su capacidad de implementar analíticas distintas en su trabajo?</p></li>
 </ul>
 <p>Este curso esta diseñado para quienes no tienen ninguna experiencia con R-Software y RStudio pero si tienen contacto con datos epidemiologicos y altas necesidades en su implementación dentro su flujo trabajo diario.</p>
 </section>
@@ -272,8 +462,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="instructor-principal" class="level1">
 <h1>Instructor principal</h1>
-<p><img src="images/yo2.jpeg" class="img-fluid" style="float:right;padding: 0 0 0 10px;" alt="Headshot of Daniel D. Sjoberg" width="200"></p>
-<p><a href="https://jmea2.github.io"><strong>Jorge Mario Estrada A.</strong></a> es Lic. Matemáticas y Epidemiologo de Campo, con Maestria en Epidemiología, Maestria en Estadistica Aplicada y con defensa programada (08-Sept-2025) de su tesis doctoral en Estadística Matemática y Aplicada en la Universidad de Granada, España. Sus intereses en investigación incluyen, Implementación de métodos estadísticos para Epidemiología e investigación clinica, Epidemiologia de enfermedades infecciosas, Ciencia de datos aplicada a Salud Pública, Métodos de estimación para prevalencias bajas de enfermedades/infecciones.</p>
+<p><img src="images/yo3.jpeg" class="img-fluid" style="float:right;padding: 0 0 0 10px;" alt="Headshot of Daniel D. Sjoberg" width="200"></p>
+<p><a href="https://jmea2.github.io"><strong>Jorge Mario Estrada A.</strong></a> es Lic. Matemáticas y Epidemiologo de Campo (FETP), PhD. en Estadística Matemática y Aplicada en la Universidad de Granada y Maestrías en Epidemiologia y Estadistica Aplicada. Sus intereses en investigación incluyen, Implementación de métodos estadísticos para Epidemiología e investigación clinica, Epidemiologia de enfermedades infecciosas, Ciencia de datos aplicada a Salud Pública, Métodos de estimación para prevalencias bajas de enfermedades/infecciones.</p>
 <p>Apasionado por el Ciclomontañismo 🚵 (modalidad de Marathon) y tratando de incursionar en el ciclismo Gravel (Bikepacking, Carreras Gravel larga distancia).</p>
 
 

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<link href="./images/jornadas_bogota.png" rel="icon" type="image/png">
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/tabby.min.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../images/jornadas_bogota.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.53">
 
-  <meta name="author" content="Jorge Mario Estrada Alvarez, PhD. Msc.">
-  <title>Iniciando R en la Epidemiología de Campo – Lo que R te aportara</title>
+  <meta name="author" content="Jorge Mario Estrada Alvarez PhD. MSc. FETP">
+  <title>Iniciando R en la Epidemiología de Campo – Tidyverse</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -30,12 +30,79 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
-  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -321,9 +388,9 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Lo que R te aportara – Iniciando R en la Epidemiología de Campo">
+<meta property="og:title" content="Tidyverse – Iniciando R en la Epidemiología de Campo">
 <meta property="og:site_name" content="Iniciando R en la Epidemiología de Campo">
-<meta name="twitter:title" content="Lo que R te aportara – Iniciando R en la Epidemiología de Campo">
+<meta name="twitter:title" content="Tidyverse – Iniciando R en la Epidemiología de Campo">
 <meta name="twitter:image" content="https://jmea2.github.io/images/jornadas_bogota.png">
 <meta name="twitter:creator" content="@bioestadisticaRda">
 <meta name="twitter:image-height" content="286">
@@ -335,186 +402,186 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lo que R te aportara</h1>
+  <h1 class="title">Tidyverse</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Jorge Mario Estrada Alvarez, PhD. Msc. 
+Jorge Mario Estrada Alvarez PhD. MSc. FETP 
 </div>
 </div>
 </div>
 
 </section>
-<section id="objetivo" class="slide level2">
-<h2>🧭 Objetivo</h2>
-<p>Motivar a todos los asistentes a iniciarse en R, mostrando cómo esta herramienta puede transformar su vida, desde la depuración hasta la creación de reportes, mapas graficos de alta calidad, dashboards automatizados.</p>
+<section class="slide level2">
+
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </section>
-<section id="introducción" class="slide level2">
-<h2>Introducción</h2>
+<section id="qué-es-el-tidyverse" class="slide level2">
+<h2>¿Qué es el Tidyverse?</h2>
+<p>El <strong>Tidyverse</strong> es una colección de paquetes en R para:</p>
 <ul>
-<li><p>¿Te ha pasado que tienes datos, pero demoras tanto en la depuración que a la hora del analisis ya no tienes el tiempo?</p></li>
-<li><p>Imagina poder en una sola ejecución ó un solo movimiento de sus dedos, cargar datos, depurar, exportar datos a otros, generar reportes y presentaciones.</p></li>
+<li><strong>Manejo de datos</strong><br>
+</li>
+<li><strong>Transformación</strong><br>
+</li>
+<li><strong>Visualización</strong></li>
+</ul>
+<p>Diseñado para ser:</p>
+<ul>
+<li>Intuitivo<br>
+</li>
+<li>Legible<br>
+</li>
+<li>Coherente</li>
 </ul>
 <blockquote>
-<p><em>“La diferencia entre ver los datos y entenderlos está en cómo los usamos.”</em></p>
+<p>Ideal para el <strong>análisis epidemiológico</strong>, especialmente con grandes volúmenes de datos.</p>
 </blockquote>
 </section>
-<section id="qué-es-r-y-por-qué-usarlo" class="slide level2">
-<h2>¿Qué es R y por qué usarlo?</h2>
+<section id="paquetes-clave-del-tidyverse" class="slide level2">
+<h2>Paquetes clave del Tidyverse</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Paquete</th>
+<th style="text-align: left;">Función principal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>dplyr</strong></td>
+<td style="text-align: left;">Manipulación de datos</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>ggplot2</strong></td>
+<td style="text-align: left;">Visualización con gramática gráfica</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>tidyr</strong></td>
+<td style="text-align: left;">Transformación y formato ordenado</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>readr</strong></td>
+<td style="text-align: left;">Importación rápida de archivos</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>stringr / lubridate</strong></td>
+<td style="text-align: left;">Manejo de texto y fechas</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="por-qué-usar-tidyverse-en-vigilancia" class="slide level2">
+<h2>¿Por qué usar Tidyverse en vigilancia?</h2>
 <ul>
-<li>Lenguaje de programación libre.</li>
-<li>Usado por universidades y gobiernos.</li>
-<li>Permite reproducir, automatizar y mejorar el análisis epidemiológico.</li>
+<li><p>Facilita <strong>automatizar</strong> y <strong>reproducir</strong> procesos.</p></li>
+<li><p>Permite <strong>filtrar</strong> poblaciones específicas (edad, sexo, región).<br>
+</p></li>
+<li><p>Facilita la <strong>creación de indicadores epidemiológicos</strong>: tasas, factores, razones.</p></li>
 </ul>
 </section>
-<section id="capacidades-de-r-en-vigilancia" class="slide level2">
-<h2>Capacidades de R en Vigilancia</h2>
-<h3 id="limpieza-y-organización-de-datos">🧹 Limpieza y organización de datos</h3>
-<ul>
-<li>Unir bases (SIVIGILA, RIPS, WHONET u otros).</li>
-<li>filtrar, seleccionar, ordenar, Detectar inconsistencias, duplicados y datos faltantes todo en un solo software.</li>
-</ul>
-<h3 id="análisis-de-datos">📊 Análisis de datos</h3>
-<ul>
-<li>Cálculo de tasas, Curvas epidémicas, tablas de contingencia, modelos y hasta mapas de alta definición.</li>
-</ul>
-<p><a href="https://www.ardata.fr/en/flextable-gallery/2021-03-26-tennis-players/">Tablas</a></p>
+<section id="select-seleccionar-variablescolumnas" class="slide level2">
+<h2><code>select()</code>: seleccionar variables/columnas</h2>
+<p><br>
+</p>
+<p>Crea subconjuntos de columnas del <code>data.frame</code>.</p>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># Seleccionar variables específicas</span></span>
+<span id="cb2-2"><a></a><span class="fu">select</span>(datos, edad, sexo, semana)</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="co"># O por posición de columna</span></span>
+<span id="cb2-5"><a></a><span class="fu">select</span>(datos, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section class="slide level2">
-
-<h3 id="visualización-de-datos">📈 Visualización de datos</h3>
-<ul>
-<li>Gráficos automáticos de líneas, barras, pirámides.</li>
-<li>Estética profesional y reproducible.</li>
-</ul>
-
-<img data-src="imagenes_motivacion/epi_curva.png" class="r-stretch quarto-figure-center"><p class="caption">Epi-curva</p></section>
-<section class="slide level2">
-
-<h3 id="section"></h3>
-
-<img data-src="imagenes_motivacion/frecuencia.png" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="imagenes_motivacion/lineas de tiempo.png" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="imagenes_motivacion/cadenas.png" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="imagenes_motivacion/sankey.png" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="imagenes_motivacion/transmision.png" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="imagenes_motivacion/reporte.png" class="r-stretch"></section>
-<section class="slide level2">
-
-<h3 id="mapas">🗺️ Mapas</h3>
-<ul>
-<li>Mapas de calor por localidad o municipio.</li>
-<li>Seguimiento geográfico de brotes.</li>
-</ul>
-
-<img data-src="imagenes_motivacion/mapa_simple.png" class="r-stretch"></section>
-<section class="slide level2">
-
-
-<img data-src="imagenes_motivacion/mapa_elevacion.png" class="r-stretch"></section>
-<section class="slide level2">
-
-<h3 id="dashboards-interactivos">🧮 Dashboards interactivos</h3>
-<ul>
-<li>Seguimiento en tiempo real con <code>Shiny</code> o <code>Quarto</code>.</li>
-<li>Informes web dinámicos y personalizables.</li>
-</ul>
-
-<img data-src="imagenes_motivacion/dashboard.png" class="r-stretch"><p><a href="https://shiny.paho-phe.org/h5n1/">Shiny H5N1</a></p>
+<section id="filter-filtrar-filascasosregistros" class="slide level2">
+<h2><code>filter()</code>: filtrar filas/casos/registros</h2>
+<p><br>
+</p>
+<p>Extrae las filas que cumplen condiciones específicas.</p>
+<p><br>
+<br>
+</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">filter</span>(datos, sexo <span class="sc">==</span> <span class="st">"F"</span>)</span>
+<span id="cb3-2"><a></a><span class="fu">filter</span>(datos, sexo <span class="sc">==</span> <span class="st">"F"</span>, edad <span class="sc">&gt;=</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="operadores-lógicos">Operadores lógicos:</h3>
+<p><br>
+<br>
+</p>
+<p><code>==, !=, &lt;, &lt;=, &gt;, &gt;=</code></p>
+<p><code>between(edad, 18, 40)</code></p>
+<p><code>is.na(variable)</code></p>
 </section>
-<section class="slide level2">
-
-<h3 id="automatización-de-reportes">📄 Automatización de reportes</h3>
-<ul>
-<li>Informes PDF, Word o HTML generados con un clic.</li>
-<li>Tablas y gráficos auto-actualizables.</li>
-</ul>
-
-<img data-src="imagenes_motivacion/reportes.png" class="r-stretch"></section>
-<section id="casos-reales-con-r" class="slide level2">
-<h2>Casos reales con R</h2>
-<ul>
-<li>Automatización de boletines semanales.</li>
-<li>SITREP Dengue</li>
-</ul>
+<section id="arrange-ordenar-datos" class="slide level2">
+<h2><code>arrange()</code>: ordenar datos</h2>
+<p><br>
+</p>
+<p>Reordena las filas según los valores de una o más variables.</p>
+<p><br>
+</p>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">arrange</span>(datos, edad)</span>
+<span id="cb4-2"><a></a><span class="fu">arrange</span>(datos, <span class="fu">desc</span>(semana))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si la variable es texto, el orden es alfabético.</p>
+<p>Si es numérica, el orden es ascendente (por defecto).</p>
 </section>
-<section id="visualización-interactiva" class="slide level2">
-<h2>Visualización interactiva</h2>
-<iframe src="SitrepN78_dengue.html" width="100%" height="600px" style="border:none;">
-</iframe>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<ul>
-<li>Aprender R es un camino progresivo.</li>
-<li>Empieza con lo básico.</li>
-<li>Luego avanza a mapas y dashboards.</li>
-</ul>
+<section id="relocate-re-ordena-columnas" class="slide level2">
+<h2><code>relocate</code>()`: re-ordena columnas</h2>
+<p><br>
+<br>
+<br>
+</p>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">relocate</span>(datos, <span class="co"># dataset</span></span>
+<span id="cb5-2"><a></a>          edad, <span class="co"># variables o variables</span></span>
+<span id="cb5-3"><a></a>         <span class="at">.after =</span> , <span class="co"># despues de que variable</span></span>
+<span id="cb5-4"><a></a>         <span class="at">.before =</span>) <span class="co"># antes de que variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section>
-<section id="gracias" class="title-slide slide level1 center">
-<h1>Gracias</h1>
-<blockquote>
-<p><em>“R no es solo código: es poder para transformar datos en decisiones.”</em></p>
-</blockquote>
+<section id="que-tal-si-se-pudiera-unir-un-selec-filter-relocate-o-cualquier-otras-funciones" class="title-slide slide level1 center">
+<h1>Que tal si se pudiera unir un <code>selec() + filter() + relocate()</code> o cualquier otras funciones ?</h1>
+
 </section>
-<section id="aspectos-academicos-y-pedagogicos-del-curso" class="slide level2">
-<h2>Aspectos academicos y pedagogicos del Curso</h2>
-<ul>
-<li><p>Al ser un lenguaje de programación la construcción de codigo requiere de atención 100%.</p></li>
-<li><p>Cada presentacion tendra un ejemplo de codificación en vivo no intenten hacerlo al tiempo, (primero observe, comprenda la logica del codigo, luego ejecute por si solo).</p></li>
-</ul>
-</section>
-<section id="aspectos-academicos-y-pedagogicos-del-curso-1" class="slide level2">
-<h2>Aspectos academicos y pedagogicos del Curso</h2>
-<ul>
-<li><p>Todo el curso esta anclado a la siguiente pagina web <a href="https://jmea2.github.io/cursobasicoREpi.github.io/">https://jmea2.github.io/cursobasicoREpi.github.io/</a>.</p></li>
-<li><p>Durante momentos de la clase habran quiz interactivos y anonimos. Para acceder a ellos debe ingresar al siguiente enlace: <a href="https://www.menti.com/">https://www.menti.com/</a>, ingrese el codigo entregado por el docente cuando se le indique.</p></li>
-</ul>
-</section></section>
-<section id="iniciemos-curso" class="title-slide slide level1 center">
-<h1>Iniciemos: <a href="https://jmea2.github.io/cursobasicoREpi.github.io/">Curso</a></h1>
+<section id="el-operador-pipeline" class="slide level2">
+<h2>El operador pipeline <code>%&gt;%</code>:</h2>
+<p>Permite encadenar funciones sin crear objetos intermedios.</p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>dengue <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">select</span>(edad, sexo, semana, municipio) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">filter</span>(sexo <span class="sc">==</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Atajo de teclado:</p>
+<p>Windows: <code>Ctrl + Shift + M</code></p>
+<p>Mac: <code>Cmd + Shift + M</code></p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/jornadas_bogota.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>[Taller de Excel a R]</p>
+<p>[De Excel a R]</p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -528,7 +595,8 @@ Jorge Mario Estrada Alvarez, PhD. Msc.
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -549,7 +617,7 @@ Jorge Mario Estrada Alvarez, PhD. Msc.
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -654,7 +722,7 @@ Jorge Mario Estrada Alvarez, PhD. Msc.
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
@@ -699,7 +767,7 @@ Jorge Mario Estrada Alvarez, PhD. Msc.
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,

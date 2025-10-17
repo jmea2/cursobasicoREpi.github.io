@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tablas agrupadas: crear, agrupar – Iniciando R en la Epidemiología de Campo</title>
+<title>Tablas dinamicas con tidyr – Iniciando R en la Epidemiología de Campo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./manejo_datos10.html" rel="next">
-<link href="./iniciando_tidy8.html" rel="prev">
-<link href="./images/imagen-cursoR.png" rel="icon" type="image/png">
+<link href="./tidy_plus8.html" rel="prev">
+<link href="./images/jornadas_bogota.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,15 +70,13 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Tablas agrupadas: crear, agrupar – Iniciando R en la Epidemiología de Campo">
-<meta property="og:description" content="Pagina del Curso de R para epidemiologos de Campo">
+<meta property="og:title" content="Tablas dinamicas con tidyr – Iniciando R en la Epidemiología de Campo">
 <meta property="og:site_name" content="Iniciando R en la Epidemiología de Campo">
-<meta name="twitter:title" content="Tablas agrupadas: crear, agrupar – Iniciando R en la Epidemiología de Campo">
-<meta name="twitter:description" content="Pagina del Curso de R para epidemiologos de Campo">
-<meta name="twitter:image" content="https://jmea2.github.io/images/imagen-cursoR.png">
+<meta name="twitter:title" content="Tablas dinamicas con tidyr – Iniciando R en la Epidemiología de Campo">
+<meta name="twitter:image" content="https://jmea2.github.io/images/jornadas_bogota.png">
 <meta name="twitter:creator" content="@bioestadisticaRda">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1536">
+<meta name="twitter:image-height" content="286">
+<meta name="twitter:image-width" content="734">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -106,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/imagen-cursoR.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/jornadas_bogota.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -173,7 +171,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./iniciando_tidy8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tidyverse en Epi</span></a>
+ <span class="menu-text">Tidyverse</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidy_plus8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mas de Tidyverse</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,14 +211,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#diapositivas" id="toc-diapositivas" class="nav-link active" data-scroll-target="#diapositivas">Diapositivas</a></li>
   <li><a href="#actividad" id="toc-actividad" class="nav-link" data-scroll-target="#actividad">Actividad</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tablas_agrup9.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tablas agrupadas: crear, agrupar</h1>
+<h1 class="title">Tablas dinamicas con tidyr</h1>
 </div>
 
 
@@ -233,20 +237,16 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="diapositivas" class="level2">
 <h2 class="anchored" data-anchor-id="diapositivas">Diapositivas</h2>
-<div class="embed">
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRFCLV5EVBlyGwjmEHysZGJNPWi6uVoAoWpNyGhGZ3WEGVSFKuGMva_KWoMe9S11A/pubembed?start=true&amp;loop=true&amp;delayms=60000" frameborder="0" width="640" height="389" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
-</iframe>
-</div>
+<iframe class="slide-deck" src="./diapositivas/tabla_dinamica_r.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 </section>
 <section id="actividad" class="level2">
 <h2 class="anchored" data-anchor-id="actividad">Actividad</h2>
-<p>Con el data frame creado anteriormente, donde se seleccionaron solo algunas variables, realiza los siguientes pasos:</p>
-<ul>
-<li><p>Usa la función <code>str()</code>(coloca como argumento la base de dengue previa)para identificar variables mal clasificadas, especialmente las q son numéricas y estan como caracter.</p></li>
-<li><p>Convierte las columnas (por ejemplo edad) de tipo <code>character</code> a <code>numeric</code>.</p></li>
-<li><p>Obtenga el número de casos POR <code>ANO, SEMANA y SEXO</code>.</p></li>
-<li><p>Filtra un subconjunto de datos (por ejemplo, año 2016), agrupa por semana epidemiologica y departamento de ocurrencia, luego ordenala por semana ascendente y Municipio, exporta esta tabla a una hoja de excel que quede guardada dentro de la carpeta del proyecto llamada <code>reportes</code> (creada en la primera clase).</p></li>
-</ul>
+<ol type="1">
+<li><p>Construya una tabla del numero de casos por semana epidemiologica</p></li>
+<li><p>Construya una tabla del numero de casos por año.</p></li>
+<li><p>Construya una tabla con la media de casos por semana de los 3 años</p></li>
+<li><p>Construya una tabla de conteo de casos por año, semana y sexo.</p></li>
+</ol>
 
 
 </section>
@@ -674,8 +674,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./iniciando_tidy8.html" class="pagination-link" aria-label="Tidyverse en Epi">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tidyverse en Epi</span>
+      <a href="./tidy_plus8.html" class="pagination-link" aria-label="Mas de Tidyverse">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Mas de Tidyverse</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
