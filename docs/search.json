@@ -347,7 +347,7 @@
     "section": "Actividad",
     "text": "Actividad\n\nEjecute el siguiente codigo en un script de su computadora. Se crearan dos bases de datos sencillas para verificar facilmente el resultado de las diferentes funciones *_join() que R maneja con la libreria tidyverse\n\n\ncasos &lt;- tibble(municipio = c(\"Pereira\", \"Dosquebradas\", \"Santa Rosa\",\n                              \"Marsella\", \"La Virginia\", \"Apía\"),\n                casos_dengue = c(120, 85, 45, 20, 60, 10))\n\n# -----------------------------\n# Base de población por municipio\n# -----------------------------\npoblacion &lt;- tibble(\n  municipio = c(\"Pereira\", \"Dosquebradas\", \"Santa Rosa\", \"Belén de Umbría\", \"Marsella\"),\n  poblacion = c(480000, 210000, 95000, 35000, 18000))\n\n\nImprime en consola ambas bases o abrelas en el visor de datos, analizalas bien que información tiene una y la otra.\n\nrealiza las diferentes uniones con las funciones presentadas en las diapositivas de arriba para dar respuestas a los siguiente requerimientos:\n\nConserva solo los municipios que están en ambas tablas\nConserva todos los municipios de la izquierda (casos)\nConserva todos los municipios de la derecha (población)\nConserva todos los municipios de ambas tablas\nConserva todos los municipios de ambas tablas\nDevuelve los registros de casos que NO tienen coincidencia en población",
     "crumbs": [
-      "Manejo de datos"
+      "Uniones de datos"
     ]
   },
   {
