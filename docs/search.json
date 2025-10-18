@@ -583,7 +583,7 @@
     "href": "diapositivas/funciones_r.html#características-clave",
     "title": "Funciones en R",
     "section": "Características clave",
-    "text": "Características clave\n\nToda función tiene nombre y se llama tal como está definida.\nPuede tener uno o varios argumentos.\nHay argumentos obligatorios y opcionales (con valores por defecto).\nEjecuta un procedimiento y produce una salida.\n\nFlujo: entrada → instrucciones → salida\nEntrada: argumentos (datos/valores)\nInstrucciones: lo que la función hace internamente\nSalida: un objeto/valor que puedes guardar o encadenar\nresultado &lt;- nombre_funcion(entrada1, entrada2, opcional = valor)\nMuchas funciones vienen con R; otras con paquetes; y podemos crear la nuestras."
+    "text": "Características clave\n\nToda función tiene nombre y se llama tal como está definida.\nPuede tener uno o varios argumentos.\nHay argumentos obligatorios y opcionales (con valores por defecto).\nEjecuta un procedimiento y produce una salida.\n\nFlujo: entrada → instrucciones → salida\nEntrada: argumentos (datos/valores)\nInstrucciones: lo que la función hace internamente\nSalida: un objeto/valor que puedes guardar o encadenar\nresultado &lt;- nombre_funcion(entrada1, entrada2, opcional = valor)"
   },
   {
     "objectID": "diapositivas/funciones_r.html#ejemplo-con-argumentos-nombrados",
