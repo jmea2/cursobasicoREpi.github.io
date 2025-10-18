@@ -1,17 +1,156 @@
 [
   {
-    "objectID": "q-and-a.html",
-    "href": "q-and-a.html",
-    "title": "Q & A From Clinical Reporting with {gtsummary} Workshop",
-    "section": "",
-    "text": "Q: How do I save PDFs of slides?\n\n\nThe website will stay up and you can access the slides; if you want to print it go to the slides in full screen view, convert to pdf mode and print\n\n\nQ: How can I see tables in viewer pane?\n\n\nGlobal Options &gt; RMarkdown &gt; show output in Viewer Pane\n\n\nQ: Link for the code for Dan’s quarto slides?\n\n\nhttps://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed/tree/main/slides\n\n\nQ: Syntax for set_variable_labels()?\n\n\nSee function docs at: https://larmarange.github.io/labelled/reference/var_label.html\n\n\nQ: How to confirm labels worked?\n\n\nstr(df) or view(df)\n\n\nQ: What is |&gt;?\n\n\nIt’s the new base R pipe! See https://ivelasq.rbind.io/blog/understanding-the-r-pipe/ for more details\n\n\nQ: What statistics can you use in tbl_summary(statistic=) argument? How does the function know \"{min}, {max}\" is the range?\n\n\nThere are a set of known names for default statistics that you can use in this function. These (plus glue syntax) allow you to display specific statistics. See more details here, under the statistic argument section: https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html\n\n\nQ: How do you display mean instead of median?\n\n\nAdjust the statistic argument:\n\n\ntrial %&gt;%\n  select(age) %&gt;%\n  tbl_summary(statistic = everything() ~ \"{mean}\")\n\n\n\n\n\n\n\nCharacteristic\nN = 2001\n\n\n\n\nAge\n47\n\n\n    Unknown\n11\n\n\n\n1 Mean\n\n\n\n\n\n\n\n\n\nQ: With add_n() can you change the label to specify that it represents non-missing values?\n\n\nYes, you can change this with col_label argument:\n\n\ntrial |&gt;\n  select(age, grade, trt) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() |&gt; \n  add_n(col_label = \"**N (Non-missing)**\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nN (Non-missing)\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n189\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n200\n\n\n\n\n\n\n\n\n    I\n\n\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n\n\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n\n\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: How can you remove the death variable inside the tbl_summary() function?\n\n\nUse adplyr::select() prior to tbl_summary or use the include = argument in tbl_summary(). Three options below:\n\n\nsm_trial &lt;- trial |&gt;\n  select(age, grade, trt, death)\n\nsm_trial |&gt;\n  select(-death) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = -death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = !death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: Is it possible to add custom footnotes, say if you want to explain what a particular category includes etc.?\n\n\nYes, use modify_footnote() for column headers for footnotes that already exist. Or use modify_table_styling() for new footnotes. https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html\n\n\nQ: Does gtsummary support role selection like {recipes}?\n\n\nUse the selectors all_continuous(), all_categorical(), etc.\n\n\nQ: There is an error trying to use add_difference() with add_p()\n\n\nThis is because you are trying to add two p’s to same table. You could consider doing two separate tables then using tbl_merge() to merge them, but presenting these two p-values in one table could be confusing.\n\n\nQ: It would be great to have an “asterisk_p” to show significant p-values, like bold_p()\n\n\nadd_significance_stars() already exists! https://www.danieldsjoberg.com/gtsummary/reference/add_significance_stars.html\n\n\nQ: If there are more than two groups, is there any function for post-hoc testing?\n\n\nHere are supported tests: https://www.danieldsjoberg.com/gtsummary/reference/tests.html. Post-hoc tests might require custom testing. There are some relevant questions on stackoverflow.com that may be useful.\n\n\nQ: Can gtsummary give Bayesian statistics result?\n\n\nSee https://www.danieldsjoberg.com/gtsummary/reference/tests.html for supported tests. If it is not supported, you can use custom functions for p-values (see add_p()) or add_stat() to use a custom statistic.\n\n\nQ: The {rms} package fits are not supported?\n\n\nYou can file an issue for support. You can also use custom tidier. See Wald example in table gallery for tips on how to do this: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: How does it handle interaction terms?\n\n\nGorgeously:\n\n\ntbl &lt;-\n      lm(time ~ ph.ecog*sex, survival::lung) %&gt;%\n      tbl_regression(label = list(ph.ecog = \"ECOG Score\", sex = \"Sex\"))\n    \ntbl\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nECOG Score\n-119\n-233, -5.5\n0.040\n\n\nSex\n11\n-79, 102\n0.8\n\n\nECOG Score * Sex\n43\n-33, 120\n0.3\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: What does exponentiate=TRUE do again in tbl_regression()? I missed it.\n\n\nExponentiation coefficients so you can easily report OR instead of log(OR) or HRs instead of raw coefficients.\n\n\nQ: Is there a way to add an additional footnote saying T1 is the control? The default dash may be interpreted as a “missing value”.\n\n\nmodify_table_styling() https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html or use argument add_estimate_to_reference_rows = TRUE\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression( exponentiate = TRUE, add_estimate_to_reference_rows = FALSE ) %&gt;%\n  add_global_p() %&gt;%\n  modify_table_styling(columns = c(estimate, ci),\n                       rows = reference_row == TRUE, \n                       missing_symbol = \"Ref.\" )\n\nWarning: Use of the \"ci\" column was deprecated in gtsummary v2.0, and the column will\neventually be removed from the tables.\n! Review `?deprecated_ci_column()` for details on how to update your code.\nℹ The \"ci\" column has been replaced by the merged \"conf.low\" and \"conf.high\"\n  columns (merged with `modify_column_merge()`).\nℹ In most cases, a simple update from `ci = 'a new label'` to `conf.low = 'a\n  new label'` is sufficient.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\nRef.\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n\n\n\n\n    III\n2.28\n1.11, 4.75\n\n\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nYou can also use themes and change tbl_regression-str:ref_row_text option: https://www.danieldsjoberg.com/gtsummary/articles/themes.html\n\n\nQ: Can add_global_p() and the global p-value without removing the p-value for each level?\n\n\nThere is an arg in add_global_p() called keep; that will keep both p-values. It is FALSE by default\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression(exponentiate = TRUE,\n                 add_estimate_to_reference_rows = FALSE) %&gt;%\n  add_global_p(keep = TRUE) \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\n—\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n0.8\n\n\n    III\n2.28\n1.11, 4.75\n0.025\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nQ: tbl_regression(): Are the p-values per Wald by default?\n\n\nYou need to look at the details for your specific model and what the summary function returns. You can change default via the tidier for your model. My tidier function example available in the gallery: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: Is there an option to compare multiple regression models within a single table? (e.g., when performing sensitivity analyses). I’m thinking of a situation where we are using different adjustment sets of covariates. I’m thinking of a situation where we are using different adjustment sets of covariates.\n\n\nUse tbl_merge()\n\n\nQ: Does it work with {tidymodels}?\n\n\nThere are currently some issues with dummy variables, but we are working on it for future release.\n\n\nQ: Can you have super/sub scripts in variable names\n\n\nUse utf8 characters and markdown characters. {gt} sometimes has some issues with “common markdown” language so be aware of your output type and print engine, but most likely they will work.\n\n\nQ: Is the marginal adjusted mean estimated using the median of the other covariates fitting the model?\n\n\nThis is calculated outside the package. See emmeans::emmeans() for details on calculations.\n\n\nQ: Does tbl_regression() support ridge/lasso regressions? I usually use {glmnet} for these\n\n\nNot currently supported but see https://github.com/ddsjoberg/gtsummary/issues/1280 for more details.\n\n\nQ: For sex, how do i get it to show the Male level instead of the Female reference group?\n\n\ninline_text() has a level= argument to select this.\n\n\nQ: If I change the CI to 90%, I need to update the pattern to 90% CI {ci} right?\n\n\nIf you are using the default pattern ({conf.level}), you don’t need to change anything, but if you hard code like 95%, then yes, use pattern = \"odds ratio {estimate}; {conf.level*100}% CI {ci}\"\n\n\nQ: Can I add LaTeX symbols in the inline text like chi square results?\n\n\nProbably?\n\n\nQ: Can add_glance_source_note(), give just adjusted R^2 ?\n\n\nYes!\n\n\nmod &lt;- lm(age ~ marker + grade, trial) %&gt;% tbl_regression()\nmod %&gt;% \n  add_glance_table(include = c(r.squared, adj.r.squared))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nMarker Level (ng/mL)\n-0.04\n-2.6, 2.5\n&gt;0.9\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n—\n—\n\n\n\n\n    II\n0.64\n-4.7, 6.0\n0.8\n\n\n    III\n2.4\n-2.8, 7.6\n0.4\n\n\nR²\n0.005\n\n\n\n\n\n\nAdjusted R²\n-0.012\n\n\n\n\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: How can I increase the font size of a gtsummary object in a xaringan slide?\n\n\nYou can set a theme for this, or check out print engine options. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: How do I decrease the height of the gtsummary table so it exports properly?\n\n\nDepends on print engine and desired output format. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: What would the code be to export as XLS?\n\n\nas_hux_xlsx(). See: https://www.danieldsjoberg.com/gtsummary/reference/as_hux_table.html"
+    "objectID": "diapositivas/tidydata_plus_r.html#crear-nuevas-columnas-o-modificarlas",
+    "href": "diapositivas/tidydata_plus_r.html#crear-nuevas-columnas-o-modificarlas",
+    "title": "Más de tidyverse",
+    "section": "Crear nuevas columnas o modificarlas",
+    "text": "Crear nuevas columnas o modificarlas\nEn R podemos crear o modificar variables a partir de reglas u operaciones, usando:\nmutate(.data = ,\n       variable_nueva = )# regla de creacion \n¿Qué hace mutate()?\nPermite:\n\nCrear nuevas variables.\nModificar columnas existentes.\nRealizar operaciones matemáticas o lógicas sobre variables y entre variables\nPuede aplicarse sobre datos nominales (caso a caso).\nTambién sobre datos agrupados (por ejemplo, por municipio o departamento)."
   },
   {
-    "objectID": "q-and-a.html#answered-questions",
-    "href": "q-and-a.html#answered-questions",
-    "title": "Q & A From Clinical Reporting with {gtsummary} Workshop",
-    "section": "",
-    "text": "Q: How do I save PDFs of slides?\n\n\nThe website will stay up and you can access the slides; if you want to print it go to the slides in full screen view, convert to pdf mode and print\n\n\nQ: How can I see tables in viewer pane?\n\n\nGlobal Options &gt; RMarkdown &gt; show output in Viewer Pane\n\n\nQ: Link for the code for Dan’s quarto slides?\n\n\nhttps://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed/tree/main/slides\n\n\nQ: Syntax for set_variable_labels()?\n\n\nSee function docs at: https://larmarange.github.io/labelled/reference/var_label.html\n\n\nQ: How to confirm labels worked?\n\n\nstr(df) or view(df)\n\n\nQ: What is |&gt;?\n\n\nIt’s the new base R pipe! See https://ivelasq.rbind.io/blog/understanding-the-r-pipe/ for more details\n\n\nQ: What statistics can you use in tbl_summary(statistic=) argument? How does the function know \"{min}, {max}\" is the range?\n\n\nThere are a set of known names for default statistics that you can use in this function. These (plus glue syntax) allow you to display specific statistics. See more details here, under the statistic argument section: https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html\n\n\nQ: How do you display mean instead of median?\n\n\nAdjust the statistic argument:\n\n\ntrial %&gt;%\n  select(age) %&gt;%\n  tbl_summary(statistic = everything() ~ \"{mean}\")\n\n\n\n\n\n\n\nCharacteristic\nN = 2001\n\n\n\n\nAge\n47\n\n\n    Unknown\n11\n\n\n\n1 Mean\n\n\n\n\n\n\n\n\n\nQ: With add_n() can you change the label to specify that it represents non-missing values?\n\n\nYes, you can change this with col_label argument:\n\n\ntrial |&gt;\n  select(age, grade, trt) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() |&gt; \n  add_n(col_label = \"**N (Non-missing)**\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nN (Non-missing)\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n189\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n200\n\n\n\n\n\n\n\n\n    I\n\n\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n\n\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n\n\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: How can you remove the death variable inside the tbl_summary() function?\n\n\nUse adplyr::select() prior to tbl_summary or use the include = argument in tbl_summary(). Three options below:\n\n\nsm_trial &lt;- trial |&gt;\n  select(age, grade, trt, death)\n\nsm_trial |&gt;\n  select(-death) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = -death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = !death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: Is it possible to add custom footnotes, say if you want to explain what a particular category includes etc.?\n\n\nYes, use modify_footnote() for column headers for footnotes that already exist. Or use modify_table_styling() for new footnotes. https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html\n\n\nQ: Does gtsummary support role selection like {recipes}?\n\n\nUse the selectors all_continuous(), all_categorical(), etc.\n\n\nQ: There is an error trying to use add_difference() with add_p()\n\n\nThis is because you are trying to add two p’s to same table. You could consider doing two separate tables then using tbl_merge() to merge them, but presenting these two p-values in one table could be confusing.\n\n\nQ: It would be great to have an “asterisk_p” to show significant p-values, like bold_p()\n\n\nadd_significance_stars() already exists! https://www.danieldsjoberg.com/gtsummary/reference/add_significance_stars.html\n\n\nQ: If there are more than two groups, is there any function for post-hoc testing?\n\n\nHere are supported tests: https://www.danieldsjoberg.com/gtsummary/reference/tests.html. Post-hoc tests might require custom testing. There are some relevant questions on stackoverflow.com that may be useful.\n\n\nQ: Can gtsummary give Bayesian statistics result?\n\n\nSee https://www.danieldsjoberg.com/gtsummary/reference/tests.html for supported tests. If it is not supported, you can use custom functions for p-values (see add_p()) or add_stat() to use a custom statistic.\n\n\nQ: The {rms} package fits are not supported?\n\n\nYou can file an issue for support. You can also use custom tidier. See Wald example in table gallery for tips on how to do this: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: How does it handle interaction terms?\n\n\nGorgeously:\n\n\ntbl &lt;-\n      lm(time ~ ph.ecog*sex, survival::lung) %&gt;%\n      tbl_regression(label = list(ph.ecog = \"ECOG Score\", sex = \"Sex\"))\n    \ntbl\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nECOG Score\n-119\n-233, -5.5\n0.040\n\n\nSex\n11\n-79, 102\n0.8\n\n\nECOG Score * Sex\n43\n-33, 120\n0.3\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: What does exponentiate=TRUE do again in tbl_regression()? I missed it.\n\n\nExponentiation coefficients so you can easily report OR instead of log(OR) or HRs instead of raw coefficients.\n\n\nQ: Is there a way to add an additional footnote saying T1 is the control? The default dash may be interpreted as a “missing value”.\n\n\nmodify_table_styling() https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html or use argument add_estimate_to_reference_rows = TRUE\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression( exponentiate = TRUE, add_estimate_to_reference_rows = FALSE ) %&gt;%\n  add_global_p() %&gt;%\n  modify_table_styling(columns = c(estimate, ci),\n                       rows = reference_row == TRUE, \n                       missing_symbol = \"Ref.\" )\n\nWarning: Use of the \"ci\" column was deprecated in gtsummary v2.0, and the column will\neventually be removed from the tables.\n! Review `?deprecated_ci_column()` for details on how to update your code.\nℹ The \"ci\" column has been replaced by the merged \"conf.low\" and \"conf.high\"\n  columns (merged with `modify_column_merge()`).\nℹ In most cases, a simple update from `ci = 'a new label'` to `conf.low = 'a\n  new label'` is sufficient.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\nRef.\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n\n\n\n\n    III\n2.28\n1.11, 4.75\n\n\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nYou can also use themes and change tbl_regression-str:ref_row_text option: https://www.danieldsjoberg.com/gtsummary/articles/themes.html\n\n\nQ: Can add_global_p() and the global p-value without removing the p-value for each level?\n\n\nThere is an arg in add_global_p() called keep; that will keep both p-values. It is FALSE by default\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression(exponentiate = TRUE,\n                 add_estimate_to_reference_rows = FALSE) %&gt;%\n  add_global_p(keep = TRUE) \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\n—\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n0.8\n\n\n    III\n2.28\n1.11, 4.75\n0.025\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nQ: tbl_regression(): Are the p-values per Wald by default?\n\n\nYou need to look at the details for your specific model and what the summary function returns. You can change default via the tidier for your model. My tidier function example available in the gallery: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: Is there an option to compare multiple regression models within a single table? (e.g., when performing sensitivity analyses). I’m thinking of a situation where we are using different adjustment sets of covariates. I’m thinking of a situation where we are using different adjustment sets of covariates.\n\n\nUse tbl_merge()\n\n\nQ: Does it work with {tidymodels}?\n\n\nThere are currently some issues with dummy variables, but we are working on it for future release.\n\n\nQ: Can you have super/sub scripts in variable names\n\n\nUse utf8 characters and markdown characters. {gt} sometimes has some issues with “common markdown” language so be aware of your output type and print engine, but most likely they will work.\n\n\nQ: Is the marginal adjusted mean estimated using the median of the other covariates fitting the model?\n\n\nThis is calculated outside the package. See emmeans::emmeans() for details on calculations.\n\n\nQ: Does tbl_regression() support ridge/lasso regressions? I usually use {glmnet} for these\n\n\nNot currently supported but see https://github.com/ddsjoberg/gtsummary/issues/1280 for more details.\n\n\nQ: For sex, how do i get it to show the Male level instead of the Female reference group?\n\n\ninline_text() has a level= argument to select this.\n\n\nQ: If I change the CI to 90%, I need to update the pattern to 90% CI {ci} right?\n\n\nIf you are using the default pattern ({conf.level}), you don’t need to change anything, but if you hard code like 95%, then yes, use pattern = \"odds ratio {estimate}; {conf.level*100}% CI {ci}\"\n\n\nQ: Can I add LaTeX symbols in the inline text like chi square results?\n\n\nProbably?\n\n\nQ: Can add_glance_source_note(), give just adjusted R^2 ?\n\n\nYes!\n\n\nmod &lt;- lm(age ~ marker + grade, trial) %&gt;% tbl_regression()\nmod %&gt;% \n  add_glance_table(include = c(r.squared, adj.r.squared))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nMarker Level (ng/mL)\n-0.04\n-2.6, 2.5\n&gt;0.9\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n—\n—\n\n\n\n\n    II\n0.64\n-4.7, 6.0\n0.8\n\n\n    III\n2.4\n-2.8, 7.6\n0.4\n\n\nR²\n0.005\n\n\n\n\n\n\nAdjusted R²\n-0.012\n\n\n\n\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: How can I increase the font size of a gtsummary object in a xaringan slide?\n\n\nYou can set a theme for this, or check out print engine options. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: How do I decrease the height of the gtsummary table so it exports properly?\n\n\nDepends on print engine and desired output format. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: What would the code be to export as XLS?\n\n\nas_hux_xlsx(). See: https://www.danieldsjoberg.com/gtsummary/reference/as_hux_table.html"
+    "objectID": "diapositivas/tidydata_plus_r.html#funciones-de-apoyo",
+    "href": "diapositivas/tidydata_plus_r.html#funciones-de-apoyo",
+    "title": "Más de tidyverse",
+    "section": "Funciones de apoyo",
+    "text": "Funciones de apoyo\n\n\n\n\n\n\n\nFunción\nUso principal\n\n\n\n\ncase_when()\nCrear categorías a partir de condiciones\n\n\nif_else()\nCondicional simple (dos opciones)\n\n\nround(), log(), sqrt()\nOperaciones numéricas comunes\n\n\nas.numeric(), as.character()\nConversión de tipo de variable\n\n\n\ny la gran mayoria de funciones que tengan un efecto de cambio o de creacion de nueva informacion apartir del uso de otras variables."
+  },
+  {
+    "objectID": "diapositivas/tidydata_plus_r.html#if_else-condicional-simple-en-r",
+    "href": "diapositivas/tidydata_plus_r.html#if_else-condicional-simple-en-r",
+    "title": "Más de tidyverse",
+    "section": "if_else(): condicional simple en R",
+    "text": "if_else(): condicional simple en R\nSe usa para crear o modificar variables cuando hay una sola condición lógica con dos posibles resultados:\nsi la condición se cumple → devuelve un valor,\nsi no → devuelve otro.\n# Ejemplo práctico: clasificar casos por edad\ncasos %&gt;%\n  mutate(menor_edad = if_else(edad &lt; 18, \"Menor\", \"Adulto\"))\nCaracterísticas:\n\nEvalúa una condición lógica (TRUE / FALSE).\nDevuelve un valor para cada caso según el resultado.\n\n\n\n\n\n\n\nTip\n\n\n💡 Usa if_else() cuando haya una sola condición; si tienes múltiples rangos o categorías, usa case_when()."
+  },
+  {
+    "objectID": "diapositivas/tidydata_plus_r.html#case_when-crear-columnas-con-re-categorización",
+    "href": "diapositivas/tidydata_plus_r.html#case_when-crear-columnas-con-re-categorización",
+    "title": "Más de tidyverse",
+    "section": "case_when(): crear columnas con re-categorización",
+    "text": "case_when(): crear columnas con re-categorización\nPermite crear o recodificar variables a partir de condiciones lógicas múltiples, de forma clara y legible.\nSIEMPRE SE USA CON mutate()\n# Estructura\n\ndatos %&gt;% # datos\n  mutate(nueva_variable = case_when(condicion_1 ~ \"respuesta1\",\n                                    condicion_2 ~\"respuesta2\"))\n# Ejemplo práctico: crear grupos de edad\ncasos %&gt;%\n  mutate(grupo_edad = case_when(\n    edad &lt; 5  ~ \"0–4 años\",\n    edad &lt; 15 ~ \"5–14 años\",\n    edad &lt; 60 ~ \"15–59 años\",\n    TRUE      ~ \"60+ años\"      # Condición por defecto\n  ))"
+  },
+  {
+    "objectID": "diapositivas/tidydata_plus_r.html#homogeneizar-texto-con-stringr",
+    "href": "diapositivas/tidydata_plus_r.html#homogeneizar-texto-con-stringr",
+    "title": "Más de tidyverse",
+    "section": "Homogeneizar texto con stringr",
+    "text": "Homogeneizar texto con stringr\nLas funciones str_to_lower(), str_to_upper() y str_to_title() permiten estandrizar el formato de texto en variables de tipo carácter (cadenas).\ndatos %&gt;%\n  mutate(\n    municipio_min = str_to_lower(Municipio),  # todo en minúsculas\n    municipio_may = str_to_upper(Municipio),  # todo en mayúsculas\n    municipio_tit = str_to_title(Municipio)   # primera letra en mayúscula\n  )"
+  },
+  {
+    "objectID": "diapositivas/tidydata_plus_r.html#separar-y-unir-columnas",
+    "href": "diapositivas/tidydata_plus_r.html#separar-y-unir-columnas",
+    "title": "Más de tidyverse",
+    "section": "Separar y unir columnas",
+    "text": "Separar y unir columnas\nLas funciones separate() y unite() permiten dividir o combinar columnas dentro de un data.frame.\nseparate(data = , # dataset\n         col = \"variable\", # variable a separar entre comillas\n         into = , # nombre de columnas en la se va a separar\n         sep = \"\") # separador entre comillas\n\nunite(data = , # dataset\n      col = , # nueva columna\n      c(\"col1\",\"col2\"), # columnas a unir\n      sep = \" \") # separador\n# Ejemplo 1: separar una columna\ndatos %&gt;%\n  separate(col = \"fecha\",\n           into = c(\"año\", \"mes\", \"día\"), \n           sep = \"-\")\n\n# Ejemplo 2: unir varias columnas\ndatos %&gt;%\n  unite(col = \"fecha_completa\", c(\"año\", \"mes\", \"día\"), sep = \"-\")"
+  },
+  {
+    "objectID": "diapositivas/tidydata_plus_r.html#eliminar-duplicados-con-distinct",
+    "href": "diapositivas/tidydata_plus_r.html#eliminar-duplicados-con-distinct",
+    "title": "Más de tidyverse",
+    "section": "Eliminar duplicados con distinct()",
+    "text": "Eliminar duplicados con distinct()\nPermite remover filas duplicadas en un conjunto de datos, conservando solo los registros únicos según las variables indicadas.\n# Ejemplo 1: eliminar duplicados en todo el dataset\ndatos %&gt;%\n  distinct()\n\n# Ejemplo 2: eliminar duplicados considerando variables específicas\ndatos %&gt;%\n  distinct(nombre, documento, .keep_all = TRUE)\n\n\n\n\n\n\nTip\n\n\nUsa el argumento .keep_all = TRUE para conservar todas las columnas del registro original, eliminando solo las repeticiones."
+  },
+  {
+    "objectID": "diapositivas/tidydata_plus_r.html#estandarización-de-fechas",
+    "href": "diapositivas/tidydata_plus_r.html#estandarización-de-fechas",
+    "title": "Más de tidyverse",
+    "section": "Estandarización de fechas",
+    "text": "Estandarización de fechas\nLibreria lubridate, contiene las funciones dmy(), myd(), ydm().\n\n\n\n# extrae componentes de fechas estandarizada\nyear()\nmonth()\nday()\nFechas de Excel\nDatos numerico 42345, pero en excel se ve como fecha 14-12-2015\nas.Date(x = , # columna con numero\n        origin = \"1899-12-30\") # fecha origen\nfecha origen: 1899-12-30 (Windows) o 1904-01-01 (Mac)\n\n\n\n\n[De Excel a R]"
+  },
+  {
+    "objectID": "diapositivas/union_datos.html#ejemplo-de-uso-left_join",
+    "href": "diapositivas/union_datos.html#ejemplo-de-uso-left_join",
+    "title": "Uniendo bases en R",
+    "section": "ejemplo de uso : left_join()",
+    "text": "ejemplo de uso : left_join()\n\nAgrupe de la base casos por barrio y guardela en otro objeto.\nDescargue la base denominada pob_barrio.rds\n\n\n\n\n\n[De Excel a R]"
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
+    "href": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
+    "title": "Estructuras de datos en R",
+    "section": "Estructuras básicas de datos en R",
+    "text": "Estructuras básicas de datos en R\nEn R existen diversas estructuras de datos:\n\nVectores\n\nMatrices\n\nListas\n\nData Frames"
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
+    "href": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
+    "title": "Estructuras de datos en R",
+    "section": "Estructuras más utilizadas en vigilancia en salud",
+    "text": "Estructuras más utilizadas en vigilancia en salud\nPara los análisis de vigilancia en salud pública, las más comunes son:\n\nVectores\n\nData Frames"
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#vector",
+    "href": "diapositivas/estructuras_r.html#vector",
+    "title": "Estructuras de datos en R",
+    "section": "Vector",
+    "text": "Vector\nUn vector es un contenedor para una secuencia de datos singulares, todos del mismo tipo (numérico, carácter, lógico, etc.).\nPara crear un vector, usamos la función c(), que significa concatenar (similar a Excel).\n# Creando un vector\nc(23, 25, 45, 34, 65)"
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
+    "href": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
+    "title": "Estructuras de datos en R",
+    "section": "Guardar un vector en un objeto reutilizable",
+    "text": "Guardar un vector en un objeto reutilizable\nUsamos el operador de asignación &lt;-.\nA la izquierda: el nombre del objeto.\nA la derecha: el vector que queremos guardar.\nEjemplo\nedad &lt;- c(23, 25, 45, 34, 65)\n💡 Ahora el objeto edad queda guardado en el entorno de trabajo y puede reutilizarse."
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#dataframe",
+    "href": "diapositivas/estructuras_r.html#dataframe",
+    "title": "Estructuras de datos en R",
+    "section": "DataFrame",
+    "text": "DataFrame\n\nUn dataframe es una base de datos o dataset, equivalente a una hoja de cálculo.\n\nSe usa para datos:\n\nNominales (caso a caso).\nAgregados (por ejemplo, casos por semana epidemiológica).\n\nCada columna es un vector, y cada fila es un registro."
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#crear-un-dataframe",
+    "href": "diapositivas/estructuras_r.html#crear-un-dataframe",
+    "title": "Estructuras de datos en R",
+    "section": "Crear un dataframe",
+    "text": "Crear un dataframe\nPrimero se crean los vectores/columnas, y luego se unen:\n# Creamos los vectores\nedad &lt;- c(25, 34, 54, 65)\nsexo &lt;- c(\"F\", \"M\", \"F\", \"M\")\ny luego \n# Creamos el data frame\ndata.frame(edad, sexo)\nNo olvide guardarlo en el ambiente, ¿Como lo haria?"
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
+    "href": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
+    "title": "Estructuras de datos en R",
+    "section": "Importar datos en lugar de crearlos",
+    "text": "Importar datos en lugar de crearlos\nNo siempre es necesario escribir los data frames manualmente. Puedes importar archivos desde Excel, CSV u otros formatos:\nusemos la libreria:\nlibrary(rio)\n# funcion \nimport()\n\n\n\n\n[De Excel a R]"
+  },
+  {
+    "objectID": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
+    "href": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
+    "title": "Importacion de datos a R",
+    "section": "¿Qué significa importar y exportar en R?",
+    "text": "¿Qué significa importar y exportar en R?\n\nImportar: leer un archivo desde tu disco duro y convertirlo en un objeto dentro de R (usualmente un data.frame).\nExportar: guardar un objeto de R (datos, tablas, gráficos) como un archivo externo (.csv, .xlsx, .rds, etc.)."
+  },
+  {
+    "objectID": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
+    "href": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
+    "title": "Importacion de datos a R",
+    "section": "Tipos de archivos comunes",
+    "text": "Tipos de archivos comunes\nPuedes trabajar con múltiples tipos de archivos:\n\n.csv, .xlsx, .tsv\nArchivos de SPSS, STATA, SAS\n.rds (objeto individual en R)\n.RData (múltiples objetos o todo el espacio de trabajo)"
+  },
+  {
+    "objectID": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
+    "href": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
+    "title": "Importacion de datos a R",
+    "section": "El paquete rio: una solución sencilla",
+    "text": "El paquete rio: una solución sencilla\nrio = R Input/Output\nVentajas: - Usa solo dos funciones: import() y export().\n\nReconoce automáticamente el tipo de archivo por su extensión.\n## Sintaxis de uso\n\nImportar datos:\n# Importar un archivo CSV\ndataset &lt;- import(\"datos.csv\")\nExportar datos:\n# Exportar un objeto a Excel\nexport(dataset, \"resultado.xlsx\")\n\n\n\n\n[De Excel a R]"
+  },
+  {
+    "objectID": "estructuras6.html#actividad",
+    "href": "estructuras6.html#actividad",
+    "title": "Estructuras de datos en R",
+    "section": "Actividad",
+    "text": "Actividad\n\nCrear tu primer vector\n\nCrea un vector llamado casos_dengue con los siguientes valores, que representan el número de casos por semana:\n15, 22, 18, 35, 20\n\nAccede a los elementos del vector construido previamente\n\n\nMuestra el tercer valor del vector casos_dengue.\nSuma los dos primeros elementos\n\n\nAplicar funciones básicas: Utiliza funciones matemáticas para calcular:\n\n\nLa media (mean) de los casos de dengue\nEl total de casos de dengue (sum)\nEl valor máximo (max) y mínimo (min)\n\n\nCrear un Data Frame: crea los siguientes vectores y usa los vectores anteriores para construir un data frame llamado datos:\n\nedad = 25, 34, 54, 65 sexo = F, M, F, M\n\nExplorar el data frame:\n\n\nMuestra el data frame completo.\n\n\nSe registraron los siguientes casos de influenza en cinco semanas consecutivas:\n\n\ncasos_influenza &lt;- c(12, 18, 24, 22, 15)\n\n\nCalcula el total de casos.\n¿Cuál fue el promedio semanal?\n¿Hubo alguna semana con más de 20 casos? Usa un operador lógico.\n\n\nCalcula:\n\n\nEl valor máximo y mínimo.\nLa diferencia entre el valor máximo y el mínimo (rango).\nLa desviación estándar de los casos.\n\n\nImagina que quieres calcular la tasa de incidencia por cada 10.000 habitantes. Los casos y poblaciones son:\n\n\ncasos &lt;- c(56, 23, 87)\npoblacion &lt;- c(25000, 15000, 40000)\n\n\nCalcula la tasa por 10.000 habitantes para cada zona.\n\n\nDiscute con tus compañeros:\n\n¿Qué tipo de análisis podrías automatizar en vigilancia con estas herramientas?\n¿Qué funciones usarías para revisar la consistencia de los datos antes de analizarlos?",
+    "crumbs": [
+      "Estructuras de datos"
+    ]
+  },
+  {
+    "objectID": "operadores5.html#actividad",
+    "href": "operadores5.html#actividad",
+    "title": "Operadores Matematicos",
+    "section": "Actividad",
+    "text": "Actividad\n\nCalculando tasas\n\nSupón que en un municipio hubo 325 casos de dengue en un año, con una población de 78.420 habitantes.\n\nCalcula la tasa de incidencia por 100.000 habitantes.\nCalcula el número esperado de casos si la tasa fuera de 0.006 casos/habitante.\n\n\nComparaciones Dado que se espera que la tasa de incidencia de dengue esté por debajo de 450 casos por 100.000 habitantes. Verifica si la tasa actual excede este umbral.\nEvalúa las siguientes expresiones en R y verifica su respuesta.\n\n\n45 &gt; 50\n70 == 70\n18 != 20\n\n\nUn laboratorio informa que una muestra de agua tiene 3.2 mg/L de cloro. El límite permitido es 2.5 mg/L. Usa una expresión lógica para determinar si la muestra excede el límite.\nEn un centro de salud se atendieron los siguientes números de pacientes por día: 20, 24, 22.\n\n\n¿Calcule el el promedio?\n¿Cuál es el total?",
+    "crumbs": [
+      "Operadores"
+    ]
   },
   {
     "objectID": "diapositivas/proyectos_R.html#trabajo-por-proyectos-en-r",
@@ -49,33 +188,43 @@
     "text": "¿Cómo crear un proyecto en RStudio?\nPaso 4:\nColoca un nombre a tu proyecto.\nPaso 5:\nSi fue creado correctamente, verifica en la carpeta destino la aparición de un icono con la extensión:\n\n\n\n\n[De Excel a R]"
   },
   {
-    "objectID": "proyectosR1.html",
-    "href": "proyectosR1.html",
-    "title": "Proyectos en R",
+    "objectID": "Script2.html",
+    "href": "Script2.html",
+    "title": "Script en R",
     "section": "",
     "text": "Ver diapositivas en full screen",
     "crumbs": [
-      "Proyectos en R"
+      "Script"
     ]
   },
   {
-    "objectID": "proyectosR1.html#diapositivas",
-    "href": "proyectosR1.html#diapositivas",
-    "title": "Proyectos en R",
+    "objectID": "Script2.html#diapositivas",
+    "href": "Script2.html#diapositivas",
+    "title": "Script en R",
     "section": "",
     "text": "Ver diapositivas en full screen",
     "crumbs": [
-      "Proyectos en R"
+      "Script"
     ]
   },
   {
-    "objectID": "proyectosR1.html#actividad",
-    "href": "proyectosR1.html#actividad",
-    "title": "Proyectos en R",
+    "objectID": "Script2.html#actividad",
+    "href": "Script2.html#actividad",
+    "title": "Script en R",
     "section": "Actividad",
-    "text": "Actividad\n\nCrear un proyecto en R en su computador local para usarlos durante todo este curso\nCrear al interior de este proyecto los siguientes carpetas:\n\n\nCodigo\ndatos_brutos\ndatos_limpios\ngraficos\nreportes\n\n\nCrea otro proyecto, para tu trabajo final de este curso, con las carpetas que creas debe iniciar dicho trabajo final",
+    "text": "Actividad\nCrear su primer archivo Script que contenga las primera lineas de codigo de este curso.\n\nCrea el archivo Script, nombralo como desees y guardalo en la carpeta que denominaste en tu proyecto como codigo.\nCréarlo con los siguientes comentarios:\n\n\n# Curso R en Epidemiologia de Campo\n# Nombre:\n# Fecha:",
     "crumbs": [
-      "Proyectos en R"
+      "Script"
+    ]
+  },
+  {
+    "objectID": "tablas_agrup9.html#actividad",
+    "href": "tablas_agrup9.html#actividad",
+    "title": "Tablas dinamicas con tidyr",
+    "section": "Actividad",
+    "text": "Actividad\n\nConstruya una tabla del numero de casos por semana epidemiologica\nConstruya una tabla del numero de casos por año.\nConstruya una tabla con la media de casos por semana de los 3 años\nConstruya una tabla de conteo de casos por año, semana y sexo.",
+    "crumbs": [
+      "Tablas dinamicas con R"
     ]
   },
   {
@@ -100,24 +249,35 @@
     "text": "Exercises\n\nDownload zip file with exercises with this link.\nExtract the zip file locally and open in an RStudio project.\n\nSolutions available here."
   },
   {
-    "objectID": "importando7.html#actividad-1",
-    "href": "importando7.html#actividad-1",
-    "title": "Importación de datos a R",
-    "section": "Actividad 1",
-    "text": "Actividad 1\n\nYa tienes instalado el paquete rio !, ahora actívalo para iniciar la importación de datos.\nDescarga los siguientes archivos y depositalos en la carpeta datos_brutos del proyecto en el que estamos trabajando.\n\n\n\n\n\n\n\n🧾 Datos\n\n\n\n👉 Descargar dengue.xlsx\n\n\n\nImporta a R el archivo descargado.",
+    "objectID": "iniciando_tidy8.html#actividad",
+    "href": "iniciando_tidy8.html#actividad",
+    "title": "Tidyverse: Seleccionar, Filtrar, Organizar",
+    "section": "Actividad",
+    "text": "Actividad\nCon uso de la base de datos dengue realiza las siguientes:\n\nCrea un nuevo data frame donde solo esten las siguientes columnas: FEC_NOT, SEMANA, EDAD, UNI_MED, SEXO, AREA, TIP_SS, PER_ETN, FEC_CON, INI_SIN, PAC_HOS, COD_DPTO_O, COD_MUN_O, Departamento_ocurrencia, Municipio_ocurrencia.\nDe la anterior base con selección de variables, realice un filtro donde se eliminen registros sin datos en la variable barrio y asignala a un nuevo objeto.\nOrganiza la base del punto 1 por semana epidemiologica de menor a mayor.\nReordene la variable FEC_NOT que quede de primera en la base.",
     "crumbs": [
-      "Importación de datos a R"
+      "Tidyverse"
     ]
   },
   {
-    "objectID": "importando7.html#actividad-2",
-    "href": "importando7.html#actividad-2",
-    "title": "Importación de datos a R",
-    "section": "Actividad 2",
-    "text": "Actividad 2\nDe la base de datos de dengue cargada obtenga los datos para el siguiente reporte:\n\nNombre de variables que contiene\nNumero de filas y columnas\nQue tipo de variable es SEMANA y EDAD\nQue tipo de variable es FEC_NOT\nCuales valores únicos tiene SEMANA, SEXO, barrio",
-    "crumbs": [
-      "Importación de datos a R"
-    ]
+    "objectID": "diapositivas/Script.html#objetivo-de-aprendizaje",
+    "href": "diapositivas/Script.html#objetivo-de-aprendizaje",
+    "title": "Script de R",
+    "section": "Objetivo de Aprendizaje",
+    "text": "Objetivo de Aprendizaje\n\nComprender qué es un script en R.\n\nPara qué sirve.\n\nCómo escribirlo de manera clara, reproducible y colaborativa."
+  },
+  {
+    "objectID": "diapositivas/Script.html#qué-es-un-script-en-r",
+    "href": "diapositivas/Script.html#qué-es-un-script-en-r",
+    "title": "Script de R",
+    "section": "¿Qué es un script en R?",
+    "text": "¿Qué es un script en R?\nUn script es un archivo de texto (.R) con comandos de R que puedes ejecutar más de una vez.\nVentajas - Portabilidad: compartir tu trabajo fácilmente.\n- Reproducibilidad: deja evidencia clara de lo que hiciste.\n- Comentarios: anotas lo que haces y por qué."
+  },
+  {
+    "objectID": "diapositivas/Script.html#comentarios-en-un-script",
+    "href": "diapositivas/Script.html#comentarios-en-un-script",
+    "title": "Script de R",
+    "section": "Comentarios en un script",
+    "text": "Comentarios en un script\nLos comentarios comienzan con # y son lineas de codigo o texto que no se ejecutan. Se usan para:\n- Explicar lo que hace el código.\n- Dejar notas para ti o colegas.\n- Desactivar líneas temporalmente.\n# Cargar paquetes\nlibrary(dplyr)\n\n# Este filtro selecciona solo 2025\ndatos_2025 &lt;- datos |&gt; filter(anio == 2025)\n\n# 2) Importación de datos ----\ncasos &lt;- read_csv(\"data/casos.csv\")\n\n# 3) Limpieza/transformación ----\n\n\n\n\n[De Excel a R]"
   },
   {
     "objectID": "Motivacion.html#objetivo",
@@ -210,36 +370,6 @@
     ]
   },
   {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "License",
-    "section": "",
-    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License.",
-    "crumbs": [
-      "License"
-    ]
-  },
-  {
-    "objectID": "iniciando_tidy8.html#actividad",
-    "href": "iniciando_tidy8.html#actividad",
-    "title": "Tidyverse: Seleccionar, Filtrar, Organizar",
-    "section": "Actividad",
-    "text": "Actividad\nCon uso de la base de datos dengue realiza las siguientes:\n\nCrea un nuevo data frame donde solo esten las siguientes columnas: FEC_NOT, SEMANA, EDAD, UNI_MED, SEXO, AREA, TIP_SS, PER_ETN, FEC_CON, INI_SIN, PAC_HOS, COD_DPTO_O, COD_MUN_O, Departamento_ocurrencia, Municipio_ocurrencia.\nDe la anterior base con selección de variables, realice un filtro donde se eliminen registros sin datos en la variable barrio y asignala a un nuevo objeto.\nOrganiza la base del punto 1 por semana epidemiologica de menor a mayor.\nReordene la variable FEC_NOT que quede de primera en la base.",
-    "crumbs": [
-      "Tidyverse"
-    ]
-  },
-  {
-    "objectID": "Funciones3.html#actividad",
-    "href": "Funciones3.html#actividad",
-    "title": "Funciones",
-    "section": "Actividad",
-    "text": "Actividad\nExploremos en R las siguientes funciones de R base:\ndate()\nmean()\nsd()\nmin()\nsum()\nmax()",
-    "crumbs": [
-      "Funciones"
-    ]
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal",
@@ -300,6 +430,46 @@
     ]
   },
   {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "License",
+    "section": "",
+    "text": "This work is licensed under a Creative Commons Attribution 4.0 International License.",
+    "crumbs": [
+      "License"
+    ]
+  },
+  {
+    "objectID": "Funciones3.html#actividad",
+    "href": "Funciones3.html#actividad",
+    "title": "Funciones",
+    "section": "Actividad",
+    "text": "Actividad\nExploremos en R las siguientes funciones de R base:\ndate()\nmean()\nsd()\nmin()\nsum()\nmax()",
+    "crumbs": [
+      "Funciones"
+    ]
+  },
+  {
+    "objectID": "importando7.html#actividad-1",
+    "href": "importando7.html#actividad-1",
+    "title": "Importación de datos a R",
+    "section": "Actividad 1",
+    "text": "Actividad 1\n\nYa tienes instalado el paquete rio !, ahora actívalo para iniciar la importación de datos.\nDescarga los siguientes archivos y depositalos en la carpeta datos_brutos del proyecto en el que estamos trabajando.\n\n\n\n\n\n\n\n🧾 Datos\n\n\n\n👉 Descargar dengue.xlsx\n\n\n\nImporta a R el archivo descargado.",
+    "crumbs": [
+      "Importación de datos a R"
+    ]
+  },
+  {
+    "objectID": "importando7.html#actividad-2",
+    "href": "importando7.html#actividad-2",
+    "title": "Importación de datos a R",
+    "section": "Actividad 2",
+    "text": "Actividad 2\nDe la base de datos de dengue cargada obtenga los datos para el siguiente reporte:\n\nNombre de variables que contiene\nNumero de filas y columnas\nQue tipo de variable es SEMANA y EDAD\nQue tipo de variable es FEC_NOT\nCuales valores únicos tiene SEMANA, SEXO, barrio",
+    "crumbs": [
+      "Importación de datos a R"
+    ]
+  },
+  {
     "objectID": "librerias4.html#actividad",
     "href": "librerias4.html#actividad",
     "title": "Librerias en R",
@@ -310,35 +480,72 @@
     ]
   },
   {
-    "objectID": "tablas_agrup9.html#actividad",
-    "href": "tablas_agrup9.html#actividad",
-    "title": "Tablas dinamicas con tidyr",
-    "section": "Actividad",
-    "text": "Actividad\n\nConstruya una tabla del numero de casos por semana epidemiologica\nConstruya una tabla del numero de casos por año.\nConstruya una tabla con la media de casos por semana de los 3 años\nConstruya una tabla de conteo de casos por año, semana y sexo.",
+    "objectID": "proyectosR1.html",
+    "href": "proyectosR1.html",
+    "title": "Proyectos en R",
+    "section": "",
+    "text": "Ver diapositivas en full screen",
     "crumbs": [
-      "Tablas agrupadas"
+      "Proyectos en R"
     ]
   },
   {
-    "objectID": "diapositivas/Script.html#objetivo-de-aprendizaje",
-    "href": "diapositivas/Script.html#objetivo-de-aprendizaje",
-    "title": "Script de R",
-    "section": "Objetivo de Aprendizaje",
-    "text": "Objetivo de Aprendizaje\n\nComprender qué es un script en R.\n\nPara qué sirve.\n\nCómo escribirlo de manera clara, reproducible y colaborativa."
+    "objectID": "proyectosR1.html#diapositivas",
+    "href": "proyectosR1.html#diapositivas",
+    "title": "Proyectos en R",
+    "section": "",
+    "text": "Ver diapositivas en full screen",
+    "crumbs": [
+      "Proyectos en R"
+    ]
   },
   {
-    "objectID": "diapositivas/Script.html#qué-es-un-script-en-r",
-    "href": "diapositivas/Script.html#qué-es-un-script-en-r",
-    "title": "Script de R",
-    "section": "¿Qué es un script en R?",
-    "text": "¿Qué es un script en R?\nUn script es un archivo de texto (.R) con comandos de R que puedes ejecutar más de una vez.\nVentajas - Portabilidad: compartir tu trabajo fácilmente.\n- Reproducibilidad: deja evidencia clara de lo que hiciste.\n- Comentarios: anotas lo que haces y por qué."
+    "objectID": "proyectosR1.html#actividad",
+    "href": "proyectosR1.html#actividad",
+    "title": "Proyectos en R",
+    "section": "Actividad",
+    "text": "Actividad\n\nCrear un proyecto en R en su computador local para usarlos durante todo este curso\nCrear al interior de este proyecto los siguientes carpetas:\n\n\nCodigo\ndatos_brutos\ndatos_limpios\ngraficos\nreportes\n\n\nCrea otro proyecto, para tu trabajo final de este curso, con las carpetas que creas debe iniciar dicho trabajo final",
+    "crumbs": [
+      "Proyectos en R"
+    ]
   },
   {
-    "objectID": "diapositivas/Script.html#comentarios-en-un-script",
-    "href": "diapositivas/Script.html#comentarios-en-un-script",
-    "title": "Script de R",
-    "section": "Comentarios en un script",
-    "text": "Comentarios en un script\nLos comentarios comienzan con # y son lineas de codigo o texto que no se ejecutan. Se usan para:\n- Explicar lo que hace el código.\n- Dejar notas para ti o colegas.\n- Desactivar líneas temporalmente.\n# Cargar paquetes\nlibrary(dplyr)\n\n# Este filtro selecciona solo 2025\ndatos_2025 &lt;- datos |&gt; filter(anio == 2025)\n\n# 2) Importación de datos ----\ncasos &lt;- read_csv(\"data/casos.csv\")\n\n# 3) Limpieza/transformación ----\n\n\n\n\n[De Excel a R]"
+    "objectID": "tidy_plus8.html#actividad",
+    "href": "tidy_plus8.html#actividad",
+    "title": "Tidyverse: Crear, Transformar",
+    "section": "Actividad",
+    "text": "Actividad\nCon uso de la base de datos dengue realiza las siguientes:\n\nCrea grupos de edad asi en una nueva variable llamada gr_edad. si la edad no esta numerica conviertala previamente en numérica y estandarizarla en años.\n\n\"0–4 años\" \"5–14 años\" \"15–59 años\" \"60+ años\"\n\nElimine duplicados por cod_eve, num_ide y ini_sin. Revisa si cambia el numero de registros\nUna en una sola columna nombre y apellidos separado por espacio y deje los nombre completo solo con mayuscula inicial.\nconvierta a formato fecha las columna que son fechas en la base de datos.",
+    "crumbs": [
+      "Mas de Tidyverse"
+    ]
+  },
+  {
+    "objectID": "diapositivas/operadores_r.html#consejos-al-escribir-código-en-r",
+    "href": "diapositivas/operadores_r.html#consejos-al-escribir-código-en-r",
+    "title": "Operadores en R",
+    "section": "Consejos al escribir código en R",
+    "text": "Consejos al escribir código en R\n\nCierra siempre los paréntesis: verifica que cada ( tenga su ).\n\n\n- Evita espacios en los nombres de columnas u objetos.\n\n- Usa guiones bajos (_) o puntos (.) en su lugar.\n\n- R distingue mayúsculas y minúsculas:\nVariable_A ≠ variable_A.\n\n- Separa los argumentos de una función con comas."
+  },
+  {
+    "objectID": "diapositivas/operadores_r.html#por-qué-son-importantes-estas-herramientas",
+    "href": "diapositivas/operadores_r.html#por-qué-son-importantes-estas-herramientas",
+    "title": "Operadores en R",
+    "section": "¿Por qué son importantes estas herramientas?",
+    "text": "¿Por qué son importantes estas herramientas?\nEn vigilancia en salud pública, el primer paso para analizar información es organizarla y calcular indicadores básicos.\nEjemplos: - Promedio de casos a la semana.\n- Comparación de tasas entre regiones/localidades.\n➡️ Para esto necesitamos estructuras adecuadas y operaciones básicas en R."
+  },
+  {
+    "objectID": "diapositivas/operadores_r.html#operadores-matemáticos-básicos-en-r",
+    "href": "diapositivas/operadores_r.html#operadores-matemáticos-básicos-en-r",
+    "title": "Operadores en R",
+    "section": "Operadores matemáticos básicos en R",
+    "text": "Operadores matemáticos básicos en R\n4 + 3       # Suma\n10 - 2      # Resta\n5 * 6       # Multiplicación\n20 / 4      # División\nlog(3)      # Logaritmo natural\n2 ^ 3       # Potenciación\nsqrt(16)    # Raíz cuadrada"
+  },
+  {
+    "objectID": "diapositivas/operadores_r.html#funciones-estadísticas-básicas-en-r",
+    "href": "diapositivas/operadores_r.html#funciones-estadísticas-básicas-en-r",
+    "title": "Operadores en R",
+    "section": "Funciones estadísticas básicas en R",
+    "text": "Funciones estadísticas básicas en R\nmean(x)     # media o promedio\nsd(x)       # desviación estándar\nsum(x)      # sumatoria\nlength(x)   # conteo o cantidad de datos\nmin(x)      # mínimo\nmax(x)      # máximo\nEstas funciones son la base para construir indicadores y explorar tus datos.\n\n\n\n\n[De Excel a R]"
   },
   {
     "objectID": "manejo_datos10.html#actividad",
@@ -351,54 +558,18 @@
     ]
   },
   {
-    "objectID": "operadores5.html#actividad",
-    "href": "operadores5.html#actividad",
-    "title": "Operadores Matematicos",
-    "section": "Actividad",
-    "text": "Actividad\n\nCalculando tasas\n\nSupón que en un municipio hubo 325 casos de dengue en un año, con una población de 78.420 habitantes.\n\nCalcula la tasa de incidencia por 100.000 habitantes.\nCalcula el número esperado de casos si la tasa fuera de 0.006 casos/habitante.\n\n\nComparaciones Dado que se espera que la tasa de incidencia de dengue esté por debajo de 450 casos por 100.000 habitantes. Verifica si la tasa actual excede este umbral.\nEvalúa las siguientes expresiones en R y verifica su respuesta.\n\n\n45 &gt; 50\n70 == 70\n18 != 20\n\n\nUn laboratorio informa que una muestra de agua tiene 3.2 mg/L de cloro. El límite permitido es 2.5 mg/L. Usa una expresión lógica para determinar si la muestra excede el límite.\nEn un centro de salud se atendieron los siguientes números de pacientes por día: 20, 24, 22.\n\n\n¿Calcule el el promedio?\n¿Cuál es el total?",
-    "crumbs": [
-      "Operadores"
-    ]
+    "objectID": "diapositivas/tabla_dinamica_r.html#funciones-principales",
+    "href": "diapositivas/tabla_dinamica_r.html#funciones-principales",
+    "title": "Tablas dinamicas con R",
+    "section": "Funciones principales",
+    "text": "Funciones principales\n\n\n\n\n\n\n\nFunción\nDescripción\n\n\n\n\ngroup_by()\nAgrupa datos según una o más variables.\n\n\nsummarise()\nCalcula valores resumen (media, máximo, mínimo, conteos, etc.).\n\n\nungroup()\nElimina el agrupamiento para evitar conflictos posteriores.\n\n\n\n\n\n\n\n\n\nImportante:\n\n\nEstas funciones suelen usarse en conjunto dentro de un pipeline (%&gt;%)."
   },
   {
-    "objectID": "Script2.html",
-    "href": "Script2.html",
-    "title": "Script en R",
-    "section": "",
-    "text": "Ver diapositivas en full screen",
-    "crumbs": [
-      "Script"
-    ]
-  },
-  {
-    "objectID": "Script2.html#diapositivas",
-    "href": "Script2.html#diapositivas",
-    "title": "Script en R",
-    "section": "",
-    "text": "Ver diapositivas en full screen",
-    "crumbs": [
-      "Script"
-    ]
-  },
-  {
-    "objectID": "Script2.html#actividad",
-    "href": "Script2.html#actividad",
-    "title": "Script en R",
-    "section": "Actividad",
-    "text": "Actividad\nCrear su primer archivo Script que contenga las primera lineas de codigo de este curso.\n\nCrea el archivo Script, nombralo como desees y guardalo en la carpeta que denominaste en tu proyecto como codigo.\nCréarlo con los siguientes comentarios:\n\n\n# Curso R en Epidemiologia de Campo\n# Nombre:\n# Fecha:",
-    "crumbs": [
-      "Script"
-    ]
-  },
-  {
-    "objectID": "estructuras6.html#actividad",
-    "href": "estructuras6.html#actividad",
-    "title": "Estructuras de datos en R",
-    "section": "Actividad",
-    "text": "Actividad\n\nCrear tu primer vector\n\nCrea un vector llamado casos_dengue con los siguientes valores, que representan el número de casos por semana:\n15, 22, 18, 35, 20\n\nAccede a los elementos del vector construido previamente\n\n\nMuestra el tercer valor del vector casos_dengue.\nSuma los dos primeros elementos\n\n\nAplicar funciones básicas: Utiliza funciones matemáticas para calcular:\n\n\nLa media (mean) de los casos de dengue\nEl total de casos de dengue (sum)\nEl valor máximo (max) y mínimo (min)\n\n\nCrear un Data Frame: crea los siguientes vectores y usa los vectores anteriores para construir un data frame llamado datos:\n\nedad = 25, 34, 54, 65 sexo = F, M, F, M\n\nExplorar el data frame:\n\n\nMuestra el data frame completo.\n\n\nSe registraron los siguientes casos de influenza en cinco semanas consecutivas:\n\n\ncasos_influenza &lt;- c(12, 18, 24, 22, 15)\n\n\nCalcula el total de casos.\n¿Cuál fue el promedio semanal?\n¿Hubo alguna semana con más de 20 casos? Usa un operador lógico.\n\n\nCalcula:\n\n\nEl valor máximo y mínimo.\nLa diferencia entre el valor máximo y el mínimo (rango).\nLa desviación estándar de los casos.\n\n\nImagina que quieres calcular la tasa de incidencia por cada 10.000 habitantes. Los casos y poblaciones son:\n\n\ncasos &lt;- c(56, 23, 87)\npoblacion &lt;- c(25000, 15000, 40000)\n\n\nCalcula la tasa por 10.000 habitantes para cada zona.\n\n\nDiscute con tus compañeros:\n\n¿Qué tipo de análisis podrías automatizar en vigilancia con estas herramientas?\n¿Qué funciones usarías para revisar la consistencia de los datos antes de analizarlos?",
-    "crumbs": [
-      "Estructuras de datos"
-    ]
+    "objectID": "diapositivas/tabla_dinamica_r.html#lógica-de-uso",
+    "href": "diapositivas/tabla_dinamica_r.html#lógica-de-uso",
+    "title": "Tablas dinamicas con R",
+    "section": "Lógica de uso",
+    "text": "Lógica de uso\nEl flujo típico sigue este orden:\ndataset %&gt;% \n  group_by(variable_agrupacion) %&gt;%\n  summarise(funciones_auxiliares) %&gt;%\n  ungroup()\n\n\n\n\n\n\nNote\n\n\nEste patrón garantiza que los cálculos se hagan por grupo y luego el objeto quede “limpio” para pasos siguientes.\n\n\n\n\n\n\n\n[De Excel a R]"
   },
   {
     "objectID": "diapositivas/funciones_r.html#qué-es-una-función",
@@ -422,18 +593,18 @@
     "text": "Ejemplo con argumentos nombrados\nincidencia &lt;- incidence(\n  x = datos,          # datos de entrada\n  date_index = \"fis\", # variable fecha\n  interval = 7        # tamaño del intervalo de tiempo (semanal))\nCada argumento tiene nombre y se asigna con =.\nPuedes cambiar posiciones pero nómbralos para mayor claridad."
   },
   {
-    "objectID": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
-    "href": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
-    "title": "Funciones en R",
-    "section": "Obtener ayuda de una función:",
-    "text": "Obtener ayuda de una función:\n\n?incidence\n\nBuenas prácticas\n\nNombra los argumentos clave (na.rm = TRUE, interval = 7).\nDocumenta por qué usas ciertas opciones (comentarios #).\n\n\n\n\n\n[De Excel a R]"
-  },
-  {
     "objectID": "diapositivas/funciones_r.html#funciones-trabajan-sobre-objetos",
     "href": "diapositivas/funciones_r.html#funciones-trabajan-sobre-objetos",
     "title": "Funciones en R",
     "section": "Funciones trabajan sobre objetos",
     "text": "Funciones trabajan sobre objetos\nColocas los objetos dentro de los paréntesis:\nsummary(casos$edad)\nmean(casos$edad, na.rm = TRUE)\n\nRevisa que los objetos existan y tengan el tipo esperado.\nLos errores comunes son: paréntesis, comas, tildes o nombres mal escritos."
+  },
+  {
+    "objectID": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
+    "href": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
+    "title": "Funciones en R",
+    "section": "Obtener ayuda de una función:",
+    "text": "Obtener ayuda de una función:\n\n?incidence\n\nBuenas prácticas\n\nNombra los argumentos clave (na.rm = TRUE, interval = 7).\nDocumenta por qué usas ciertas opciones (comentarios #).\n\n\n\n\n\n[De Excel a R]"
   },
   {
     "objectID": "diapositivas/librerias_r.html#qué-es-un-paquete-librería-de-r",
@@ -469,104 +640,6 @@
     "title": "Librerias en R",
     "section": "Buenas prácticas",
     "text": "Buenas prácticas\n\nDocumenta los paquetes que usas al inicio del script.\nEvita cargar paquetes que no uses (reduce conflictos).\nSi un paquete no está, instálalo y vuelve a cargar.\n\n\n\n\n\n[De Excel a R]"
-  },
-  {
-    "objectID": "diapositivas/operadores_r.html#consejos-al-escribir-código-en-r",
-    "href": "diapositivas/operadores_r.html#consejos-al-escribir-código-en-r",
-    "title": "Operadores en R",
-    "section": "Consejos al escribir código en R",
-    "text": "Consejos al escribir código en R\n\nCierra siempre los paréntesis: verifica que cada ( tenga su ).\n\n\n- Evita espacios en los nombres de columnas u objetos.\n\n- Usa guiones bajos (_) o puntos (.) en su lugar.\n\n- R distingue mayúsculas y minúsculas:\nVariable_A ≠ variable_A.\n\n- Separa los argumentos de una función con comas."
-  },
-  {
-    "objectID": "diapositivas/operadores_r.html#por-qué-son-importantes-estas-herramientas",
-    "href": "diapositivas/operadores_r.html#por-qué-son-importantes-estas-herramientas",
-    "title": "Operadores en R",
-    "section": "¿Por qué son importantes estas herramientas?",
-    "text": "¿Por qué son importantes estas herramientas?\nEn vigilancia en salud pública, el primer paso para analizar información es organizarla y calcular indicadores básicos.\nEjemplos: - Promedio de casos a la semana.\n- Comparación de tasas entre regiones/localidades.\n➡️ Para esto necesitamos estructuras adecuadas y operaciones básicas en R."
-  },
-  {
-    "objectID": "diapositivas/operadores_r.html#operadores-matemáticos-básicos-en-r",
-    "href": "diapositivas/operadores_r.html#operadores-matemáticos-básicos-en-r",
-    "title": "Operadores en R",
-    "section": "Operadores matemáticos básicos en R",
-    "text": "Operadores matemáticos básicos en R\n4 + 3       # Suma\n10 - 2      # Resta\n5 * 6       # Multiplicación\n20 / 4      # División\nlog(3)      # Logaritmo natural\n2 ^ 3       # Potenciación\nsqrt(16)    # Raíz cuadrada"
-  },
-  {
-    "objectID": "diapositivas/operadores_r.html#funciones-estadísticas-básicas-en-r",
-    "href": "diapositivas/operadores_r.html#funciones-estadísticas-básicas-en-r",
-    "title": "Operadores en R",
-    "section": "Funciones estadísticas básicas en R",
-    "text": "Funciones estadísticas básicas en R\nmean(x)     # media o promedio\nsd(x)       # desviación estándar\nsum(x)      # sumatoria\nlength(x)   # conteo o cantidad de datos\nmin(x)      # mínimo\nmax(x)      # máximo\nEstas funciones son la base para construir indicadores y explorar tus datos.\n\n\n\n\n[De Excel a R]"
-  },
-  {
-    "objectID": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
-    "href": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
-    "title": "Estructuras de datos en R",
-    "section": "Estructuras básicas de datos en R",
-    "text": "Estructuras básicas de datos en R\nEn R existen diversas estructuras de datos:\n\nVectores\n\nMatrices\n\nListas\n\nData Frames"
-  },
-  {
-    "objectID": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
-    "href": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
-    "title": "Estructuras de datos en R",
-    "section": "Estructuras más utilizadas en vigilancia en salud",
-    "text": "Estructuras más utilizadas en vigilancia en salud\nPara los análisis de vigilancia en salud pública, las más comunes son:\n\nVectores\n\nData Frames"
-  },
-  {
-    "objectID": "diapositivas/estructuras_r.html#vector",
-    "href": "diapositivas/estructuras_r.html#vector",
-    "title": "Estructuras de datos en R",
-    "section": "Vector",
-    "text": "Vector\nUn vector es un contenedor para una secuencia de datos singulares, todos del mismo tipo (numérico, carácter, lógico, etc.).\nPara crear un vector, usamos la función c(), que significa concatenar (similar a Excel).\n# Creando un vector\nc(23, 25, 45, 34, 65)"
-  },
-  {
-    "objectID": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
-    "href": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
-    "title": "Estructuras de datos en R",
-    "section": "Guardar un vector en un objeto reutilizable",
-    "text": "Guardar un vector en un objeto reutilizable\nUsamos el operador de asignación &lt;-.\nA la izquierda: el nombre del objeto.\nA la derecha: el vector que queremos guardar.\nEjemplo\nedad &lt;- c(23, 25, 45, 34, 65)\n💡 Ahora el objeto edad queda guardado en el entorno de trabajo y puede reutilizarse."
-  },
-  {
-    "objectID": "diapositivas/estructuras_r.html#dataframe",
-    "href": "diapositivas/estructuras_r.html#dataframe",
-    "title": "Estructuras de datos en R",
-    "section": "DataFrame",
-    "text": "DataFrame\n\nUn dataframe es una base de datos o dataset, equivalente a una hoja de cálculo.\n\nSe usa para datos:\n\nNominales (caso a caso).\nAgregados (por ejemplo, casos por semana epidemiológica).\n\nCada columna es un vector, y cada fila es un registro."
-  },
-  {
-    "objectID": "diapositivas/estructuras_r.html#crear-un-dataframe",
-    "href": "diapositivas/estructuras_r.html#crear-un-dataframe",
-    "title": "Estructuras de datos en R",
-    "section": "Crear un dataframe",
-    "text": "Crear un dataframe\nPrimero se crean los vectores/columnas, y luego se unen:\n# Creamos los vectores\nedad &lt;- c(25, 34, 54, 65)\nsexo &lt;- c(\"F\", \"M\", \"F\", \"M\")\ny luego \n# Creamos el data frame\ndata.frame(edad, sexo)\nNo olvide guardarlo en el ambiente, ¿Como lo haria?"
-  },
-  {
-    "objectID": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
-    "href": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
-    "title": "Estructuras de datos en R",
-    "section": "Importar datos en lugar de crearlos",
-    "text": "Importar datos en lugar de crearlos\nNo siempre es necesario escribir los data frames manualmente. Puedes importar archivos desde Excel, CSV u otros formatos:\nusemos la libreria:\nlibrary(rio)\n# funcion \nimport()\n\n\n\n\n[De Excel a R]"
-  },
-  {
-    "objectID": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
-    "href": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
-    "title": "Importacion de datos a R",
-    "section": "¿Qué significa importar y exportar en R?",
-    "text": "¿Qué significa importar y exportar en R?\n\nImportar: leer un archivo desde tu disco duro y convertirlo en un objeto dentro de R (usualmente un data.frame).\nExportar: guardar un objeto de R (datos, tablas, gráficos) como un archivo externo (.csv, .xlsx, .rds, etc.)."
-  },
-  {
-    "objectID": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
-    "href": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
-    "title": "Importacion de datos a R",
-    "section": "Tipos de archivos comunes",
-    "text": "Tipos de archivos comunes\nPuedes trabajar con múltiples tipos de archivos:\n\n.csv, .xlsx, .tsv\nArchivos de SPSS, STATA, SAS\n.rds (objeto individual en R)\n.RData (múltiples objetos o todo el espacio de trabajo)"
-  },
-  {
-    "objectID": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
-    "href": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
-    "title": "Importacion de datos a R",
-    "section": "El paquete rio: una solución sencilla",
-    "text": "El paquete rio: una solución sencilla\nrio = R Input/Output\nVentajas: - Usa solo dos funciones: import() y export().\n\nReconoce automáticamente el tipo de archivo por su extensión.\n## Sintaxis de uso\n\nImportar datos:\n# Importar un archivo CSV\ndataset &lt;- import(\"datos.csv\")\nExportar datos:\n# Exportar un objeto a Excel\nexport(dataset, \"resultado.xlsx\")\n\n\n\n\n[De Excel a R]"
   },
   {
     "objectID": "diapositivas/tidydata_r.html#qué-es-el-tidyverse",
@@ -618,34 +691,6 @@
     "text": "relocate()`: re-ordena columnas\n\n\n\n\nrelocate(datos, # dataset\n          edad, # variables o variables\n         .after = , # despues de que variable\n         .before =) # antes de que variable"
   },
   {
-    "objectID": "diapositivas/tidydata_r.html#el-operador-pipe",
-    "href": "diapositivas/tidydata_r.html#el-operador-pipe",
-    "title": "Tidyverse",
-    "section": "El operador pipe %>%:",
-    "text": "El operador pipe %&gt;%:\nPermite encadenar funciones sin crear objetos intermedios.\ndengue %&gt;%\n  select(edad, sexo, semana, municipio) %&gt;%\n  filter(sexo == \"1\")\nAtajo de teclado:\nWindows: Ctrl + Shift + M\nMac: Cmd + Shift + M"
-  },
-  {
-    "objectID": "diapositivas/tidydata_r.html",
-    "href": "diapositivas/tidydata_r.html",
-    "title": "Tidyverse",
-    "section": "",
-    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
-  },
-  {
-    "objectID": "diapositivas/tidydata_plus_r.html#crear-nuevas-columnas-o-modificarlas",
-    "href": "diapositivas/tidydata_plus_r.html#crear-nuevas-columnas-o-modificarlas",
-    "title": "Más de tidyverse",
-    "section": "Crear nuevas columnas o modificarlas",
-    "text": "Crear nuevas columnas o modificarlas\nEn R podemos crear o modificar variables a partir de reglas u operaciones, usando:\nmutate(.data = ,\n       variable_nueva = )# regla de creacion \n¿Qué hace mutate()?\nPermite:\n\nCrear nuevas variables.\nModificar columnas existentes.\nRealizar operaciones matemáticas o lógicas sobre variables y entre variables\nPuede aplicarse sobre datos nominales (caso a caso).\nTambién sobre datos agrupados (por ejemplo, por municipio o departamento)."
-  },
-  {
-    "objectID": "diapositivas/tidydata_plus_r.html#funciones-de-apoyo",
-    "href": "diapositivas/tidydata_plus_r.html#funciones-de-apoyo",
-    "title": "Más de tidyverse",
-    "section": "Funciones de apoyo",
-    "text": "Funciones de apoyo\n\n\n\n\n\n\n\nFunción\nUso principal\n\n\n\n\ncase_when()\nCrear categorías a partir de condiciones\n\n\nif_else()\nCondicional simple (dos opciones)\n\n\nround(), log(), sqrt()\nOperaciones numéricas comunes\n\n\nas.numeric(), as.character()\nConversión de tipo de variable\n\n\n\ny la gran mayoria de funciones que tengan un efecto de cambio o de creacion de nueva informacion apartir del uso de otras variables."
-  },
-  {
     "objectID": "diapositivas/tidydata_r.html#el-operador-pipeline",
     "href": "diapositivas/tidydata_r.html#el-operador-pipeline",
     "title": "Tidyverse",
@@ -653,76 +698,17 @@
     "text": "El operador pipeline %&gt;%:\nPermite encadenar funciones sin crear objetos intermedios.\ndengue %&gt;%\n  select(edad, sexo, semana, municipio) %&gt;%\n  filter(sexo == \"1\")\nAtajo de teclado:\nWindows: Ctrl + Shift + M\nMac: Cmd + Shift + M\n\n\n\n\n[De Excel a R]"
   },
   {
-    "objectID": "tidy_plus8.html#actividad",
-    "href": "tidy_plus8.html#actividad",
-    "title": "Tidyverse: Crear, Transformar",
-    "section": "Actividad",
-    "text": "Actividad\nCon uso de la base de datos dengue realiza las siguientes:\n\nCrea grupos de edad asi en una nueva variable llamada gr_edad. si la edad no esta numerica conviertala previamente en numérica y estandarizarla en años.\n\n\"0–4 años\" \"5–14 años\" \"15–59 años\" \"60+ años\"\n\nElimine duplicados por cod_eve, num_ide y ini_sin. Revisa si cambia el numero de registros\nUna en una sola columna nombre y apellidos separado por espacio y deje los nombre completo solo con mayuscula inicial.\nconvierta a formato fecha las columna que son fechas en la base de datos.",
-    "crumbs": [
-      "Mas de Tidyverse"
-    ]
+    "objectID": "q-and-a.html",
+    "href": "q-and-a.html",
+    "title": "Q & A From Clinical Reporting with {gtsummary} Workshop",
+    "section": "",
+    "text": "Q: How do I save PDFs of slides?\n\n\nThe website will stay up and you can access the slides; if you want to print it go to the slides in full screen view, convert to pdf mode and print\n\n\nQ: How can I see tables in viewer pane?\n\n\nGlobal Options &gt; RMarkdown &gt; show output in Viewer Pane\n\n\nQ: Link for the code for Dan’s quarto slides?\n\n\nhttps://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed/tree/main/slides\n\n\nQ: Syntax for set_variable_labels()?\n\n\nSee function docs at: https://larmarange.github.io/labelled/reference/var_label.html\n\n\nQ: How to confirm labels worked?\n\n\nstr(df) or view(df)\n\n\nQ: What is |&gt;?\n\n\nIt’s the new base R pipe! See https://ivelasq.rbind.io/blog/understanding-the-r-pipe/ for more details\n\n\nQ: What statistics can you use in tbl_summary(statistic=) argument? How does the function know \"{min}, {max}\" is the range?\n\n\nThere are a set of known names for default statistics that you can use in this function. These (plus glue syntax) allow you to display specific statistics. See more details here, under the statistic argument section: https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html\n\n\nQ: How do you display mean instead of median?\n\n\nAdjust the statistic argument:\n\n\ntrial %&gt;%\n  select(age) %&gt;%\n  tbl_summary(statistic = everything() ~ \"{mean}\")\n\n\n\n\n\n\n\nCharacteristic\nN = 2001\n\n\n\n\nAge\n47\n\n\n    Unknown\n11\n\n\n\n1 Mean\n\n\n\n\n\n\n\n\n\nQ: With add_n() can you change the label to specify that it represents non-missing values?\n\n\nYes, you can change this with col_label argument:\n\n\ntrial |&gt;\n  select(age, grade, trt) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() |&gt; \n  add_n(col_label = \"**N (Non-missing)**\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nN (Non-missing)\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n189\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n200\n\n\n\n\n\n\n\n\n    I\n\n\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n\n\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n\n\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: How can you remove the death variable inside the tbl_summary() function?\n\n\nUse adplyr::select() prior to tbl_summary or use the include = argument in tbl_summary(). Three options below:\n\n\nsm_trial &lt;- trial |&gt;\n  select(age, grade, trt, death)\n\nsm_trial |&gt;\n  select(-death) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = -death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = !death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: Is it possible to add custom footnotes, say if you want to explain what a particular category includes etc.?\n\n\nYes, use modify_footnote() for column headers for footnotes that already exist. Or use modify_table_styling() for new footnotes. https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html\n\n\nQ: Does gtsummary support role selection like {recipes}?\n\n\nUse the selectors all_continuous(), all_categorical(), etc.\n\n\nQ: There is an error trying to use add_difference() with add_p()\n\n\nThis is because you are trying to add two p’s to same table. You could consider doing two separate tables then using tbl_merge() to merge them, but presenting these two p-values in one table could be confusing.\n\n\nQ: It would be great to have an “asterisk_p” to show significant p-values, like bold_p()\n\n\nadd_significance_stars() already exists! https://www.danieldsjoberg.com/gtsummary/reference/add_significance_stars.html\n\n\nQ: If there are more than two groups, is there any function for post-hoc testing?\n\n\nHere are supported tests: https://www.danieldsjoberg.com/gtsummary/reference/tests.html. Post-hoc tests might require custom testing. There are some relevant questions on stackoverflow.com that may be useful.\n\n\nQ: Can gtsummary give Bayesian statistics result?\n\n\nSee https://www.danieldsjoberg.com/gtsummary/reference/tests.html for supported tests. If it is not supported, you can use custom functions for p-values (see add_p()) or add_stat() to use a custom statistic.\n\n\nQ: The {rms} package fits are not supported?\n\n\nYou can file an issue for support. You can also use custom tidier. See Wald example in table gallery for tips on how to do this: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: How does it handle interaction terms?\n\n\nGorgeously:\n\n\ntbl &lt;-\n      lm(time ~ ph.ecog*sex, survival::lung) %&gt;%\n      tbl_regression(label = list(ph.ecog = \"ECOG Score\", sex = \"Sex\"))\n    \ntbl\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nECOG Score\n-119\n-233, -5.5\n0.040\n\n\nSex\n11\n-79, 102\n0.8\n\n\nECOG Score * Sex\n43\n-33, 120\n0.3\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: What does exponentiate=TRUE do again in tbl_regression()? I missed it.\n\n\nExponentiation coefficients so you can easily report OR instead of log(OR) or HRs instead of raw coefficients.\n\n\nQ: Is there a way to add an additional footnote saying T1 is the control? The default dash may be interpreted as a “missing value”.\n\n\nmodify_table_styling() https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html or use argument add_estimate_to_reference_rows = TRUE\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression( exponentiate = TRUE, add_estimate_to_reference_rows = FALSE ) %&gt;%\n  add_global_p() %&gt;%\n  modify_table_styling(columns = c(estimate, ci),\n                       rows = reference_row == TRUE, \n                       missing_symbol = \"Ref.\" )\n\nWarning: Use of the \"ci\" column was deprecated in gtsummary v2.0, and the column will\neventually be removed from the tables.\n! Review `?deprecated_ci_column()` for details on how to update your code.\nℹ The \"ci\" column has been replaced by the merged \"conf.low\" and \"conf.high\"\n  columns (merged with `modify_column_merge()`).\nℹ In most cases, a simple update from `ci = 'a new label'` to `conf.low = 'a\n  new label'` is sufficient.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\nRef.\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n\n\n\n\n    III\n2.28\n1.11, 4.75\n\n\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nYou can also use themes and change tbl_regression-str:ref_row_text option: https://www.danieldsjoberg.com/gtsummary/articles/themes.html\n\n\nQ: Can add_global_p() and the global p-value without removing the p-value for each level?\n\n\nThere is an arg in add_global_p() called keep; that will keep both p-values. It is FALSE by default\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression(exponentiate = TRUE,\n                 add_estimate_to_reference_rows = FALSE) %&gt;%\n  add_global_p(keep = TRUE) \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\n—\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n0.8\n\n\n    III\n2.28\n1.11, 4.75\n0.025\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nQ: tbl_regression(): Are the p-values per Wald by default?\n\n\nYou need to look at the details for your specific model and what the summary function returns. You can change default via the tidier for your model. My tidier function example available in the gallery: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: Is there an option to compare multiple regression models within a single table? (e.g., when performing sensitivity analyses). I’m thinking of a situation where we are using different adjustment sets of covariates. I’m thinking of a situation where we are using different adjustment sets of covariates.\n\n\nUse tbl_merge()\n\n\nQ: Does it work with {tidymodels}?\n\n\nThere are currently some issues with dummy variables, but we are working on it for future release.\n\n\nQ: Can you have super/sub scripts in variable names\n\n\nUse utf8 characters and markdown characters. {gt} sometimes has some issues with “common markdown” language so be aware of your output type and print engine, but most likely they will work.\n\n\nQ: Is the marginal adjusted mean estimated using the median of the other covariates fitting the model?\n\n\nThis is calculated outside the package. See emmeans::emmeans() for details on calculations.\n\n\nQ: Does tbl_regression() support ridge/lasso regressions? I usually use {glmnet} for these\n\n\nNot currently supported but see https://github.com/ddsjoberg/gtsummary/issues/1280 for more details.\n\n\nQ: For sex, how do i get it to show the Male level instead of the Female reference group?\n\n\ninline_text() has a level= argument to select this.\n\n\nQ: If I change the CI to 90%, I need to update the pattern to 90% CI {ci} right?\n\n\nIf you are using the default pattern ({conf.level}), you don’t need to change anything, but if you hard code like 95%, then yes, use pattern = \"odds ratio {estimate}; {conf.level*100}% CI {ci}\"\n\n\nQ: Can I add LaTeX symbols in the inline text like chi square results?\n\n\nProbably?\n\n\nQ: Can add_glance_source_note(), give just adjusted R^2 ?\n\n\nYes!\n\n\nmod &lt;- lm(age ~ marker + grade, trial) %&gt;% tbl_regression()\nmod %&gt;% \n  add_glance_table(include = c(r.squared, adj.r.squared))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nMarker Level (ng/mL)\n-0.04\n-2.6, 2.5\n&gt;0.9\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n—\n—\n\n\n\n\n    II\n0.64\n-4.7, 6.0\n0.8\n\n\n    III\n2.4\n-2.8, 7.6\n0.4\n\n\nR²\n0.005\n\n\n\n\n\n\nAdjusted R²\n-0.012\n\n\n\n\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: How can I increase the font size of a gtsummary object in a xaringan slide?\n\n\nYou can set a theme for this, or check out print engine options. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: How do I decrease the height of the gtsummary table so it exports properly?\n\n\nDepends on print engine and desired output format. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: What would the code be to export as XLS?\n\n\nas_hux_xlsx(). See: https://www.danieldsjoberg.com/gtsummary/reference/as_hux_table.html"
   },
   {
-    "objectID": "diapositivas/tidydata_plus_r.html#case_when-crear-columnas-con-re-categorización",
-    "href": "diapositivas/tidydata_plus_r.html#case_when-crear-columnas-con-re-categorización",
-    "title": "Más de tidyverse",
-    "section": "case_when(): crear columnas con re-categorización",
-    "text": "case_when(): crear columnas con re-categorización\nPermite crear o recodificar variables a partir de condiciones lógicas múltiples, de forma clara y legible.\nSIEMPRE SE USA CON mutate()\n# Estructura\n\ndatos %&gt;% # datos\n  mutate(nueva_variable = case_when(condicion_1 ~ \"respuesta1\",\n                                    condicion_2 ~\"respuesta2\"))\n# Ejemplo práctico: crear grupos de edad\ncasos %&gt;%\n  mutate(grupo_edad = case_when(\n    edad &lt; 5  ~ \"0–4 años\",\n    edad &lt; 15 ~ \"5–14 años\",\n    edad &lt; 60 ~ \"15–59 años\",\n    TRUE      ~ \"60+ años\"      # Condición por defecto\n  ))"
-  },
-  {
-    "objectID": "diapositivas/tidydata_plus_r.html#if_else-condicional-simple-en-r",
-    "href": "diapositivas/tidydata_plus_r.html#if_else-condicional-simple-en-r",
-    "title": "Más de tidyverse",
-    "section": "if_else(): condicional simple en R",
-    "text": "if_else(): condicional simple en R\nSe usa para crear o modificar variables cuando hay una sola condición lógica con dos posibles resultados:\nsi la condición se cumple → devuelve un valor,\nsi no → devuelve otro.\n# Ejemplo práctico: clasificar casos por edad\ncasos %&gt;%\n  mutate(menor_edad = if_else(edad &lt; 18, \"Menor\", \"Adulto\"))\nCaracterísticas:\n\nEvalúa una condición lógica (TRUE / FALSE).\nDevuelve un valor para cada caso según el resultado.\n\n\n\n\n\n\n\nTip\n\n\n💡 Usa if_else() cuando haya una sola condición; si tienes múltiples rangos o categorías, usa case_when()."
-  },
-  {
-    "objectID": "diapositivas/tidydata_plus_r.html#homogeneizar-texto-con-stringr",
-    "href": "diapositivas/tidydata_plus_r.html#homogeneizar-texto-con-stringr",
-    "title": "Más de tidyverse",
-    "section": "Homogeneizar texto con stringr",
-    "text": "Homogeneizar texto con stringr\nLas funciones str_to_lower(), str_to_upper() y str_to_title() permiten estandrizar el formato de texto en variables de tipo carácter (cadenas).\ndatos %&gt;%\n  mutate(\n    municipio_min = str_to_lower(Municipio),  # todo en minúsculas\n    municipio_may = str_to_upper(Municipio),  # todo en mayúsculas\n    municipio_tit = str_to_title(Municipio)   # primera letra en mayúscula\n  )"
-  },
-  {
-    "objectID": "diapositivas/tidydata_plus_r.html#separar-y-unir-columnas",
-    "href": "diapositivas/tidydata_plus_r.html#separar-y-unir-columnas",
-    "title": "Más de tidyverse",
-    "section": "Separar y unir columnas",
-    "text": "Separar y unir columnas\nLas funciones separate() y unite() permiten dividir o combinar columnas dentro de un data.frame.\nseparate(data = , # dataset\n         col = \"variable\", # variable a separar entre comillas\n         into = , # nombre de columnas en la se va a separar\n         sep = \"\") # separador entre comillas\n\nunite(data = , # dataset\n      col = , # nueva columna\n      c(\"col1\",\"col2\"), # columnas a unir\n      sep = \" \") # separador\n# Ejemplo 1: separar una columna\ndatos %&gt;%\n  separate(col = \"fecha\",\n           into = c(\"año\", \"mes\", \"día\"), \n           sep = \"-\")\n\n# Ejemplo 2: unir varias columnas\ndatos %&gt;%\n  unite(col = \"fecha_completa\", c(\"año\", \"mes\", \"día\"), sep = \"-\")"
-  },
-  {
-    "objectID": "diapositivas/tidydata_plus_r.html#eliminar-duplicados-con-distinct",
-    "href": "diapositivas/tidydata_plus_r.html#eliminar-duplicados-con-distinct",
-    "title": "Más de tidyverse",
-    "section": "Eliminar duplicados con distinct()",
-    "text": "Eliminar duplicados con distinct()\nPermite remover filas duplicadas en un conjunto de datos, conservando solo los registros únicos según las variables indicadas.\n# Ejemplo 1: eliminar duplicados en todo el dataset\ndatos %&gt;%\n  distinct()\n\n# Ejemplo 2: eliminar duplicados considerando variables específicas\ndatos %&gt;%\n  distinct(nombre, documento, .keep_all = TRUE)\n\n\n\n\n\n\nTip\n\n\nUsa el argumento .keep_all = TRUE para conservar todas las columnas del registro original, eliminando solo las repeticiones."
-  },
-  {
-    "objectID": "diapositivas/tidydata_plus_r.html#estandarización-de-fechas",
-    "href": "diapositivas/tidydata_plus_r.html#estandarización-de-fechas",
-    "title": "Más de tidyverse",
-    "section": "Estandarización de fechas",
-    "text": "Estandarización de fechas\nLibreria lubridate, contiene las funciones dmy(), myd(), ydm().\n\n\n\n# extrae componentes de fechas estandarizada\nyear()\nmonth()\nday()\nFechas de Excel\nDatos numerico 42345, pero en excel se ve como fecha 14-12-2015\nas.Date(x = , # columna con numero\n        origin = \"1899-12-30\") # fecha origen\nfecha origen: 1899-12-30 (Windows) o 1904-01-01 (Mac)\n\n\n\n\n[De Excel a R]"
-  },
-  {
-    "objectID": "diapositivas/tabla_dinamica_r.html#funciones-principales",
-    "href": "diapositivas/tabla_dinamica_r.html#funciones-principales",
-    "title": "Tablas dinamicas con R",
-    "section": "Funciones principales",
-    "text": "Funciones principales\n\n\n\n\n\n\n\nFunción\nDescripción\n\n\n\n\ngroup_by()\nAgrupa datos según una o más variables.\n\n\nsummarise()\nCalcula valores resumen (media, máximo, mínimo, conteos, etc.).\n\n\nungroup()\nElimina el agrupamiento para evitar conflictos posteriores.\n\n\n\n\n\n\n\n\n\nImportante:\n\n\nEstas funciones suelen usarse en conjunto dentro de un pipeline (%&gt;%)."
-  },
-  {
-    "objectID": "diapositivas/tabla_dinamica_r.html#lógica-de-uso",
-    "href": "diapositivas/tabla_dinamica_r.html#lógica-de-uso",
-    "title": "Tablas dinamicas con R",
-    "section": "Lógica de uso",
-    "text": "Lógica de uso\nEl flujo típico sigue este orden:\ndataset %&gt;% \n  group_by(variable_agrupacion) %&gt;%\n  summarise(funciones_auxiliares) %&gt;%\n  ungroup()\n\n\n\n\n\n\nNote\n\n\nEste patrón garantiza que los cálculos se hagan por grupo y luego el objeto quede “limpio” para pasos siguientes.\n\n\n\n\n\n\n\n[De Excel a R]"
-  },
-  {
-    "objectID": "diapositivas/union_datos.html#ejemplo-de-uso-left_join",
-    "href": "diapositivas/union_datos.html#ejemplo-de-uso-left_join",
-    "title": "Uniendo bases en R",
-    "section": "ejemplo de uso : left_join()",
-    "text": "ejemplo de uso : left_join()\n\nAgrupe de la base casos por barrio y guardela en otro objeto.\nDescargue la base denominada pob_barrio.rds\n\n\n\n\n\n[De Excel a R]"
+    "objectID": "q-and-a.html#answered-questions",
+    "href": "q-and-a.html#answered-questions",
+    "title": "Q & A From Clinical Reporting with {gtsummary} Workshop",
+    "section": "",
+    "text": "Q: How do I save PDFs of slides?\n\n\nThe website will stay up and you can access the slides; if you want to print it go to the slides in full screen view, convert to pdf mode and print\n\n\nQ: How can I see tables in viewer pane?\n\n\nGlobal Options &gt; RMarkdown &gt; show output in Viewer Pane\n\n\nQ: Link for the code for Dan’s quarto slides?\n\n\nhttps://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed/tree/main/slides\n\n\nQ: Syntax for set_variable_labels()?\n\n\nSee function docs at: https://larmarange.github.io/labelled/reference/var_label.html\n\n\nQ: How to confirm labels worked?\n\n\nstr(df) or view(df)\n\n\nQ: What is |&gt;?\n\n\nIt’s the new base R pipe! See https://ivelasq.rbind.io/blog/understanding-the-r-pipe/ for more details\n\n\nQ: What statistics can you use in tbl_summary(statistic=) argument? How does the function know \"{min}, {max}\" is the range?\n\n\nThere are a set of known names for default statistics that you can use in this function. These (plus glue syntax) allow you to display specific statistics. See more details here, under the statistic argument section: https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html\n\n\nQ: How do you display mean instead of median?\n\n\nAdjust the statistic argument:\n\n\ntrial %&gt;%\n  select(age) %&gt;%\n  tbl_summary(statistic = everything() ~ \"{mean}\")\n\n\n\n\n\n\n\nCharacteristic\nN = 2001\n\n\n\n\nAge\n47\n\n\n    Unknown\n11\n\n\n\n1 Mean\n\n\n\n\n\n\n\n\n\nQ: With add_n() can you change the label to specify that it represents non-missing values?\n\n\nYes, you can change this with col_label argument:\n\n\ntrial |&gt;\n  select(age, grade, trt) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() |&gt; \n  add_n(col_label = \"**N (Non-missing)**\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nN (Non-missing)\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n189\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n200\n\n\n\n\n\n\n\n\n    I\n\n\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n\n\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n\n\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: How can you remove the death variable inside the tbl_summary() function?\n\n\nUse adplyr::select() prior to tbl_summary or use the include = argument in tbl_summary(). Three options below:\n\n\nsm_trial &lt;- trial |&gt;\n  select(age, grade, trt, death)\n\nsm_trial |&gt;\n  select(-death) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = -death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = !death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: Is it possible to add custom footnotes, say if you want to explain what a particular category includes etc.?\n\n\nYes, use modify_footnote() for column headers for footnotes that already exist. Or use modify_table_styling() for new footnotes. https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html\n\n\nQ: Does gtsummary support role selection like {recipes}?\n\n\nUse the selectors all_continuous(), all_categorical(), etc.\n\n\nQ: There is an error trying to use add_difference() with add_p()\n\n\nThis is because you are trying to add two p’s to same table. You could consider doing two separate tables then using tbl_merge() to merge them, but presenting these two p-values in one table could be confusing.\n\n\nQ: It would be great to have an “asterisk_p” to show significant p-values, like bold_p()\n\n\nadd_significance_stars() already exists! https://www.danieldsjoberg.com/gtsummary/reference/add_significance_stars.html\n\n\nQ: If there are more than two groups, is there any function for post-hoc testing?\n\n\nHere are supported tests: https://www.danieldsjoberg.com/gtsummary/reference/tests.html. Post-hoc tests might require custom testing. There are some relevant questions on stackoverflow.com that may be useful.\n\n\nQ: Can gtsummary give Bayesian statistics result?\n\n\nSee https://www.danieldsjoberg.com/gtsummary/reference/tests.html for supported tests. If it is not supported, you can use custom functions for p-values (see add_p()) or add_stat() to use a custom statistic.\n\n\nQ: The {rms} package fits are not supported?\n\n\nYou can file an issue for support. You can also use custom tidier. See Wald example in table gallery for tips on how to do this: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: How does it handle interaction terms?\n\n\nGorgeously:\n\n\ntbl &lt;-\n      lm(time ~ ph.ecog*sex, survival::lung) %&gt;%\n      tbl_regression(label = list(ph.ecog = \"ECOG Score\", sex = \"Sex\"))\n    \ntbl\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nECOG Score\n-119\n-233, -5.5\n0.040\n\n\nSex\n11\n-79, 102\n0.8\n\n\nECOG Score * Sex\n43\n-33, 120\n0.3\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: What does exponentiate=TRUE do again in tbl_regression()? I missed it.\n\n\nExponentiation coefficients so you can easily report OR instead of log(OR) or HRs instead of raw coefficients.\n\n\nQ: Is there a way to add an additional footnote saying T1 is the control? The default dash may be interpreted as a “missing value”.\n\n\nmodify_table_styling() https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html or use argument add_estimate_to_reference_rows = TRUE\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression( exponentiate = TRUE, add_estimate_to_reference_rows = FALSE ) %&gt;%\n  add_global_p() %&gt;%\n  modify_table_styling(columns = c(estimate, ci),\n                       rows = reference_row == TRUE, \n                       missing_symbol = \"Ref.\" )\n\nWarning: Use of the \"ci\" column was deprecated in gtsummary v2.0, and the column will\neventually be removed from the tables.\n! Review `?deprecated_ci_column()` for details on how to update your code.\nℹ The \"ci\" column has been replaced by the merged \"conf.low\" and \"conf.high\"\n  columns (merged with `modify_column_merge()`).\nℹ In most cases, a simple update from `ci = 'a new label'` to `conf.low = 'a\n  new label'` is sufficient.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\nRef.\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n\n\n\n\n    III\n2.28\n1.11, 4.75\n\n\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nYou can also use themes and change tbl_regression-str:ref_row_text option: https://www.danieldsjoberg.com/gtsummary/articles/themes.html\n\n\nQ: Can add_global_p() and the global p-value without removing the p-value for each level?\n\n\nThere is an arg in add_global_p() called keep; that will keep both p-values. It is FALSE by default\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression(exponentiate = TRUE,\n                 add_estimate_to_reference_rows = FALSE) %&gt;%\n  add_global_p(keep = TRUE) \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\n—\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n0.8\n\n\n    III\n2.28\n1.11, 4.75\n0.025\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nQ: tbl_regression(): Are the p-values per Wald by default?\n\n\nYou need to look at the details for your specific model and what the summary function returns. You can change default via the tidier for your model. My tidier function example available in the gallery: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: Is there an option to compare multiple regression models within a single table? (e.g., when performing sensitivity analyses). I’m thinking of a situation where we are using different adjustment sets of covariates. I’m thinking of a situation where we are using different adjustment sets of covariates.\n\n\nUse tbl_merge()\n\n\nQ: Does it work with {tidymodels}?\n\n\nThere are currently some issues with dummy variables, but we are working on it for future release.\n\n\nQ: Can you have super/sub scripts in variable names\n\n\nUse utf8 characters and markdown characters. {gt} sometimes has some issues with “common markdown” language so be aware of your output type and print engine, but most likely they will work.\n\n\nQ: Is the marginal adjusted mean estimated using the median of the other covariates fitting the model?\n\n\nThis is calculated outside the package. See emmeans::emmeans() for details on calculations.\n\n\nQ: Does tbl_regression() support ridge/lasso regressions? I usually use {glmnet} for these\n\n\nNot currently supported but see https://github.com/ddsjoberg/gtsummary/issues/1280 for more details.\n\n\nQ: For sex, how do i get it to show the Male level instead of the Female reference group?\n\n\ninline_text() has a level= argument to select this.\n\n\nQ: If I change the CI to 90%, I need to update the pattern to 90% CI {ci} right?\n\n\nIf you are using the default pattern ({conf.level}), you don’t need to change anything, but if you hard code like 95%, then yes, use pattern = \"odds ratio {estimate}; {conf.level*100}% CI {ci}\"\n\n\nQ: Can I add LaTeX symbols in the inline text like chi square results?\n\n\nProbably?\n\n\nQ: Can add_glance_source_note(), give just adjusted R^2 ?\n\n\nYes!\n\n\nmod &lt;- lm(age ~ marker + grade, trial) %&gt;% tbl_regression()\nmod %&gt;% \n  add_glance_table(include = c(r.squared, adj.r.squared))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nMarker Level (ng/mL)\n-0.04\n-2.6, 2.5\n&gt;0.9\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n—\n—\n\n\n\n\n    II\n0.64\n-4.7, 6.0\n0.8\n\n\n    III\n2.4\n-2.8, 7.6\n0.4\n\n\nR²\n0.005\n\n\n\n\n\n\nAdjusted R²\n-0.012\n\n\n\n\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: How can I increase the font size of a gtsummary object in a xaringan slide?\n\n\nYou can set a theme for this, or check out print engine options. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: How do I decrease the height of the gtsummary table so it exports properly?\n\n\nDepends on print engine and desired output format. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: What would the code be to export as XLS?\n\n\nas_hux_xlsx(). See: https://www.danieldsjoberg.com/gtsummary/reference/as_hux_table.html"
   }
 ]
