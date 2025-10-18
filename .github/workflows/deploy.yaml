@@ -20,7 +20,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Cache packages
-        uses: actions/cache@v4
+        uses: actions/cache@v2
         with:
           path: ${{ env.RENV_PATHS_ROOT }}
           key: ${{ runner.os }}-renv-${{ hashFiles('**/renv.lock') }}
@@ -34,7 +34,7 @@ jobs:
           renv::restore()
           
       - name: Publish to GitHub Pages
-        uses: quarto-dev/quarto-actions/publish@v4
+        uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
           
