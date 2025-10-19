@@ -454,7 +454,7 @@
     "href": "importando7.html#actividad-1",
     "title": "Importación de datos a R",
     "section": "Actividad 1",
-    "text": "Actividad 1\n\nYa tienes instalado el paquete rio !, ahora actívalo para iniciar la importación de datos.\nDescarga los siguientes archivos y depositalos en la carpeta datos_brutos del proyecto en el que estamos trabajando.\n\n\n\n\n\n\n\n🧾 Datos\n\n\n\n👉 Descargar dengue.xlsx\n\n\n\nImporta a R el archivo descargado.",
+    "text": "Actividad 1\n\nYa tienes instalado el paquete rio !, ahora actívalo para iniciar la importación de datos.\nDescarga los siguientes archivos y depositalos en la carpeta datos_brutos del proyecto en el que estamos trabajando.\n\n\n\n\n\n\n\n🧾 Datos\n\n\n\n👉 Descargar Dataset 👉 Descargar malaria\n\n\n\nImporta a R el archivo descargado.",
     "crumbs": [
       "Importación de datos a R"
     ]
@@ -464,7 +464,7 @@
     "href": "importando7.html#actividad-2",
     "title": "Importación de datos a R",
     "section": "Actividad 2",
-    "text": "Actividad 2\nDe la base de datos de dengue cargada obtenga los datos para el siguiente reporte:\n\nNombre de variables que contiene\nNumero de filas y columnas\nQue tipo de variable es SEMANA y EDAD\nQue tipo de variable es FEC_NOT\nCuales valores únicos tiene SEMANA, SEXO, barrio",
+    "text": "Actividad 2\nDe la base de datos de datos del curso cargada obtenga los datos para el siguiente reporte:\n\nNombre de variables que contiene\nNumero de filas y columnas\nQue tipo de variable es SEMANA y EDAD\nQue tipo de variable es INI_SIN\nCuales valores únicos tiene SEMANA, SEXO, barrio",
     "crumbs": [
       "Importación de datos a R"
     ]
