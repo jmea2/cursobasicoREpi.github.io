@@ -63,74 +63,95 @@
     "text": "ejemplo de uso : left_join()\n\nAgrupe de la base casos por barrio y guardela en otro objeto.\nDescargue la base denominada pob_barrio.rds\n\n\n\n\n\n[De Excel a R]"
   },
   {
-    "objectID": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
-    "href": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
-    "title": "Estructuras de datos en R",
-    "section": "Estructuras básicas de datos en R",
-    "text": "Estructuras básicas de datos en R\nEn R existen diversas estructuras de datos:\n\nVectores\n\nMatrices\n\nListas\n\nData Frames"
+    "objectID": "diapositivas/clase_epicurva_ggplot.html#dos-formas-de-producir-epicurvas",
+    "href": "diapositivas/clase_epicurva_ggplot.html#dos-formas-de-producir-epicurvas",
+    "title": "Curvas Epidemicas con incidence2 y ggplot2",
+    "section": "Dos formas de producir Epicurvas",
+    "text": "Dos formas de producir Epicurvas\n\nMediante el paquete incidence2 (descarga e instala)\nMediante ggplot2 de manera mas personalizada\n\nSiempre antes de TODO asegurese de:\n\nLa variable fecha que se utilizara para la epicurva debe tener formato fecha\nAsegurese que tiene un rango de fechas acorde al brote enun rango esperado"
   },
   {
-    "objectID": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
-    "href": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
-    "title": "Estructuras de datos en R",
-    "section": "Estructuras más utilizadas en vigilancia en salud",
-    "text": "Estructuras más utilizadas en vigilancia en salud\nPara los análisis de vigilancia en salud pública, las más comunes son:\n\nVectores\n\nData Frames"
+    "objectID": "diapositivas/clase_epicurva_ggplot.html#mediante-el-paquete-incidence2",
+    "href": "diapositivas/clase_epicurva_ggplot.html#mediante-el-paquete-incidence2",
+    "title": "Curvas Epidemicas con incidence2 y ggplot2",
+    "section": "Mediante el paquete incidence2",
+    "text": "Mediante el paquete incidence2\nSe requieren 2 pasos para trazar una curva epidémica con el paquete incidence2:\n\nCrear un objeto de incidencia (utilizando la función incidence())\n\n\nProporcionar los datos\nEspecificar la columna de fecha a date_index =\nEspecificar el ´interval =` en el que deben agregarse los casos (diario, semanal, mensual..)\nEspecificar cualquier columna de agrupación (por ejemplo, sexo, hospital, resultado)\n\n\nRepresentar el objeto de incidencia\n\n\nEspecificar etiquetas, colores, títulos, etc.\n\nlibrary(incidence2)"
   },
   {
-    "objectID": "diapositivas/estructuras_r.html#vector",
-    "href": "diapositivas/estructuras_r.html#vector",
-    "title": "Estructuras de datos en R",
-    "section": "Vector",
-    "text": "Vector\nUn vector es un contenedor para una secuencia de datos singulares, todos del mismo tipo (numérico, carácter, lógico, etc.).\nPara crear un vector, usamos la función c(), que significa concatenar (similar a Excel).\n# Creando un vector\nc(23, 25, 45, 34, 65)"
+    "objectID": "diapositivas/clase_epicurva_ggplot.html#con-un-dataset-individual-linelist",
+    "href": "diapositivas/clase_epicurva_ggplot.html#con-un-dataset-individual-linelist",
+    "title": "Curvas Epidemicas con incidence2 y ggplot2",
+    "section": "con un dataset individual (linelist)",
+    "text": "con un dataset individual (linelist)\nepicurva &lt;- incidence(x,\n  date_index,\n  groups = NULL,\n  counts = NULL,\n  count_names_to = \"count_variable\",\n  count_values_to = \"count\",\n  date_names_to = \"date_index\",\n  rm_na_dates = TRUE,\n  interval = NULL)\n\nhttps://www.reconverse.org/incidence2/articles/incidence2.html"
   },
   {
-    "objectID": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
-    "href": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
-    "title": "Estructuras de datos en R",
-    "section": "Guardar un vector en un objeto reutilizable",
-    "text": "Guardar un vector en un objeto reutilizable\nUsamos el operador de asignación &lt;-.\nA la izquierda: el nombre del objeto.\nA la derecha: el vector que queremos guardar.\nEjemplo\nedad &lt;- c(23, 25, 45, 34, 65)\n💡 Ahora el objeto edad queda guardado en el entorno de trabajo y puede reutilizarse."
+    "objectID": "diapositivas/librerias_r.html#qué-es-un-paquete-librería-de-r",
+    "href": "diapositivas/librerias_r.html#qué-es-un-paquete-librería-de-r",
+    "title": "Librerias en R",
+    "section": "¿Qué es un paquete (librería) de R?",
+    "text": "¿Qué es un paquete (librería) de R?\n\n\nUn paquete es una colección de funciones, datos y documentación diseñada para realizar tareas específicas.\n\n- R incluye funciones básicas al instalarse.\n\n- La comunidad crea más paquetes que puedes descargar y usar."
   },
   {
-    "objectID": "diapositivas/estructuras_r.html#dataframe",
-    "href": "diapositivas/estructuras_r.html#dataframe",
-    "title": "Estructuras de datos en R",
-    "section": "DataFrame",
-    "text": "DataFrame\n\nUn dataframe es una base de datos o dataset, equivalente a una hoja de cálculo.\n\nSe usa para datos:\n\nNominales (caso a caso).\nAgregados (por ejemplo, casos por semana epidemiológica).\n\nCada columna es un vector, y cada fila es un registro."
+    "objectID": "diapositivas/librerias_r.html#por-qué-usar-paquetes",
+    "href": "diapositivas/librerias_r.html#por-qué-usar-paquetes",
+    "title": "Librerias en R",
+    "section": "¿Por qué usar paquetes?",
+    "text": "¿Por qué usar paquetes?\n\nResuelven tareas especializadas.\n\nFomentan la reproducibilidad.\n\n\nAmplían enormemente las capacidades de R."
   },
   {
-    "objectID": "diapositivas/estructuras_r.html#crear-un-dataframe",
-    "href": "diapositivas/estructuras_r.html#crear-un-dataframe",
-    "title": "Estructuras de datos en R",
-    "section": "Crear un dataframe",
-    "text": "Crear un dataframe\nPrimero se crean los vectores/columnas, y luego se unen:\n# Creamos los vectores\nedad &lt;- c(25, 34, 54, 65)\nsexo &lt;- c(\"F\", \"M\", \"F\", \"M\")\ny luego \n# Creamos el data frame\ndata.frame(edad, sexo)\nNo olvide guardarlo en el ambiente, ¿Como lo haria?"
+    "objectID": "diapositivas/librerias_r.html#dos-pasos-instalar-y-cargar",
+    "href": "diapositivas/librerias_r.html#dos-pasos-instalar-y-cargar",
+    "title": "Librerias en R",
+    "section": "Dos pasos: instalar y cargar",
+    "text": "Dos pasos: instalar y cargar\n\n1. Instalar (una sola vez por equipo/entorno):\ninstall.packages(\"rio\")   # Nota: usar comillas\n\n2. Cargar (cada sesión de R donde lo uses):\n\n\nlibrary(rio)  # Nota: sin comillas\ninstall.packages() descarga el paquete.\n\nlibrary() lo pone activa para su uso."
   },
   {
-    "objectID": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
-    "href": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
-    "title": "Estructuras de datos en R",
-    "section": "Importar datos en lugar de crearlos",
-    "text": "Importar datos en lugar de crearlos\nNo siempre es necesario escribir los data frames manualmente. Puedes importar archivos desde Excel, CSV u otros formatos:\nusemos la libreria:\nlibrary(rio)\n# funcion \nimport()\n\n\n\n\n[De Excel a R]"
+    "objectID": "diapositivas/librerias_r.html#recordatorios-importantes",
+    "href": "diapositivas/librerias_r.html#recordatorios-importantes",
+    "title": "Librerias en R",
+    "section": "Recordatorios importantes",
+    "text": "Recordatorios importantes\n\nLos nombres de paquetes son sensibles a mayúsculas/minúsculas.\nPara instalar: usa comillas (“paquete”).\nPara cargar con library(): sin comillas.\nlibrary() carga uno por uno (puedes usar varias llamadas)."
   },
   {
-    "objectID": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
-    "href": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
-    "title": "Importacion de datos a R",
-    "section": "¿Qué significa importar y exportar en R?",
-    "text": "¿Qué significa importar y exportar en R?\n\nImportar: leer un archivo desde tu disco duro y convertirlo en un objeto dentro de R (usualmente un data.frame).\nExportar: guardar un objeto de R (datos, tablas, gráficos) como un archivo externo (.csv, .xlsx, .rds, etc.)."
+    "objectID": "diapositivas/librerias_r.html#buenas-prácticas",
+    "href": "diapositivas/librerias_r.html#buenas-prácticas",
+    "title": "Librerias en R",
+    "section": "Buenas prácticas",
+    "text": "Buenas prácticas\n\nDocumenta los paquetes que usas al inicio del script.\nEvita cargar paquetes que no uses (reduce conflictos).\nSi un paquete no está, instálalo y vuelve a cargar.\n\n\n\n\n\n[De Excel a R]"
   },
   {
-    "objectID": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
-    "href": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
-    "title": "Importacion de datos a R",
-    "section": "Tipos de archivos comunes",
-    "text": "Tipos de archivos comunes\nPuedes trabajar con múltiples tipos de archivos:\n\n.csv, .xlsx, .tsv\nArchivos de SPSS, STATA, SAS\n.rds (objeto individual en R)\n.RData (múltiples objetos o todo el espacio de trabajo)"
+    "objectID": "diapositivas/funciones_r.html#qué-es-una-función",
+    "href": "diapositivas/funciones_r.html#qué-es-una-función",
+    "title": "Funciones en R",
+    "section": "¿Qué es una función?",
+    "text": "¿Qué es una función?\nUna función es una instrucción “empaquetada” que realiza una tarea y devuelve un resultado.\nSe invoca con nombre y paréntesis.\nnombre_funcion(arg1, arg2, ...)\nPartes\n\nNombre: summary\nParéntesis: (…)\nArgumentos: x, na.rm = TRUE, etc."
   },
   {
-    "objectID": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
-    "href": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
-    "title": "Importacion de datos a R",
-    "section": "El paquete rio: una solución sencilla",
-    "text": "El paquete rio: una solución sencilla\nrio = R Input/Output\nVentajas: - Usa solo dos funciones: import() y export().\n\nReconoce automáticamente el tipo de archivo por su extensión.\n## Sintaxis de uso\n\nImportar datos:\n# Importar un archivo CSV\ndataset &lt;- import(\"datos.csv\")\nExportar datos:\n# Exportar un objeto a Excel\nexport(dataset, \"resultado.xlsx\")\n\n\n\n\n[De Excel a R]"
+    "objectID": "diapositivas/funciones_r.html#características-clave",
+    "href": "diapositivas/funciones_r.html#características-clave",
+    "title": "Funciones en R",
+    "section": "Características clave",
+    "text": "Características clave\n\nToda función tiene nombre y se llama tal como está definida.\nPuede tener uno o varios argumentos.\nHay argumentos obligatorios y opcionales (con valores por defecto).\nEjecuta un procedimiento y produce una salida.\n\nFlujo: entrada → instrucciones → salida\nEntrada: argumentos (datos/valores)\nInstrucciones: lo que la función hace internamente\nSalida: un objeto/valor que puedes guardar o encadenar\nresultado &lt;- nombre_funcion(entrada1, entrada2, opcional = valor)"
+  },
+  {
+    "objectID": "diapositivas/funciones_r.html#ejemplo-con-argumentos-nombrados",
+    "href": "diapositivas/funciones_r.html#ejemplo-con-argumentos-nombrados",
+    "title": "Funciones en R",
+    "section": "Ejemplo con argumentos nombrados",
+    "text": "Ejemplo con argumentos nombrados\nincidencia &lt;- incidence(\n  x = datos,          # datos de entrada\n  date_index = \"fis\", # variable fecha\n  interval = 7        # tamaño del intervalo de tiempo (semanal))\nCada argumento tiene nombre y se asigna con =.\nPuedes cambiar posiciones pero nómbralos para mayor claridad."
+  },
+  {
+    "objectID": "diapositivas/funciones_r.html#funciones-trabajan-sobre-objetos",
+    "href": "diapositivas/funciones_r.html#funciones-trabajan-sobre-objetos",
+    "title": "Funciones en R",
+    "section": "Funciones trabajan sobre objetos",
+    "text": "Funciones trabajan sobre objetos\nColocas los objetos dentro de los paréntesis:\nsummary(casos$edad)\nmean(casos$edad, na.rm = TRUE)\n\nRevisa que los objetos existan y tengan el tipo esperado.\nLos errores comunes son: paréntesis, comas, tildes o nombres mal escritos."
+  },
+  {
+    "objectID": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
+    "href": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
+    "title": "Funciones en R",
+    "section": "Obtener ayuda de una función:",
+    "text": "Obtener ayuda de una función:\n\n?incidence\n\nBuenas prácticas\n\nNombra los argumentos clave (na.rm = TRUE, interval = 7).\nDocumenta por qué usas ciertas opciones (comentarios #).\n\n\n\n\n\n[De Excel a R]"
   },
   {
     "objectID": "estructuras6.html#actividad",
@@ -372,9 +393,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal",
+    "title": "LLegando de Excel a R para epidemiologos",
     "section": "",
-    "text": "🏨 Presencial Octubre 20 y 21 2025 | 8:00am - 5:00pm\n💥 Por inscripción previa",
+    "text": "La formación especializada en el lenguaje de programación R aporta habilidades para iniciar en la denominada ciencia de datos con aplicación directa a la práctica profesional. Además es una herramienta gratuita de código abierto en continua innovación/actualización por parte de la comunidad científica. La versatilidad de R para procesar datos y obtener resultados en diversas campos del análisis de datos lo hace un software de elección en diversas áreas de conocimiento como medicina y ciencias de la salud, financiera, investigación científica, epidemiología, ciencias sociales, economía entre muchas otras, en las que es necesario la implementación de potentes analíticas como modelamiento matemático y estadístico, análisis geoespaciales, machine learning, inteligencia artificial y visualización de datos, con la gran ventaja de nunca perder la transparencia y reproducibilidad del resultado.\nCada vez es más evidente la necesidad de que los profesionales adopten lenguajes de programación para sus procesos de análisis de datos, aprovechando las ventajas que ofrecen en términos de reproducibilidad, transparencia y eficiencia. En este contexto, las hojas de cálculo, como las de Microsoft Excel, han ocupado un lugar central por su disponibilidad y facilidad de uso, convirtiéndose en una herramienta clave para el tratamiento de datos entre epidemiólogos, salubristas y otros profesionales dedicados a la vigilancia en salud pública. Este avance ha sido significativo para el manejo de información.\nSin embargo, el uso de hojas de cálculo comienza a mostrar limitaciones importantes: las tareas repetitivas de depuración y análisis consumen gran cantidad de tiempo, y la falta de integración con nuevas herramientas dificulta la reproducibilidad y sostenibilidad en el tiempo. Ante este panorama, surgen alternativas como R, que ofrece notables ventajas al profesional gracias a su naturaleza de software libre, programable y altamente reproducible. Si bien exige un aprendizaje inicial más riguroso, los beneficios que aporta superan con creces estas barreras.\nPor ello, en distintas partes del mundo han surgido iniciativas para promover a R como la plataforma de referencia, de modo que epidemiólogos y profesionales de la salud puedan integrarlo en sus rutinas de trabajo y avanzar hacia un lenguaje común de análisis en salud pública.\n\n\n\n\n\n\n\nNote\n\n\n\nModalidad: Taller teórico–práctico\nDuración: 2 días (8 h/día)\nCupo: 30 participantes\n\n\n\n\nObjetivo: Crear confianza en R, comprender la lógica de proyectos, scripts y estructuras de datos, y realizar primeras operaciones comparando con Excel.\n\n\n\n\n\n\n\n\n\nHora\nSesión\n\n\n\n\n08:00 – 08:30\nApertura: presentación del curso, objetivos, agenda; expectativas.\n\n\n08:30 – 09:30\nOrganización de un proyecto en R: RStudio, carpetas, buenas prácticas. Mini-evaluación: crear proyecto y script.\n\n\n09:30 – 11:00\nEl script para reproducibilidad: crear, guardar, comentar, ordenar. Ejercicio: script con apartados básicos.\n\n\n11:00 – 11:15\nPausa café\n\n\n11:15 – 12:30\nEstructuras básicas: vectores, data frames, listas; paralelos con Excel. Evaluación: crear vector y data frame “tipo hoja de cálculo”.\n\n\n12:30 – 13:30\nAlmuerzo\n\n\n13:30 – 15:00\nImportar y exportar datos: Excel/CSV/TXT; práctica: importar varios datasets.\n\n\n15:00 – 16:30\nIntroducción al tidyverse: filosofía, operador %&gt;%, primeras verbos dplyr.\n\n\n16:30 – 16:45\nPausa\n\n\n16:45 – 18:00\nSeleccionar, filtrar y ordenar (básico): select, filter, arrange; operadores lógicos/booleanos;\n\n\n\n\n\n\n\nEstructurar un proyecto en RStudio.\n\nEscribir scripts reproducibles y ordenados.\n\nImportar/exportar datos tabulares.\n\nAplicar verbos básicos de dplyr.\n\n\n\n\n\n\nObjetivo: Aplicar transformaciones intermedias, depurar datos, unir tablas y generar salidas resumidas útiles para vigilancia en salud.\nInicio: Evaluación corta de arranque (abrir R, proyecto y script del día 1).\n\n\n\n\n\n\n\n\n\nHora\nSesión\n\n\n\n\n08:00 – 09:30\nCrear y transformar (básico–intermedio): mutate, case_when; evaluación: variable categórica y conversión texto↔︎numérico.\n\n\n09:30 – 10:30\nDe-duplicación y texto: distinct; limpieza con stringr (str_to_lower); depurar nombres de municipios/instituciones.\n\n\n10:30 – 10:45\nPausa\n\n\n10:45 – 12:15\nColumnas: separate, unite; evaluación: normalización de variable.\n\n\n12:15 – 13:15\nAlmuerzo\n\n\n13:15 – 15:45\nUniones: bind_rows, bind_cols, left_join, inner_join; evaluación: unir dos tablas y verificar consistencia.\n\n\n15:45 – 16:00\nPausa\n\n\n16:00 – 17:15\nTablas dinamicas con tidy: group_by, summarise\n\n\n17:15 – 18:00\nCierre: retroalimentación grupal.\n\n\n\n\n\n\n\nDiseñar pipelines de limpieza y transformación.\n\nUnir y reestructurar datasets.\n\nGenerar tablas resumen para decisiones rápidas.\n\n\n\n\n\n\nPrácticas guiadas con datos tipo vigilancia en salud.\n\nProducto final: script reproducible con todo el flujo trabajado.\n\n\n\n\n\n\n\nTip\n\n\n\nSugerencia de pre-requisitos\nInstalar R y RStudio, y tener permisos para leer/escribir en la carpeta de trabajo.\n\n\n\n\n\nSi su respuesta a cualquiera de la siguientes es “Si”, luego este es el lugar correcto para iniciar a desarrollar habilidades .\n\nRequiere procesar datos descriptivos en el ambito de la vigilancia en salud pública que incluyen tareas de depuracion o pre-procesamiento?\nRequiere un flujo de trabajo con datos, repetitivo (diario, semanal, mensual)?\nHasta el momento continua usando hojas de calculo como único medio para el procesamiento de datos limitando su capacidad de implementar analíticas distintas en su trabajo?\n\nEste curso esta diseñado para quienes no tienen ninguna experiencia con R-Software y RStudio pero si tienen contacto con datos epidemiologicos y altas necesidades en su implementación dentro su flujo trabajo diario.\n\n\n\nPara este curso debe tener un computador portatil personal o institucional pero que permita la instalación de software libre sin restricción o necesidades de claves de administrador.",
     "crumbs": [
       "Inicio"
     ]
@@ -382,9 +403,9 @@
   {
     "objectID": "index.html#día-1-fundamentos-y-primeras-transformaciones",
     "href": "index.html#día-1-fundamentos-y-primeras-transformaciones",
-    "title": "XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal",
-    "section": "Día 1 — Fundamentos y primeras transformaciones",
-    "text": "Día 1 — Fundamentos y primeras transformaciones\nObjetivo: Crear confianza en R, comprender la lógica de proyectos, scripts y estructuras de datos, y realizar primeras operaciones comparando con Excel.\n\nCronograma\n\n\n\n\n\n\n\nHora\nSesión\n\n\n\n\n08:00 – 08:30\nApertura: presentación del curso, objetivos, agenda; expectativas.\n\n\n08:30 – 09:30\nOrganización de un proyecto en R: RStudio, carpetas, buenas prácticas. Mini-evaluación: crear proyecto y script.\n\n\n09:30 – 11:00\nEl script para reproducibilidad: crear, guardar, comentar, ordenar. Ejercicio: script con apartados básicos.\n\n\n11:00 – 11:15\nPausa café\n\n\n11:15 – 12:30\nEstructuras básicas: vectores, data frames, listas; paralelos con Excel. Evaluación: crear vector y data frame “tipo hoja de cálculo”.\n\n\n12:30 – 13:30\nAlmuerzo\n\n\n13:30 – 15:00\nImportar y exportar datos: Excel/CSV/TXT; práctica: importar varios datasets.\n\n\n15:00 – 16:30\nIntroducción al tidyverse: filosofía, operador %&gt;%, primeras verbos dplyr.\n\n\n16:30 – 16:45\nPausa\n\n\n16:45 – 18:00\nSeleccionar, filtrar y ordenar (básico): select, filter, arrange; operadores lógicos/booleanos;\n\n\n\n\n\nResultados de aprendizaje del Día 1\n\nEstructurar un proyecto en RStudio.\n\nEscribir scripts reproducibles y ordenados.\n\nImportar/exportar datos tabulares.\n\nAplicar verbos básicos de dplyr.",
+    "title": "LLegando de Excel a R para epidemiologos",
+    "section": "",
+    "text": "Objetivo: Crear confianza en R, comprender la lógica de proyectos, scripts y estructuras de datos, y realizar primeras operaciones comparando con Excel.\n\n\n\n\n\n\n\n\n\nHora\nSesión\n\n\n\n\n08:00 – 08:30\nApertura: presentación del curso, objetivos, agenda; expectativas.\n\n\n08:30 – 09:30\nOrganización de un proyecto en R: RStudio, carpetas, buenas prácticas. Mini-evaluación: crear proyecto y script.\n\n\n09:30 – 11:00\nEl script para reproducibilidad: crear, guardar, comentar, ordenar. Ejercicio: script con apartados básicos.\n\n\n11:00 – 11:15\nPausa café\n\n\n11:15 – 12:30\nEstructuras básicas: vectores, data frames, listas; paralelos con Excel. Evaluación: crear vector y data frame “tipo hoja de cálculo”.\n\n\n12:30 – 13:30\nAlmuerzo\n\n\n13:30 – 15:00\nImportar y exportar datos: Excel/CSV/TXT; práctica: importar varios datasets.\n\n\n15:00 – 16:30\nIntroducción al tidyverse: filosofía, operador %&gt;%, primeras verbos dplyr.\n\n\n16:30 – 16:45\nPausa\n\n\n16:45 – 18:00\nSeleccionar, filtrar y ordenar (básico): select, filter, arrange; operadores lógicos/booleanos;\n\n\n\n\n\n\n\nEstructurar un proyecto en RStudio.\n\nEscribir scripts reproducibles y ordenados.\n\nImportar/exportar datos tabulares.\n\nAplicar verbos básicos de dplyr.",
     "crumbs": [
       "Inicio"
     ]
@@ -392,9 +413,9 @@
   {
     "objectID": "index.html#día-2-transformación-limpieza-y-análisis-práctico",
     "href": "index.html#día-2-transformación-limpieza-y-análisis-práctico",
-    "title": "XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal",
-    "section": "Día 2 — Transformación, limpieza y análisis práctico",
-    "text": "Día 2 — Transformación, limpieza y análisis práctico\nObjetivo: Aplicar transformaciones intermedias, depurar datos, unir tablas y generar salidas resumidas útiles para vigilancia en salud.\nInicio: Evaluación corta de arranque (abrir R, proyecto y script del día 1).\n\nCronograma\n\n\n\n\n\n\n\nHora\nSesión\n\n\n\n\n08:00 – 09:30\nCrear y transformar (básico–intermedio): mutate, case_when; evaluación: variable categórica y conversión texto↔︎numérico.\n\n\n09:30 – 10:30\nDe-duplicación y texto: distinct; limpieza con stringr (str_to_lower); depurar nombres de municipios/instituciones.\n\n\n10:30 – 10:45\nPausa\n\n\n10:45 – 12:15\nColumnas: separate, unite; evaluación: normalización de variable.\n\n\n12:15 – 13:15\nAlmuerzo\n\n\n13:15 – 15:45\nUniones: bind_rows, bind_cols, left_join, inner_join; evaluación: unir dos tablas y verificar consistencia.\n\n\n15:45 – 16:00\nPausa\n\n\n16:00 – 17:15\nTablas dinamicas con tidy: group_by, summarise\n\n\n17:15 – 18:00\nCierre: retroalimentación grupal.\n\n\n\n\n\nResultados de aprendizaje del Día 2\n\nDiseñar pipelines de limpieza y transformación.\n\nUnir y reestructurar datasets.\n\nGenerar tablas resumen para decisiones rápidas.",
+    "title": "LLegando de Excel a R para epidemiologos",
+    "section": "",
+    "text": "Objetivo: Aplicar transformaciones intermedias, depurar datos, unir tablas y generar salidas resumidas útiles para vigilancia en salud.\nInicio: Evaluación corta de arranque (abrir R, proyecto y script del día 1).\n\n\n\n\n\n\n\n\n\nHora\nSesión\n\n\n\n\n08:00 – 09:30\nCrear y transformar (básico–intermedio): mutate, case_when; evaluación: variable categórica y conversión texto↔︎numérico.\n\n\n09:30 – 10:30\nDe-duplicación y texto: distinct; limpieza con stringr (str_to_lower); depurar nombres de municipios/instituciones.\n\n\n10:30 – 10:45\nPausa\n\n\n10:45 – 12:15\nColumnas: separate, unite; evaluación: normalización de variable.\n\n\n12:15 – 13:15\nAlmuerzo\n\n\n13:15 – 15:45\nUniones: bind_rows, bind_cols, left_join, inner_join; evaluación: unir dos tablas y verificar consistencia.\n\n\n15:45 – 16:00\nPausa\n\n\n16:00 – 17:15\nTablas dinamicas con tidy: group_by, summarise\n\n\n17:15 – 18:00\nCierre: retroalimentación grupal.\n\n\n\n\n\n\n\nDiseñar pipelines de limpieza y transformación.\n\nUnir y reestructurar datasets.\n\nGenerar tablas resumen para decisiones rápidas.",
     "crumbs": [
       "Inicio"
     ]
@@ -402,9 +423,9 @@
   {
     "objectID": "index.html#evaluaciones-y-dinámica",
     "href": "index.html#evaluaciones-y-dinámica",
-    "title": "XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal",
-    "section": "Evaluaciones y dinámica",
-    "text": "Evaluaciones y dinámica\n\nPrácticas guiadas con datos tipo vigilancia en salud.\n\nProducto final: script reproducible con todo el flujo trabajado.\n\n\n\n\n\n\n\nTip\n\n\n\nSugerencia de pre-requisitos\nInstalar R y RStudio, y tener permisos para leer/escribir en la carpeta de trabajo.",
+    "title": "LLegando de Excel a R para epidemiologos",
+    "section": "",
+    "text": "Prácticas guiadas con datos tipo vigilancia en salud.\n\nProducto final: script reproducible con todo el flujo trabajado.\n\n\n\n\n\n\n\nTip\n\n\n\nSugerencia de pre-requisitos\nInstalar R y RStudio, y tener permisos para leer/escribir en la carpeta de trabajo.",
     "crumbs": [
       "Inicio"
     ]
@@ -412,9 +433,9 @@
   {
     "objectID": "index.html#es-este-curso-para-mi",
     "href": "index.html#es-este-curso-para-mi",
-    "title": "XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal",
-    "section": "Es este curso para mi?",
-    "text": "Es este curso para mi?\nSi su respuesta a cualquiera de la siguientes es “Si”, luego este es el lugar correcto para iniciar a desarrollar habilidades .\n\nRequiere procesar datos descriptivos en el ambito de la vigilancia en salud pública que incluyen tareas de depuracion o pre-procesamiento?\nRequiere un flujo de trabajo con datos, repetitivo (diario, semanal, mensual)?\nHasta el momento continua usando hojas de calculo como único medio para el procesamiento de datos limitando su capacidad de implementar analíticas distintas en su trabajo?\n\nEste curso esta diseñado para quienes no tienen ninguna experiencia con R-Software y RStudio pero si tienen contacto con datos epidemiologicos y altas necesidades en su implementación dentro su flujo trabajo diario.",
+    "title": "LLegando de Excel a R para epidemiologos",
+    "section": "",
+    "text": "Si su respuesta a cualquiera de la siguientes es “Si”, luego este es el lugar correcto para iniciar a desarrollar habilidades .\n\nRequiere procesar datos descriptivos en el ambito de la vigilancia en salud pública que incluyen tareas de depuracion o pre-procesamiento?\nRequiere un flujo de trabajo con datos, repetitivo (diario, semanal, mensual)?\nHasta el momento continua usando hojas de calculo como único medio para el procesamiento de datos limitando su capacidad de implementar analíticas distintas en su trabajo?\n\nEste curso esta diseñado para quienes no tienen ninguna experiencia con R-Software y RStudio pero si tienen contacto con datos epidemiologicos y altas necesidades en su implementación dentro su flujo trabajo diario.",
     "crumbs": [
       "Inicio"
     ]
@@ -422,9 +443,9 @@
   {
     "objectID": "index.html#previo",
     "href": "index.html#previo",
-    "title": "XI Jornada Distrital de Epidemiologia y Salud Pública: Salud y Bienestar un lenguaje universal",
-    "section": "Previo",
-    "text": "Previo\nPara este curso debe tener un computador portatil personal o institucional pero que permita la instalación de software libre sin restricción o necesidades de claves de administrador.",
+    "title": "LLegando de Excel a R para epidemiologos",
+    "section": "",
+    "text": "Para este curso debe tener un computador portatil personal o institucional pero que permita la instalación de software libre sin restricción o necesidades de claves de administrador.",
     "crumbs": [
       "Inicio"
     ]
@@ -572,74 +593,84 @@
     "text": "Lógica de uso\nEl flujo típico sigue este orden:\ndataset %&gt;% \n  group_by(variable_agrupacion) %&gt;%\n  summarise(funciones_auxiliares) %&gt;%\n  ungroup()\n\n\n\n\n\n\nNote\n\n\nEste patrón garantiza que los cálculos se hagan por grupo y luego el objeto quede “limpio” para pasos siguientes.\n\n\n\n\n\n\n\n[De Excel a R]"
   },
   {
-    "objectID": "diapositivas/funciones_r.html#qué-es-una-función",
-    "href": "diapositivas/funciones_r.html#qué-es-una-función",
-    "title": "Funciones en R",
-    "section": "¿Qué es una función?",
-    "text": "¿Qué es una función?\nUna función es una instrucción “empaquetada” que realiza una tarea y devuelve un resultado.\nSe invoca con nombre y paréntesis.\nnombre_funcion(arg1, arg2, ...)\nPartes\n\nNombre: summary\nParéntesis: (…)\nArgumentos: x, na.rm = TRUE, etc."
+    "objectID": "visualizacion11.html#actividad",
+    "href": "visualizacion11.html#actividad",
+    "title": "Visualización con ggplot2",
+    "section": "Actividad",
+    "text": "Actividad\nPara esta actividad utilizaremos el dataset surv.csv Descargue este Sript y si quiere (no hay necesidad) descargue la base Aqui surv que contiene datos de vigilancia epidemiológica. El objetivo es crear visualizaciones profesionales y personalizadas.\n\nCargar librerías y datos:\n\n\nGráfico de Barras:\n\nCrea un gráfico de barras para la variable hospital.\nUsa coord_flip() para que los nombres se lean mejor.\nPersonaliza el título y los ejes.\n\nHistograma:\n\nVisualiza la distribución de la variable temp.\nAjusta el binwidth a 0.5.\nCambia el color de relleno y el borde.\n\nCurva Epidémica:\n\nAgrupa los datos por date_onset.\nCrea un gráfico de líneas y puntos.\nUsa scale_x_date() para que las fechas se vean cada 2 semanas.\n\nPersonalización Extrema:\n\nElige cualquiera de los gráficos anteriores y cambia el tema usando theme().\nCambia la fuente del título a negrita.\nMueve la leyenda a la parte inferior.",
+    "crumbs": [
+      "Visualización con ggplot2"
+    ]
   },
   {
-    "objectID": "diapositivas/funciones_r.html#características-clave",
-    "href": "diapositivas/funciones_r.html#características-clave",
-    "title": "Funciones en R",
-    "section": "Características clave",
-    "text": "Características clave\n\nToda función tiene nombre y se llama tal como está definida.\nPuede tener uno o varios argumentos.\nHay argumentos obligatorios y opcionales (con valores por defecto).\nEjecuta un procedimiento y produce una salida.\n\nFlujo: entrada → instrucciones → salida\nEntrada: argumentos (datos/valores)\nInstrucciones: lo que la función hace internamente\nSalida: un objeto/valor que puedes guardar o encadenar\nresultado &lt;- nombre_funcion(entrada1, entrada2, opcional = valor)"
+    "objectID": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
+    "href": "diapositivas/importacion_r.html#qué-significa-importar-y-exportar-en-r",
+    "title": "Importacion de datos a R",
+    "section": "¿Qué significa importar y exportar en R?",
+    "text": "¿Qué significa importar y exportar en R?\n\nImportar: leer un archivo desde tu disco duro y convertirlo en un objeto dentro de R (usualmente un data.frame).\nExportar: guardar un objeto de R (datos, tablas, gráficos) como un archivo externo (.csv, .xlsx, .rds, etc.)."
   },
   {
-    "objectID": "diapositivas/funciones_r.html#ejemplo-con-argumentos-nombrados",
-    "href": "diapositivas/funciones_r.html#ejemplo-con-argumentos-nombrados",
-    "title": "Funciones en R",
-    "section": "Ejemplo con argumentos nombrados",
-    "text": "Ejemplo con argumentos nombrados\nincidencia &lt;- incidence(\n  x = datos,          # datos de entrada\n  date_index = \"fis\", # variable fecha\n  interval = 7        # tamaño del intervalo de tiempo (semanal))\nCada argumento tiene nombre y se asigna con =.\nPuedes cambiar posiciones pero nómbralos para mayor claridad."
+    "objectID": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
+    "href": "diapositivas/importacion_r.html#tipos-de-archivos-comunes",
+    "title": "Importacion de datos a R",
+    "section": "Tipos de archivos comunes",
+    "text": "Tipos de archivos comunes\nPuedes trabajar con múltiples tipos de archivos:\n\n.csv, .xlsx, .tsv\nArchivos de SPSS, STATA, SAS\n.rds (objeto individual en R)\n.RData (múltiples objetos o todo el espacio de trabajo)"
   },
   {
-    "objectID": "diapositivas/funciones_r.html#funciones-trabajan-sobre-objetos",
-    "href": "diapositivas/funciones_r.html#funciones-trabajan-sobre-objetos",
-    "title": "Funciones en R",
-    "section": "Funciones trabajan sobre objetos",
-    "text": "Funciones trabajan sobre objetos\nColocas los objetos dentro de los paréntesis:\nsummary(casos$edad)\nmean(casos$edad, na.rm = TRUE)\n\nRevisa que los objetos existan y tengan el tipo esperado.\nLos errores comunes son: paréntesis, comas, tildes o nombres mal escritos."
+    "objectID": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
+    "href": "diapositivas/importacion_r.html#el-paquete-rio-una-solución-sencilla",
+    "title": "Importacion de datos a R",
+    "section": "El paquete rio: una solución sencilla",
+    "text": "El paquete rio: una solución sencilla\nrio = R Input/Output\nVentajas: - Usa solo dos funciones: import() y export().\n\nReconoce automáticamente el tipo de archivo por su extensión.\n## Sintaxis de uso\n\nImportar datos:\n# Importar un archivo CSV\ndataset &lt;- import(\"datos.csv\")\nExportar datos:\n# Exportar un objeto a Excel\nexport(dataset, \"resultado.xlsx\")\n\n\n\n\n[De Excel a R]"
   },
   {
-    "objectID": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
-    "href": "diapositivas/funciones_r.html#obtener-ayuda-de-una-función",
-    "title": "Funciones en R",
-    "section": "Obtener ayuda de una función:",
-    "text": "Obtener ayuda de una función:\n\n?incidence\n\nBuenas prácticas\n\nNombra los argumentos clave (na.rm = TRUE, interval = 7).\nDocumenta por qué usas ciertas opciones (comentarios #).\n\n\n\n\n\n[De Excel a R]"
+    "objectID": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
+    "href": "diapositivas/estructuras_r.html#estructuras-básicas-de-datos-en-r",
+    "title": "Estructuras de datos en R",
+    "section": "Estructuras básicas de datos en R",
+    "text": "Estructuras básicas de datos en R\nEn R existen diversas estructuras de datos:\n\nVectores\n\nMatrices\n\nListas\n\nData Frames"
   },
   {
-    "objectID": "diapositivas/librerias_r.html#qué-es-un-paquete-librería-de-r",
-    "href": "diapositivas/librerias_r.html#qué-es-un-paquete-librería-de-r",
-    "title": "Librerias en R",
-    "section": "¿Qué es un paquete (librería) de R?",
-    "text": "¿Qué es un paquete (librería) de R?\n\n\nUn paquete es una colección de funciones, datos y documentación diseñada para realizar tareas específicas.\n\n- R incluye funciones básicas al instalarse.\n\n- La comunidad crea más paquetes que puedes descargar y usar."
+    "objectID": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
+    "href": "diapositivas/estructuras_r.html#estructuras-más-utilizadas-en-vigilancia-en-salud",
+    "title": "Estructuras de datos en R",
+    "section": "Estructuras más utilizadas en vigilancia en salud",
+    "text": "Estructuras más utilizadas en vigilancia en salud\nPara los análisis de vigilancia en salud pública, las más comunes son:\n\nVectores\n\nData Frames"
   },
   {
-    "objectID": "diapositivas/librerias_r.html#por-qué-usar-paquetes",
-    "href": "diapositivas/librerias_r.html#por-qué-usar-paquetes",
-    "title": "Librerias en R",
-    "section": "¿Por qué usar paquetes?",
-    "text": "¿Por qué usar paquetes?\n\nResuelven tareas especializadas.\n\nFomentan la reproducibilidad.\n\n\nAmplían enormemente las capacidades de R."
+    "objectID": "diapositivas/estructuras_r.html#vector",
+    "href": "diapositivas/estructuras_r.html#vector",
+    "title": "Estructuras de datos en R",
+    "section": "Vector",
+    "text": "Vector\nUn vector es un contenedor para una secuencia de datos singulares, todos del mismo tipo (numérico, carácter, lógico, etc.).\nPara crear un vector, usamos la función c(), que significa concatenar (similar a Excel).\n# Creando un vector\nc(23, 25, 45, 34, 65)"
   },
   {
-    "objectID": "diapositivas/librerias_r.html#dos-pasos-instalar-y-cargar",
-    "href": "diapositivas/librerias_r.html#dos-pasos-instalar-y-cargar",
-    "title": "Librerias en R",
-    "section": "Dos pasos: instalar y cargar",
-    "text": "Dos pasos: instalar y cargar\n\n1. Instalar (una sola vez por equipo/entorno):\ninstall.packages(\"rio\")   # Nota: usar comillas\n\n2. Cargar (cada sesión de R donde lo uses):\n\n\nlibrary(rio)  # Nota: sin comillas\ninstall.packages() descarga el paquete.\n\nlibrary() lo pone activa para su uso."
+    "objectID": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
+    "href": "diapositivas/estructuras_r.html#guardar-un-vector-en-un-objeto-reutilizable",
+    "title": "Estructuras de datos en R",
+    "section": "Guardar un vector en un objeto reutilizable",
+    "text": "Guardar un vector en un objeto reutilizable\nUsamos el operador de asignación &lt;-.\nA la izquierda: el nombre del objeto.\nA la derecha: el vector que queremos guardar.\nEjemplo\nedad &lt;- c(23, 25, 45, 34, 65)\n💡 Ahora el objeto edad queda guardado en el entorno de trabajo y puede reutilizarse."
   },
   {
-    "objectID": "diapositivas/librerias_r.html#recordatorios-importantes",
-    "href": "diapositivas/librerias_r.html#recordatorios-importantes",
-    "title": "Librerias en R",
-    "section": "Recordatorios importantes",
-    "text": "Recordatorios importantes\n\nLos nombres de paquetes son sensibles a mayúsculas/minúsculas.\nPara instalar: usa comillas (“paquete”).\nPara cargar con library(): sin comillas.\nlibrary() carga uno por uno (puedes usar varias llamadas)."
+    "objectID": "diapositivas/estructuras_r.html#dataframe",
+    "href": "diapositivas/estructuras_r.html#dataframe",
+    "title": "Estructuras de datos en R",
+    "section": "DataFrame",
+    "text": "DataFrame\n\nUn dataframe es una base de datos o dataset, equivalente a una hoja de cálculo.\n\nSe usa para datos:\n\nNominales (caso a caso).\nAgregados (por ejemplo, casos por semana epidemiológica).\n\nCada columna es un vector, y cada fila es un registro."
   },
   {
-    "objectID": "diapositivas/librerias_r.html#buenas-prácticas",
-    "href": "diapositivas/librerias_r.html#buenas-prácticas",
-    "title": "Librerias en R",
-    "section": "Buenas prácticas",
-    "text": "Buenas prácticas\n\nDocumenta los paquetes que usas al inicio del script.\nEvita cargar paquetes que no uses (reduce conflictos).\nSi un paquete no está, instálalo y vuelve a cargar.\n\n\n\n\n\n[De Excel a R]"
+    "objectID": "diapositivas/estructuras_r.html#crear-un-dataframe",
+    "href": "diapositivas/estructuras_r.html#crear-un-dataframe",
+    "title": "Estructuras de datos en R",
+    "section": "Crear un dataframe",
+    "text": "Crear un dataframe\nPrimero se crean los vectores/columnas, y luego se unen:\n# Creamos los vectores\nedad &lt;- c(25, 34, 54, 65)\nsexo &lt;- c(\"F\", \"M\", \"F\", \"M\")\ny luego \n# Creamos el data frame\ndata.frame(edad, sexo)\nNo olvide guardarlo en el ambiente, ¿Como lo haria?"
+  },
+  {
+    "objectID": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
+    "href": "diapositivas/estructuras_r.html#importar-datos-en-lugar-de-crearlos",
+    "title": "Estructuras de datos en R",
+    "section": "Importar datos en lugar de crearlos",
+    "text": "Importar datos en lugar de crearlos\nNo siempre es necesario escribir los data frames manualmente. Puedes importar archivos desde Excel, CSV u otros formatos:\nusemos la libreria:\nlibrary(rio)\n# funcion \nimport()\n\n\n\n\n[De Excel a R]"
   },
   {
     "objectID": "diapositivas/tidydata_r.html#qué-es-el-tidyverse",
@@ -698,17 +729,10 @@
     "text": "El operador pipeline %&gt;%:\nPermite encadenar funciones sin crear objetos intermedios.\ndengue %&gt;%\n  select(edad, sexo, semana, municipio) %&gt;%\n  filter(sexo == \"1\")\nAtajo de teclado:\nWindows: Ctrl + Shift + M\nMac: Cmd + Shift + M\n\n\n\n\n[De Excel a R]"
   },
   {
-    "objectID": "q-and-a.html",
-    "href": "q-and-a.html",
-    "title": "Q & A From Clinical Reporting with {gtsummary} Workshop",
-    "section": "",
-    "text": "Q: How do I save PDFs of slides?\n\n\nThe website will stay up and you can access the slides; if you want to print it go to the slides in full screen view, convert to pdf mode and print\n\n\nQ: How can I see tables in viewer pane?\n\n\nGlobal Options &gt; RMarkdown &gt; show output in Viewer Pane\n\n\nQ: Link for the code for Dan’s quarto slides?\n\n\nhttps://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed/tree/main/slides\n\n\nQ: Syntax for set_variable_labels()?\n\n\nSee function docs at: https://larmarange.github.io/labelled/reference/var_label.html\n\n\nQ: How to confirm labels worked?\n\n\nstr(df) or view(df)\n\n\nQ: What is |&gt;?\n\n\nIt’s the new base R pipe! See https://ivelasq.rbind.io/blog/understanding-the-r-pipe/ for more details\n\n\nQ: What statistics can you use in tbl_summary(statistic=) argument? How does the function know \"{min}, {max}\" is the range?\n\n\nThere are a set of known names for default statistics that you can use in this function. These (plus glue syntax) allow you to display specific statistics. See more details here, under the statistic argument section: https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html\n\n\nQ: How do you display mean instead of median?\n\n\nAdjust the statistic argument:\n\n\ntrial %&gt;%\n  select(age) %&gt;%\n  tbl_summary(statistic = everything() ~ \"{mean}\")\n\n\n\n\n\n\n\nCharacteristic\nN = 2001\n\n\n\n\nAge\n47\n\n\n    Unknown\n11\n\n\n\n1 Mean\n\n\n\n\n\n\n\n\n\nQ: With add_n() can you change the label to specify that it represents non-missing values?\n\n\nYes, you can change this with col_label argument:\n\n\ntrial |&gt;\n  select(age, grade, trt) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() |&gt; \n  add_n(col_label = \"**N (Non-missing)**\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nN (Non-missing)\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n189\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n200\n\n\n\n\n\n\n\n\n    I\n\n\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n\n\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n\n\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: How can you remove the death variable inside the tbl_summary() function?\n\n\nUse adplyr::select() prior to tbl_summary or use the include = argument in tbl_summary(). Three options below:\n\n\nsm_trial &lt;- trial |&gt;\n  select(age, grade, trt, death)\n\nsm_trial |&gt;\n  select(-death) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = -death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = !death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: Is it possible to add custom footnotes, say if you want to explain what a particular category includes etc.?\n\n\nYes, use modify_footnote() for column headers for footnotes that already exist. Or use modify_table_styling() for new footnotes. https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html\n\n\nQ: Does gtsummary support role selection like {recipes}?\n\n\nUse the selectors all_continuous(), all_categorical(), etc.\n\n\nQ: There is an error trying to use add_difference() with add_p()\n\n\nThis is because you are trying to add two p’s to same table. You could consider doing two separate tables then using tbl_merge() to merge them, but presenting these two p-values in one table could be confusing.\n\n\nQ: It would be great to have an “asterisk_p” to show significant p-values, like bold_p()\n\n\nadd_significance_stars() already exists! https://www.danieldsjoberg.com/gtsummary/reference/add_significance_stars.html\n\n\nQ: If there are more than two groups, is there any function for post-hoc testing?\n\n\nHere are supported tests: https://www.danieldsjoberg.com/gtsummary/reference/tests.html. Post-hoc tests might require custom testing. There are some relevant questions on stackoverflow.com that may be useful.\n\n\nQ: Can gtsummary give Bayesian statistics result?\n\n\nSee https://www.danieldsjoberg.com/gtsummary/reference/tests.html for supported tests. If it is not supported, you can use custom functions for p-values (see add_p()) or add_stat() to use a custom statistic.\n\n\nQ: The {rms} package fits are not supported?\n\n\nYou can file an issue for support. You can also use custom tidier. See Wald example in table gallery for tips on how to do this: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: How does it handle interaction terms?\n\n\nGorgeously:\n\n\ntbl &lt;-\n      lm(time ~ ph.ecog*sex, survival::lung) %&gt;%\n      tbl_regression(label = list(ph.ecog = \"ECOG Score\", sex = \"Sex\"))\n    \ntbl\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nECOG Score\n-119\n-233, -5.5\n0.040\n\n\nSex\n11\n-79, 102\n0.8\n\n\nECOG Score * Sex\n43\n-33, 120\n0.3\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: What does exponentiate=TRUE do again in tbl_regression()? I missed it.\n\n\nExponentiation coefficients so you can easily report OR instead of log(OR) or HRs instead of raw coefficients.\n\n\nQ: Is there a way to add an additional footnote saying T1 is the control? The default dash may be interpreted as a “missing value”.\n\n\nmodify_table_styling() https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html or use argument add_estimate_to_reference_rows = TRUE\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression( exponentiate = TRUE, add_estimate_to_reference_rows = FALSE ) %&gt;%\n  add_global_p() %&gt;%\n  modify_table_styling(columns = c(estimate, ci),\n                       rows = reference_row == TRUE, \n                       missing_symbol = \"Ref.\" )\n\nWarning: Use of the \"ci\" column was deprecated in gtsummary v2.0, and the column will\neventually be removed from the tables.\n! Review `?deprecated_ci_column()` for details on how to update your code.\nℹ The \"ci\" column has been replaced by the merged \"conf.low\" and \"conf.high\"\n  columns (merged with `modify_column_merge()`).\nℹ In most cases, a simple update from `ci = 'a new label'` to `conf.low = 'a\n  new label'` is sufficient.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\nRef.\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n\n\n\n\n    III\n2.28\n1.11, 4.75\n\n\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nYou can also use themes and change tbl_regression-str:ref_row_text option: https://www.danieldsjoberg.com/gtsummary/articles/themes.html\n\n\nQ: Can add_global_p() and the global p-value without removing the p-value for each level?\n\n\nThere is an arg in add_global_p() called keep; that will keep both p-values. It is FALSE by default\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression(exponentiate = TRUE,\n                 add_estimate_to_reference_rows = FALSE) %&gt;%\n  add_global_p(keep = TRUE) \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\n—\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n0.8\n\n\n    III\n2.28\n1.11, 4.75\n0.025\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nQ: tbl_regression(): Are the p-values per Wald by default?\n\n\nYou need to look at the details for your specific model and what the summary function returns. You can change default via the tidier for your model. My tidier function example available in the gallery: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: Is there an option to compare multiple regression models within a single table? (e.g., when performing sensitivity analyses). I’m thinking of a situation where we are using different adjustment sets of covariates. I’m thinking of a situation where we are using different adjustment sets of covariates.\n\n\nUse tbl_merge()\n\n\nQ: Does it work with {tidymodels}?\n\n\nThere are currently some issues with dummy variables, but we are working on it for future release.\n\n\nQ: Can you have super/sub scripts in variable names\n\n\nUse utf8 characters and markdown characters. {gt} sometimes has some issues with “common markdown” language so be aware of your output type and print engine, but most likely they will work.\n\n\nQ: Is the marginal adjusted mean estimated using the median of the other covariates fitting the model?\n\n\nThis is calculated outside the package. See emmeans::emmeans() for details on calculations.\n\n\nQ: Does tbl_regression() support ridge/lasso regressions? I usually use {glmnet} for these\n\n\nNot currently supported but see https://github.com/ddsjoberg/gtsummary/issues/1280 for more details.\n\n\nQ: For sex, how do i get it to show the Male level instead of the Female reference group?\n\n\ninline_text() has a level= argument to select this.\n\n\nQ: If I change the CI to 90%, I need to update the pattern to 90% CI {ci} right?\n\n\nIf you are using the default pattern ({conf.level}), you don’t need to change anything, but if you hard code like 95%, then yes, use pattern = \"odds ratio {estimate}; {conf.level*100}% CI {ci}\"\n\n\nQ: Can I add LaTeX symbols in the inline text like chi square results?\n\n\nProbably?\n\n\nQ: Can add_glance_source_note(), give just adjusted R^2 ?\n\n\nYes!\n\n\nmod &lt;- lm(age ~ marker + grade, trial) %&gt;% tbl_regression()\nmod %&gt;% \n  add_glance_table(include = c(r.squared, adj.r.squared))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nMarker Level (ng/mL)\n-0.04\n-2.6, 2.5\n&gt;0.9\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n—\n—\n\n\n\n\n    II\n0.64\n-4.7, 6.0\n0.8\n\n\n    III\n2.4\n-2.8, 7.6\n0.4\n\n\nR²\n0.005\n\n\n\n\n\n\nAdjusted R²\n-0.012\n\n\n\n\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: How can I increase the font size of a gtsummary object in a xaringan slide?\n\n\nYou can set a theme for this, or check out print engine options. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: How do I decrease the height of the gtsummary table so it exports properly?\n\n\nDepends on print engine and desired output format. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: What would the code be to export as XLS?\n\n\nas_hux_xlsx(). See: https://www.danieldsjoberg.com/gtsummary/reference/as_hux_table.html"
-  },
-  {
-    "objectID": "q-and-a.html#answered-questions",
-    "href": "q-and-a.html#answered-questions",
-    "title": "Q & A From Clinical Reporting with {gtsummary} Workshop",
-    "section": "",
-    "text": "Q: How do I save PDFs of slides?\n\n\nThe website will stay up and you can access the slides; if you want to print it go to the slides in full screen view, convert to pdf mode and print\n\n\nQ: How can I see tables in viewer pane?\n\n\nGlobal Options &gt; RMarkdown &gt; show output in Viewer Pane\n\n\nQ: Link for the code for Dan’s quarto slides?\n\n\nhttps://github.com/ddsjoberg/clinical-reporting-gtsummary-rmed/tree/main/slides\n\n\nQ: Syntax for set_variable_labels()?\n\n\nSee function docs at: https://larmarange.github.io/labelled/reference/var_label.html\n\n\nQ: How to confirm labels worked?\n\n\nstr(df) or view(df)\n\n\nQ: What is |&gt;?\n\n\nIt’s the new base R pipe! See https://ivelasq.rbind.io/blog/understanding-the-r-pipe/ for more details\n\n\nQ: What statistics can you use in tbl_summary(statistic=) argument? How does the function know \"{min}, {max}\" is the range?\n\n\nThere are a set of known names for default statistics that you can use in this function. These (plus glue syntax) allow you to display specific statistics. See more details here, under the statistic argument section: https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html\n\n\nQ: How do you display mean instead of median?\n\n\nAdjust the statistic argument:\n\n\ntrial %&gt;%\n  select(age) %&gt;%\n  tbl_summary(statistic = everything() ~ \"{mean}\")\n\n\n\n\n\n\n\nCharacteristic\nN = 2001\n\n\n\n\nAge\n47\n\n\n    Unknown\n11\n\n\n\n1 Mean\n\n\n\n\n\n\n\n\n\nQ: With add_n() can you change the label to specify that it represents non-missing values?\n\n\nYes, you can change this with col_label argument:\n\n\ntrial |&gt;\n  select(age, grade, trt) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() |&gt; \n  add_n(col_label = \"**N (Non-missing)**\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nN (Non-missing)\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n189\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n200\n\n\n\n\n\n\n\n\n    I\n\n\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n\n\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n\n\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: How can you remove the death variable inside the tbl_summary() function?\n\n\nUse adplyr::select() prior to tbl_summary or use the include = argument in tbl_summary(). Three options below:\n\n\nsm_trial &lt;- trial |&gt;\n  select(age, grade, trt, death)\n\nsm_trial |&gt;\n  select(-death) %&gt;%\n  tbl_summary(\n    by = trt,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = -death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\n\nsm_trial |&gt;\n  tbl_summary(\n    by = trt,\n    include = !death,\n    missing = \"no\"\n  ) |&gt; \n  add_overall() \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOverall N = 2001\nDrug A N = 981\nDrug B N = 1021\n\n\n\n\nAge\n47 (38, 57)\n46 (37, 60)\n48 (39, 56)\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n68 (34%)\n35 (36%)\n33 (32%)\n\n\n    II\n68 (34%)\n32 (33%)\n36 (35%)\n\n\n    III\n64 (32%)\n31 (32%)\n33 (32%)\n\n\n\n1 Median (Q1, Q3); n (%)\n\n\n\n\n\n\n\n\n\nQ: Is it possible to add custom footnotes, say if you want to explain what a particular category includes etc.?\n\n\nYes, use modify_footnote() for column headers for footnotes that already exist. Or use modify_table_styling() for new footnotes. https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html\n\n\nQ: Does gtsummary support role selection like {recipes}?\n\n\nUse the selectors all_continuous(), all_categorical(), etc.\n\n\nQ: There is an error trying to use add_difference() with add_p()\n\n\nThis is because you are trying to add two p’s to same table. You could consider doing two separate tables then using tbl_merge() to merge them, but presenting these two p-values in one table could be confusing.\n\n\nQ: It would be great to have an “asterisk_p” to show significant p-values, like bold_p()\n\n\nadd_significance_stars() already exists! https://www.danieldsjoberg.com/gtsummary/reference/add_significance_stars.html\n\n\nQ: If there are more than two groups, is there any function for post-hoc testing?\n\n\nHere are supported tests: https://www.danieldsjoberg.com/gtsummary/reference/tests.html. Post-hoc tests might require custom testing. There are some relevant questions on stackoverflow.com that may be useful.\n\n\nQ: Can gtsummary give Bayesian statistics result?\n\n\nSee https://www.danieldsjoberg.com/gtsummary/reference/tests.html for supported tests. If it is not supported, you can use custom functions for p-values (see add_p()) or add_stat() to use a custom statistic.\n\n\nQ: The {rms} package fits are not supported?\n\n\nYou can file an issue for support. You can also use custom tidier. See Wald example in table gallery for tips on how to do this: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: How does it handle interaction terms?\n\n\nGorgeously:\n\n\ntbl &lt;-\n      lm(time ~ ph.ecog*sex, survival::lung) %&gt;%\n      tbl_regression(label = list(ph.ecog = \"ECOG Score\", sex = \"Sex\"))\n    \ntbl\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nECOG Score\n-119\n-233, -5.5\n0.040\n\n\nSex\n11\n-79, 102\n0.8\n\n\nECOG Score * Sex\n43\n-33, 120\n0.3\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: What does exponentiate=TRUE do again in tbl_regression()? I missed it.\n\n\nExponentiation coefficients so you can easily report OR instead of log(OR) or HRs instead of raw coefficients.\n\n\nQ: Is there a way to add an additional footnote saying T1 is the control? The default dash may be interpreted as a “missing value”.\n\n\nmodify_table_styling() https://www.danieldsjoberg.com/gtsummary/reference/modify_table_styling.html or use argument add_estimate_to_reference_rows = TRUE\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression( exponentiate = TRUE, add_estimate_to_reference_rows = FALSE ) %&gt;%\n  add_global_p() %&gt;%\n  modify_table_styling(columns = c(estimate, ci),\n                       rows = reference_row == TRUE, \n                       missing_symbol = \"Ref.\" )\n\nWarning: Use of the \"ci\" column was deprecated in gtsummary v2.0, and the column will\neventually be removed from the tables.\n! Review `?deprecated_ci_column()` for details on how to update your code.\nℹ The \"ci\" column has been replaced by the merged \"conf.low\" and \"conf.high\"\n  columns (merged with `modify_column_merge()`).\nℹ In most cases, a simple update from `ci = 'a new label'` to `conf.low = 'a\n  new label'` is sufficient.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\nRef.\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n\n\n\n\n    III\n2.28\n1.11, 4.75\n\n\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nYou can also use themes and change tbl_regression-str:ref_row_text option: https://www.danieldsjoberg.com/gtsummary/articles/themes.html\n\n\nQ: Can add_global_p() and the global p-value without removing the p-value for each level?\n\n\nThere is an arg in add_global_p() called keep; that will keep both p-values. It is FALSE by default\n\n\nglm(death ~ age + grade, data = trial, family = binomial) %&gt;%\n  tbl_regression(exponentiate = TRUE,\n                 add_estimate_to_reference_rows = FALSE) %&gt;%\n  add_global_p(keep = TRUE) \n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nOR\n95% CI\np-value\n\n\n\n\nAge\n1.01\n0.99, 1.03\n0.3\n\n\nGrade\n\n\n\n\n0.053\n\n\n    I\n—\n—\n\n\n\n\n    II\n1.11\n0.56, 2.24\n0.8\n\n\n    III\n2.28\n1.11, 4.75\n0.025\n\n\n\nAbbreviations: CI = Confidence Interval, OR = Odds Ratio\n\n\n\n\n\n\n\n\n\nQ: tbl_regression(): Are the p-values per Wald by default?\n\n\nYou need to look at the details for your specific model and what the summary function returns. You can change default via the tidier for your model. My tidier function example available in the gallery: https://www.danieldsjoberg.com/gtsummary/articles/gallery.html#wald-ci\n\n\nQ: Is there an option to compare multiple regression models within a single table? (e.g., when performing sensitivity analyses). I’m thinking of a situation where we are using different adjustment sets of covariates. I’m thinking of a situation where we are using different adjustment sets of covariates.\n\n\nUse tbl_merge()\n\n\nQ: Does it work with {tidymodels}?\n\n\nThere are currently some issues with dummy variables, but we are working on it for future release.\n\n\nQ: Can you have super/sub scripts in variable names\n\n\nUse utf8 characters and markdown characters. {gt} sometimes has some issues with “common markdown” language so be aware of your output type and print engine, but most likely they will work.\n\n\nQ: Is the marginal adjusted mean estimated using the median of the other covariates fitting the model?\n\n\nThis is calculated outside the package. See emmeans::emmeans() for details on calculations.\n\n\nQ: Does tbl_regression() support ridge/lasso regressions? I usually use {glmnet} for these\n\n\nNot currently supported but see https://github.com/ddsjoberg/gtsummary/issues/1280 for more details.\n\n\nQ: For sex, how do i get it to show the Male level instead of the Female reference group?\n\n\ninline_text() has a level= argument to select this.\n\n\nQ: If I change the CI to 90%, I need to update the pattern to 90% CI {ci} right?\n\n\nIf you are using the default pattern ({conf.level}), you don’t need to change anything, but if you hard code like 95%, then yes, use pattern = \"odds ratio {estimate}; {conf.level*100}% CI {ci}\"\n\n\nQ: Can I add LaTeX symbols in the inline text like chi square results?\n\n\nProbably?\n\n\nQ: Can add_glance_source_note(), give just adjusted R^2 ?\n\n\nYes!\n\n\nmod &lt;- lm(age ~ marker + grade, trial) %&gt;% tbl_regression()\nmod %&gt;% \n  add_glance_table(include = c(r.squared, adj.r.squared))\n\n\n\n\n\n\n\n\n\n\n\n\n\nCharacteristic\nBeta\n95% CI\np-value\n\n\n\n\nMarker Level (ng/mL)\n-0.04\n-2.6, 2.5\n&gt;0.9\n\n\nGrade\n\n\n\n\n\n\n\n\n    I\n—\n—\n\n\n\n\n    II\n0.64\n-4.7, 6.0\n0.8\n\n\n    III\n2.4\n-2.8, 7.6\n0.4\n\n\nR²\n0.005\n\n\n\n\n\n\nAdjusted R²\n-0.012\n\n\n\n\n\n\n\nAbbreviation: CI = Confidence Interval\n\n\n\n\n\n\n\n\n\nQ: How can I increase the font size of a gtsummary object in a xaringan slide?\n\n\nYou can set a theme for this, or check out print engine options. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: How do I decrease the height of the gtsummary table so it exports properly?\n\n\nDepends on print engine and desired output format. See https://www.danieldsjoberg.com/gtsummary/articles/rmarkdown.html\n\n\nQ: What would the code be to export as XLS?\n\n\nas_hux_xlsx(). See: https://www.danieldsjoberg.com/gtsummary/reference/as_hux_table.html"
+    "objectID": "diapositivas/graficos_r.html#barras-personalizadas",
+    "href": "diapositivas/graficos_r.html#barras-personalizadas",
+    "title": "Visualización de datos con ggplot2",
+    "section": "Barras Personalizadas",
+    "text": "Barras Personalizadas\nggplot(surv, aes(x = gender, fill = gender)) +\n  geom_bar() +\n  labs(title = \"Distribución por Género\",\n       subtitle = \"Dataset de Vigilancia\",\n       x = \"Género\", y = \"Número de casos\",\n       fill = \"Género\", caption = \"Fuente: surv.csv\") +\n  theme_minimal() +\n  scale_fill_manual(values = c(\"female\" = \"#E67E3A\", \"male\" = \"#7090A5\"))"
   }
 ]

@@ -2,19 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jmea2.github.io/diapositivas/tidydata_plus_r.html</loc>
-    <lastmod>2025-10-17T04:57:18.079Z</lastmod>
+    <lastmod>2026-04-23T18:34:37.758Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/diapositivas/union_datos.html</loc>
-    <lastmod>2025-10-17T05:42:11.472Z</lastmod>
+    <lastmod>2026-04-23T18:34:08.021Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/diapositivas/estructuras_r.html</loc>
-    <lastmod>2025-10-17T01:31:55.326Z</lastmod>
+    <loc>https://jmea2.github.io/diapositivas/clase_epicurva_ggplot.html</loc>
+    <lastmod>2026-04-29T00:31:10.862Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/diapositivas/importacion_r.html</loc>
-    <lastmod>2025-10-17T01:52:54.136Z</lastmod>
+    <loc>https://jmea2.github.io/diapositivas/librerias_r.html</loc>
+    <lastmod>2025-10-17T00:55:32.128Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jmea2.github.io/diapositivas/funciones_r.html</loc>
+    <lastmod>2025-10-18T15:53:44.291Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/estructuras6.html</loc>
@@ -26,7 +30,7 @@
   </url>
   <url>
     <loc>https://jmea2.github.io/diapositivas/proyectos_R.html</loc>
-    <lastmod>2025-10-06T22:02:07.492Z</lastmod>
+    <lastmod>2026-04-23T18:35:15.822Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/Script2.html</loc>
@@ -46,7 +50,7 @@
   </url>
   <url>
     <loc>https://jmea2.github.io/diapositivas/Script.html</loc>
-    <lastmod>2025-10-07T00:30:17.402Z</lastmod>
+    <lastmod>2026-04-23T18:35:04.286Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/Motivacion.html</loc>
@@ -54,7 +58,7 @@
   </url>
   <url>
     <loc>https://jmea2.github.io/index.html</loc>
-    <lastmod>2025-10-18T18:04:45.793Z</lastmod>
+    <lastmod>2026-04-23T18:24:30.175Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/license.html</loc>
@@ -82,7 +86,7 @@
   </url>
   <url>
     <loc>https://jmea2.github.io/diapositivas/operadores_r.html</loc>
-    <lastmod>2025-10-17T01:10:46.530Z</lastmod>
+    <lastmod>2026-04-23T18:35:32.206Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/manejo_datos10.html</loc>
@@ -90,22 +94,26 @@
   </url>
   <url>
     <loc>https://jmea2.github.io/diapositivas/tabla_dinamica_r.html</loc>
-    <lastmod>2025-10-17T05:08:59.210Z</lastmod>
+    <lastmod>2026-04-23T18:34:48.169Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/diapositivas/funciones_r.html</loc>
-    <lastmod>2025-10-18T15:53:44.291Z</lastmod>
+    <loc>https://jmea2.github.io/visualizacion11.html</loc>
+    <lastmod>2026-04-29T00:27:39.051Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/diapositivas/librerias_r.html</loc>
-    <lastmod>2025-10-17T00:55:32.128Z</lastmod>
+    <loc>https://jmea2.github.io/diapositivas/importacion_r.html</loc>
+    <lastmod>2025-10-17T01:52:54.136Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jmea2.github.io/diapositivas/estructuras_r.html</loc>
+    <lastmod>2025-10-17T01:31:55.326Z</lastmod>
   </url>
   <url>
     <loc>https://jmea2.github.io/diapositivas/tidydata_r.html</loc>
-    <lastmod>2025-10-17T03:33:21.904Z</lastmod>
+    <lastmod>2026-04-23T18:34:31.518Z</lastmod>
   </url>
   <url>
-    <loc>https://jmea2.github.io/q-and-a.html</loc>
-    <lastmod>2023-02-08T16:03:19.000Z</lastmod>
+    <loc>https://jmea2.github.io/diapositivas/graficos_r.html</loc>
+    <lastmod>2026-04-28T23:52:02.420Z</lastmod>
   </url>
 </urlset>

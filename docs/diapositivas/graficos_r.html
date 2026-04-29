@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.53">
 
   <meta name="author" content="Jorge Mario Estrada Alvarez PhD. MSc. FETP">
-  <title>LLegando de Excel a R para epidemiologos – Proyectos en R</title>
+  <title>LLegando de Excel a R para epidemiologos – Visualización de datos con ggplot2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -323,9 +388,9 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Proyectos en R – LLegando de Excel a R para epidemiologos">
+<meta property="og:title" content="Visualización de datos con ggplot2 – LLegando de Excel a R para epidemiologos">
 <meta property="og:site_name" content="LLegando de Excel a R para epidemiologos">
-<meta name="twitter:title" content="Proyectos en R – LLegando de Excel a R para epidemiologos">
+<meta name="twitter:title" content="Visualización de datos con ggplot2 – LLegando de Excel a R para epidemiologos">
 <meta name="twitter:image" content="https://jmea2.github.io/images/imagen-cursoR.png">
 <meta name="twitter:creator" content="@bioestadisticaRda">
 <meta name="twitter:image-height" content="1024">
@@ -337,7 +402,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Proyectos en R</h1>
+  <h1 class="title">Visualización de datos con ggplot2</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -348,63 +413,97 @@ Jorge Mario Estrada Alvarez PhD. MSc. FETP
 </div>
 
 </section>
-<section id="trabajo-por-proyectos-en-r" class="slide level2">
-<h2>Trabajo por Proyectos en R</h2>
+<section>
+<section id="por-qué-ggplot2" class="title-slide slide level1 center">
+<h1>¿Por qué ggplot2?</h1>
 <ul>
-<li>Comprender qué es un proyecto en R.<br>
-</li>
-<li>Para qué sirve.<br>
-</li>
-<li>Cómo organizar el trabajo analítico dentro de él.</li>
+<li>Basado en la <strong>Gramática de Gráficos</strong>.</li>
+<li>Estructura por capas.</li>
+<li>Altamente personalizable y reproducible.</li>
+<li>El estándar de la industria en R.</li>
 </ul>
 </section>
-<section id="objetivo-de-aprendizaje" class="slide level2">
-<h2>Objetivo de Aprendizaje</h2>
-<p>Un proyecto en R te permite agrupar todos los elementos de un análisis en una carpeta estructurada:</p>
-<ul>
-<li>Scripts<br>
-</li>
-<li>Datos<br>
-</li>
-<li>Gráficos<br>
-</li>
-<li>Resultados</li>
-</ul>
-<p><strong>Ventajas</strong>:<br>
-- Mejora la organización.<br>
-- Facilita el trabajo reproducible.<br>
-- Evita errores con rutas de archivos.</p>
+<section class="slide level2">
+
+</section></section>
+<section id="la-estructura-básica" class="title-slide slide level1 center">
+<h1>La Estructura Básica</h1>
+<div class="goal">
+<p><strong>ggplot(data = <data>, mapping = aes(<mappings>)) + <geom_function>()</geom_function></mappings></data></strong></p>
+</div>
+<ol type="1">
+<li><strong>Data</strong>: El dataframe (ej. <code>surv</code>).</li>
+<li><strong>Aesthetics (aes)</strong>: Relación entre variables y ejes/colores.</li>
+<li><strong>Geoms</strong>: El tipo de gráfico (barras, puntos, líneas).</li>
+</ol>
 </section>
-<section id="por-qué-usar-un-proyecto-en-r" class="slide level2">
-<h2>¿Por qué usar un Proyecto en R?</h2>
-<ul>
-<li>Centraliza todos los elementos de un análisis.<br>
-</li>
-<li>Reduce errores de ubicación de archivos.<br>
-</li>
-<li>Permite compartir proyectos completos con otros.<br>
-</li>
-<li>Favorece la reproducibilidad.</li>
-</ul>
+
+<section>
+<section id="gráfico-de-barras-variables-categóricas" class="title-slide slide level1 center">
+<h1>Gráfico de Barras (Variables Categóricas)</h1>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> surv, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="cómo-crear-un-proyecto-en-rstudio" class="slide level2">
-<h2>¿Cómo crear un proyecto en RStudio?</h2>
-<p><strong>Paso 1:</strong><br>
-Menú: <code>File &gt; New Project</code></p>
-<p><strong>Paso 2:</strong><br>
-Selecciona <strong>🆕 New Directory</strong> (crea una carpeta nueva).</p>
-<p><strong>Paso 3:</strong><br>
-Escoge el directorio donde crearás la carpeta del nuevo proyecto, haciendo clic en <strong>Browse</strong>.</p>
-<blockquote>
-<p>💡 Nota: elige un espacio en tu computador donde se creará la carpeta y reposará el proyecto de este curso.</p>
-</blockquote>
+<section id="barras-personalizadas" class="slide level2">
+<h2>Barras Personalizadas</h2>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(surv, <span class="fu">aes</span>(<span class="at">x =</span> gender, <span class="at">fill =</span> gender)) <span class="sc">+</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb2-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución por Género"</span>,</span>
+<span id="cb2-4"><a></a>       <span class="at">subtitle =</span> <span class="st">"Dataset de Vigilancia"</span>,</span>
+<span id="cb2-5"><a></a>       <span class="at">x =</span> <span class="st">"Género"</span>, <span class="at">y =</span> <span class="st">"Número de casos"</span>,</span>
+<span id="cb2-6"><a></a>       <span class="at">fill =</span> <span class="st">"Género"</span>, <span class="at">caption =</span> <span class="st">"Fuente: surv.csv"</span>) <span class="sc">+</span></span>
+<span id="cb2-7"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-8"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"female"</span> <span class="ot">=</span> <span class="st">"#E67E3A"</span>, <span class="st">"male"</span> <span class="ot">=</span> <span class="st">"#7090A5"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section id="histograma-distribución-de-variables" class="title-slide slide level1 center">
+<h1>Histograma (Distribución de variables)</h1>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(surv, <span class="fu">aes</span>(<span class="at">x =</span> age_years)) <span class="sc">+</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de Edades"</span>,</span>
+<span id="cb3-4"><a></a>       <span class="at">x =</span> <span class="st">"Edad (años)"</span>, <span class="at">y =</span> <span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a></a>  <span class="fu">theme_light</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="cómo-crear-un-proyecto-en-rstudio-1" class="slide level2">
-<h2>¿Cómo crear un proyecto en RStudio?</h2>
-<p><strong>Paso 4:</strong><br>
-Coloca un nombre a tu proyecto.</p>
-<p><strong>Paso 5:</strong><br>
-Si fue creado correctamente, verifica en la carpeta destino la aparición de un icono con la extensión:</p>
+
+<section id="gráfico-de-puntos-dispersión" class="title-slide slide level1 center">
+<h1>Gráfico de Puntos (Dispersión)</h1>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(surv, <span class="fu">aes</span>(<span class="at">x =</span> wt_kg, <span class="at">y =</span> ht_cm, <span class="at">color =</span> gender)) <span class="sc">+</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación Peso vs Talla"</span>,</span>
+<span id="cb4-4"><a></a>       <span class="at">x =</span> <span class="st">"Peso (kg)"</span>, <span class="at">y =</span> <span class="st">"Talla (cm)"</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="gráfico-de-líneas-curva-epidémica" class="title-slide slide level1 center">
+<h1>Gráfico de Líneas (Curva Epidémica)</h1>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>surv <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a></a>  <span class="fu">count</span>(date_onset) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date_onset, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Curva Epidémica"</span>,</span>
+<span id="cb5-7"><a></a>       <span class="at">x =</span> <span class="st">"Fecha"</span>, <span class="at">y =</span> <span class="st">"Casos"</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="personalización-avanzada-temas-y-fuentes" class="title-slide slide level1 center">
+<h1>Personalización Avanzada (Temas y Fuentes)</h1>
+<p>Podemos cambiar todo: fuentes, posiciones, fondos.</p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">ggplot</span>(surv, <span class="fu">aes</span>(<span class="at">x =</span> hospital, <span class="at">fill =</span> hospital)) <span class="sc">+</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="co"># Girar ejes</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-6"><a></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb6-7"><a></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"serif"</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">20</span>),</span>
+<span id="cb6-8"><a></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)</span>
+<span id="cb6-9"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="tu-turno" class="title-slide slide level1 center">
+<h1>¡Tu turno!</h1>
+<div class="appex">
+<p>Usa el dataset <code>surv.csv</code> y crea un gráfico de barras para la variable <code>age_cat</code>, personaliza los colores y añade etiquetas completas.</p>
+</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/imagen-cursoR.png" class="slide-logo"></p>
